@@ -46,15 +46,12 @@ const socials = [
   <div class="footer-cta">
     <div class="container">
       <Ornament variant="mark" size={26} class="footer-cta__mark" />
-      <p class="eyebrow eyebrow--center">Begin Your Journey</p>
-      <h2 class="footer-cta__title">Discover Your Dosha</h2>
-      <p class="footer-cta__copy">
-        Every body is governed by a unique balance of Vata, Pitta and Kapha. Take the first step
-        toward equilibrium — book a consultation with our Ayurvedic doctors.
-      </p>
+      <p class="eyebrow eyebrow--center">Ayurvedic Wellness Centre</p>
+      <h2 class="footer-cta__title">Book an Appointment</h2>
+      <p class="footer-cta__copy">{address} · <a href={phoneHref}>{phone}</a></p>
       <div class="footer-cta__actions">
-        <a class="btn btn--gold" href={bookHref}>Book a Consultation</a>
-        <a class="btn btn--ghost btn--on-dark-ghost" href="/what-is-your-dosha/">Take the Dosha Quiz</a>
+        <a class="btn btn--gold" href={bookHref}>Book an Appointment</a>
+        <a class="btn btn--ghost btn--on-dark-ghost" href="/what-is-your-dosha/">Discover Your Dosha</a>
       </div>
     </div>
   </div>
@@ -62,8 +59,7 @@ const socials = [
   <div class="footer-main container--wide">
     <div class="footer-brand">
       <Image src={logoWhite} alt="Ayurvedic Wellness Centre" widths={[200, 400]} sizes="200px" />
-      <p class="footer-brand__tag">Authentic Ayurveda experiences in Bondi Junction, Sydney — restoring
-      balance to mind, body and soul since 2011.</p>
+      <p class="footer-brand__tag">Authentic Ayurveda in Bondi Junction, Sydney. Open since 2011.</p>
       <div class="footer-contact">
         <a href={phoneHref}>{phone}</a>
         <a href={`mailto:${email}`}>{email}</a>

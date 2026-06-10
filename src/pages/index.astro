@@ -1,50 +1,33 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import ServiceCard from '../components/ServiceCard.astro';
-import PostCard from '../components/PostCard.astro';
 import Ornament from '../components/Ornament.astro';
-import { cardImage, routable, clean, pullQuote } from '../lib/content';
-import { bookHref } from '../data/nav';
+import { clean, pullQuote } from '../lib/content';
+import { bookHref, phoneHref, instagram } from '../data/nav';
 
-const services = await getCollection('services', routable);
-const featuredSlugs = [
-  'shirodhara-treatment-bondi-sydney',
-  'ayurvedic-massage-in-bondi-junction',
-  'panchakarma-ayurvedic-detox-sydney',
-  'pizzichil-treatment',
-  'udvartana-massage-for-weight-loss-sydney',
-  'couples-massage',
-];
-const featured = featuredSlugs
-  .map((s) => services.find((x) => x.data.slug === s))
-  .filter(Boolean) as typeof services;
+// --- Exact homepage images (from the live site) ---------------------------
+const HERO_BG = '/wp-content/uploads/2023/05/background_banner.jpg';
+const IMG_CONSULT = '/wp-content/uploads/elementor/thumbs/CONSULTATIONS-rkuf582g3hjy8t0aw0t32835mcwdr9zj3tjdaqt1tc.webp';
+const IMG_ATOZ = '/wp-content/uploads/elementor/thumbs/Ayurveda-treats-A-Z-_Herbs_2-1-rkuf582g3hjy8t0aw0t32835mcwdr9zj3tjdaqt1tc.webp';
+const IMG_SPA = '/wp-content/uploads/elementor/thumbs/SHIRODHARA-1-rkuf582g3hjy8t0aw0t32835mcwdr9zj3tjdaqt1tc.webp';
+const IMG_WHATIS = '/wp-content/uploads/2023/05/What-Is-Ayurveda.jpg';
+const IMG_CLIQUE = '/wp-content/uploads/elementor/thumbs/%C2%A9CliquePhotographySydney_G4H4474_Edit-rkuf574i9372gylbszubqtan2hqqdz66wrlvg4zp0w.jpg';
+const IMG_MEDITATION = '/wp-content/uploads/elementor/thumbs/MEDITATION-ROOM-1-rkuf574i9372gylbszubqtan2hqqdz66wrlvg4zp0w.webp';
+const IMG_FRAME = '/wp-content/uploads/elementor/thumbs/Frame-12-1-rkuf574i9372gylbszubqtan2hqqdz66wrlvg4zp0w.jpg';
+const IMG_DEEPIKA = '/wp-content/uploads/elementor/thumbs/Dr-Deepika-rkuf574axyiqnb02ntd56rkidu9rizslzy26nk85xc.webp';
+const IMG_TARUNA = '/wp-content/uploads/elementor/thumbs/Taruna-Yadav-newest-image-rkuf574axyiqnb02ntd56rkidu9rizslzy26nk85xc.webp';
 
-const posts = (await getCollection('blog', routable))
-  .sort((a, b) => (b.data.pubDate ?? '').localeCompare(a.data.pubDate ?? ''))
-  .slice(0, 3);
+// --- Testimonial videos (exact YouTube IDs from the live site) -------------
+const VIDEO_IDS = ['5SfGs95BicY', '3bDjSjIpJok', 'xQEs6BbSMjE', 'uHmV0C3uIZ0', 'L-pDqMd9BjM', 'P82hGf7kz_4', 'SpZeN08BUQw', 'x3BOD2p-tT4', 'TqYTwx-Zt48'];
 
-const doctors = await getCollection('doctors', routable);
-
-const testimonials = (await getCollection('testimonials'))
-  .filter((t) => (t.body ?? '').length > 160 && !/ddd|test|sample/i.test(t.data.slug))
-  .map((t) => ({ quote: pullQuote(t.body, 230), author: clean(t.data.ogTitle ?? t.data.title) }))
-  .filter((t) => t.quote.length > 60)
-  .slice(0, 3);
-
-const doshas = [
-  { name: 'Vata', element: 'Air & Ether', qualities: 'Movement · Creativity · Lightness', tint: 'navy',
-    note: 'Governs breath, circulation and the nervous system. When balanced: vitality and clarity.' },
-  { name: 'Pitta', element: 'Fire & Water', qualities: 'Transformation · Focus · Heat', tint: 'wine',
-    note: 'Governs digestion, metabolism and intellect. When balanced: warmth and contentment.' },
-  { name: 'Kapha', element: 'Earth & Water', qualities: 'Structure · Calm · Endurance', tint: 'gold',
-    note: 'Governs immunity, strength and stability. When balanced: steadiness and compassion.' },
-];
-
-const heroImg = '/wp-content/uploads/2023/05/background_banner.jpg';
-const philosophyImg = '/wp-content/uploads/2023/05/What-Is-Ayurveda.jpg';
-const detoxImg = '/wp-content/uploads/2023/05/background_about_us-1-scaled.jpg';
+// Written testimonials (real content + quotes), preserving the homepage order
+const ORDER = ['ashna-basu', 'yan-ddd', 'elvia-cacciotti', 'heidi-gulla', 'rachna-bhardwaj',
+  'manju-singh', 'bhavna-dahiya', 'gary-mckinlay', 'dr-veronica-ortiz', 'adrienn-gyenes',
+  'achamma-kurlekar-2', 'achamma-kurlekar'];
+const tmap = new Map((await getCollection('testimonials')).map((t) => [t.data.slug, t]));
+const written = ORDER.map((s) => tmap.get(s)).filter(Boolean).map((t) => ({
+  quote: pullQuote(t!.body, 240), author: clean(t!.data.ogTitle ?? t!.data.title), href: t!.data.path,
+}));
 
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -55,18 +38,25 @@ const orgSchema = {
   telephone: '+61293892581',
   email: 'info@ayurvedicwellnesscentre.com.au',
   address: { '@type': 'PostalAddress', addressLocality: 'Bondi Junction', addressRegion: 'NSW', addressCountry: 'AU' },
-  foundingDate: '2011',
-  priceRange: '$$',
-  sameAs: [
-    'https://www.facebook.com/AyurvedicWellnessCentre',
-    'https://www.instagram.com/ayurvedicwellnesscentre/',
-    'https://www.youtube.com/@AyurvedicWellness',
-  ],
+  foundingDate: '2011', priceRange: '$$',
+  sameAs: ['https://www.facebook.com/AyurvedicWellnessCentre', 'https://www.instagram.com/ayurvedicwellnesscentre/', 'https://www.youtube.com/@AyurvedicWellness'],
 };
+
+const cards = [
+  { img: IMG_CONSULT, alt: 'Ayurvedic Consultations', title: 'Ayurvedic Consultations',
+    body: 'Meet our doctors- Dr.Deepika Kaushal and Dr.Taruna Yadav. Our experienced and qualified M.D. ayurvedic doctors have expertise in diagnosing and treating all health issues.',
+    cta: 'More about Our Ayurvedic Doctors', href: '/team/' },
+  { img: IMG_ATOZ, alt: 'Ayurveda massage therapies Sydney', title: 'Ayurveda Treatments A-Z',
+    body: 'Ayurveda treats all disorders and goes to the root cause of the problem.',
+    cta: 'Find Out More', href: '/ayurvedic-treatments/' },
+  { img: IMG_SPA, alt: 'Ayurveda massage therapies Sydney', title: 'Day Spa Wellness',
+    body: 'Indulge, Relax & Rejuvenate in luxury with authentic 5,000-year-old ancient ayurvedic spa treatments.',
+    cta: 'View Our Packages', href: '/ayurvedic-spa/' },
+];
 ---
 <BaseLayout
-  title="Ayurvedic Wellness Centre — Authentic Ayurveda in Bondi Junction, Sydney"
-  description="Experience authentic Ayurveda treatments, massage therapies and Panchakarma detox in Bondi Junction, Sydney, with our qualified Ayurvedic doctors."
+  title="Ayurvedic Doctors in Sydney – Ayurvedic Medicine, Panchakarma and Ayurveda Massage Treatments"
+  description="Experience authentic Ayurveda treatments and massage therapies, right here in Bondi Junction, Sydney with our best Ayurvedic Practitioners."
   canonical="https://www.ayurvedicwellnesscentre.com.au/"
   ogType="website"
   jsonLd={orgSchema}
@@ -75,313 +65,414 @@ const orgSchema = {
   <!-- ============================ HERO ============================ -->
   <section class="hero">
     <div class="hero__media">
-      <img src={heroImg} alt="Ayurvedic herbal treatment at the Ayurvedic Wellness Centre" fetchpriority="high" />
+      <img src={HERO_BG} alt="" fetchpriority="high" />
       <div class="hero__scrim"></div>
     </div>
     <div class="container hero__inner">
-      <p class="eyebrow hero__eyebrow">A Touch of Ancient Healing Wisdom</p>
-      <h1 class="hero__title">Authentic Ayurveda<br />Experiences in Sydney</h1>
-      <p class="hero__lead">
-        Five thousand years of healing wisdom, practised with reverence in the heart of Bondi
-        Junction — for stress &amp; anxiety, digestion, skin, sleep and so much more.
-      </p>
+      <p class="eyebrow hero__eyebrow">A touch of ancient healing wisdom</p>
+      <h1 class="hero__title">Authentic Ayurveda Experiences In Sydney</h1>
+      <p class="hero__lead">Treating stress &amp; anxiety, digestive issues, skin concerns and so much more.</p>
       <div class="hero__actions">
-        <a class="btn btn--gold" href={bookHref}>Book an Appointment</a>
-        <a class="btn btn--on-dark hero__ghost" href="/treatments/">Explore Treatments</a>
+        <a class="btn btn--gold" href="/what-is-ayurveda/">Find Out More</a>
+        <a class="btn btn--on-dark hero__ghost" href={phoneHref}>Call Now</a>
       </div>
     </div>
-    <div class="hero__est">
-      <span>Est.</span><span>2011</span>
-    </div>
-    <a class="hero__scroll" href="#philosophy" aria-label="Scroll to learn more">
-      <span></span>
-    </a>
+    <a class="hero__scroll" href="#intro" aria-label="Scroll to learn more"><span></span></a>
   </section>
 
-  <!-- ======================= PHILOSOPHY ========================== -->
-  <section class="section philosophy" id="philosophy">
-    <div class="container philosophy__grid">
-      <div class="philosophy__figure" data-reveal>
-        <img src={philosophyImg} alt="An Ayurvedic practitioner preparing herbal oils" loading="lazy" />
-        <div class="philosophy__badge">
-          <Ornament variant="mark" size={20} />
-          <span>5000<small>years of wisdom</small></span>
-        </div>
+  <!-- ====================== DOSHA QUIZ STRIP ===================== -->
+  <section class="quiz-strip">
+    <div class="container quiz-strip__inner">
+      <Ornament variant="mark" size={24} class="quiz-strip__mark" />
+      <div class="quiz-strip__text">
+        <h2 class="quiz-strip__title">Get A Free Quiz To Discover Your DOSHA!</h2>
+        <p>Sign up to our newsletter text, or something more in-depth to give more context to what’s behind the quiz.</p>
       </div>
-      <div class="philosophy__text">
-        <SectionHeader
-          eyebrow="An Ancient Practice for Modern Living"
-          title="What Is Ayurveda"
-        />
-        <div class="philosophy__body stack" data-reveal style="--reveal-delay:120ms">
-          <p>
-            Ayurveda is the traditional healing system of India — a science of life practised by
-            millions for over five millennia. Where modern medicine often treats the symptom,
-            Ayurveda seeks the root: restoring balance between mind, body and spirit.
-          </p>
-          <p>
-            At its heart are the three <em>doshas</em> — Vata, Pitta and Kapha — the energies that
-            shape your constitution. Understanding yours is the beginning of lasting wellbeing.
-          </p>
-          <a class="link" href="/what-is-ayurveda/">Read the full philosophy</a>
-        </div>
-      </div>
+      <a class="btn btn--gold" href="/what-is-your-dosha/">Download Now</a>
     </div>
   </section>
 
-  <!-- ========================= DOSHAS ============================ -->
-  <section class="section doshas">
+  <!-- =================== INTRO + THREE OFFERINGS ================== -->
+  <section class="section intro" id="intro">
     <div class="container">
-      <SectionHeader
-        align="center"
-        eyebrow="Know Your Nature"
-        title="The Three Doshas"
-        intro="Every person is a unique expression of three vital energies. Balance is health; imbalance is dis-ease."
-      />
-      <div class="doshas__grid">
-        {doshas.map((d, i) => (
-          <article class:list={['dosha-card', `tint-${d.tint}`]} data-reveal style={`--reveal-delay:${i * 110}ms`}>
-            <div class="dosha-card__symbol"><Ornament variant="mark" size={30} /></div>
-            <h3 class="dosha-card__name">{d.name}</h3>
-            <p class="dosha-card__element">{d.element}</p>
-            <p class="dosha-card__qual">{d.qualities}</p>
-            <p class="dosha-card__note">{d.note}</p>
-          </article>
+      <header class="intro__head" data-reveal>
+        <p class="eyebrow eyebrow--center">A touch of ancient healing wisdom</p>
+        <h2 class="intro__title">14 Years Offering Authentic Ayurvedic Treatments in Bondi Junction, Sydney</h2>
+        <Ornament variant="divider" class="intro__ornament" />
+        <p class="intro__copy">Ayurveda is something to experience and is not just a normal “massage”. The ancient Indian
+          practice of rejuvenation comes from a place of reverence and the heart. For the first time, you can
+          experience a complete range of authentic Ayurveda massage therapies, right here in Bondi Junction, Sydney.
+          What’s more, you can choose to have a consultation with our qualified Doctors or our Ayurvedic Consultants.</p>
+      </header>
+
+      <div class="offer-grid">
+        {cards.map((c, i) => (
+          <a class="offer-card" href={c.href} data-reveal style={`--reveal-delay:${i * 100}ms`}>
+            <div class="offer-card__media"><img src={c.img} alt={c.alt} loading="lazy" /></div>
+            <div class="offer-card__body">
+              <h3 class="offer-card__title">{c.title}</h3>
+              <p class="offer-card__copy">{c.body}</p>
+              <span class="offer-card__cta">{c.cta} <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
         ))}
       </div>
-      <div class="doshas__cta" data-reveal>
-        <a class="btn btn--ghost" href="/what-is-your-dosha/">Discover Your Dosha</a>
+
+      <div class="intro__actions" data-reveal>
+        <a class="btn btn--wine" href={bookHref}>Book an Appointment</a>
+        <a class="btn btn--ghost" href={phoneHref}>Phone Us Now</a>
       </div>
     </div>
   </section>
 
-  <!-- ====================== SIGNATURE TREATMENTS ================= -->
-  <section class="section treatments-feature">
+  <!-- ======================= WHAT IS AYURVEDA ==================== -->
+  <section class="section whatis">
+    <div class="container whatis__grid">
+      <div class="whatis__figure" data-reveal>
+        <img src={IMG_WHATIS} alt="What Is Ayurveda" loading="lazy" />
+      </div>
+      <div class="whatis__text" data-reveal style="--reveal-delay:120ms">
+        <p class="eyebrow">An Ancient Practice for Modern Living</p>
+        <h2 class="whatis__title">What Is Ayurveda</h2>
+        <p class="whatis__copy">Ayurveda is the traditional healing system of India and is practised by around 70% of
+          India’s population. Dating back over 5000 years, the roots of Ayurveda are deeply steeped in history and
+          tradition. There are mentions of the healing system in the first of the Hindu texts and the “Chakra Samhita”,
+          the still cited Ayurvedic text on internal medicine appeared around the turn of the first millennium BC. It is
+          estimated that there are currently around 650,000 doctors practising this science in India today with 70,000
+          doctors practising worldwide. Numbers which give a strong indication of the modern day popularity of the
+          health system.</p>
+        <a class="btn btn--wine" href="/what-is-ayurveda/">Find Out More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= PANCHAKARMA DETOX =================== -->
+  <section class="detox">
     <div class="container">
-      <div class="treatments-feature__head">
-        <SectionHeader
-          eyebrow="Ayurveda A–Z"
-          title="Signature Treatments"
-          intro="Authentic therapies performed by trained therapists with warm, medicated oils and time-honoured technique."
-        />
-        <a class="link treatments-feature__all" href="/treatments/">All treatments →</a>
-      </div>
-      <div class="treatments-feature__grid">
-        {featured.map((s, i) => (
-          <ServiceCard
-            href={s.data.path}
-            title={s.data.title.replace(/\s*[|–-].*$/, '')}
-            image={cardImage(s)}
-            excerpt={s.data.description}
-            kicker="Therapy"
-            index={i}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
+      <header class="detox__head" data-reveal>
+        <p class="eyebrow eyebrow--center">Ayurvedic Wellness Centre</p>
+        <h2 class="detox__title">14 Years of Authentic Ayurvedic Healing: Panchakarma Detox Therapy in Sydney</h2>
+        <Ornament variant="divider" class="detox__ornament" />
+        <p class="detox__lead">Has your busy schedule left you feeling the need to cleanse and rejuvenate your body and
+          mind? Ancient Ayurvedic Panchakarma Detox therapy helps eliminate toxins, improve digestion, boost energy
+          levels and strengthen the immune system.</p>
+      </header>
 
-  <!-- ======================= PANCHAKARMA BAND ==================== -->
-  <section class="detox-band">
-    <div class="detox-band__media"><img src={detoxImg} alt="Panchakarma detox treatment room" loading="lazy" /></div>
-    <div class="container detox-band__inner">
-      <div class="detox-band__text" data-reveal>
-        <p class="eyebrow">The Detox Clinic</p>
-        <h2 class="detox-band__title">Panchakarma — A Deeper, More Holistic Cleanse</h2>
-        <p class="detox-band__copy">
-          When treatments are administered daily over several days, cleansing begins at a far
-          deeper level. Our individualised 7-day Panchakarma programmes sequentially purify and
-          rejuvenate all seven tissues of the body — under the care of our Ayurvedic doctors.
-        </p>
-        <ul class="detox-band__list" role="list">
-          <li>Personalised to your constitution &amp; concerns</li>
-          <li>Doctor consultation, massage, steam &amp; herbal supplements</li>
-          <li>Renewed energy, vitality and clarity</li>
-        </ul>
-        <a class="btn btn--gold" href="/detox-clinic/">Explore Panchakarma</a>
+      <div class="detox__block" data-reveal>
+        <div class="detox__text stack">
+          <h3>What Is Panchakarma Detox?</h3>
+          <p>Ayurveda believes that the buildup of toxins in the tissues and blockage of channels of circulation are
+            the root cause of many chronic conditions.</p>
+          <p>Panchakarma Detox is a therapeutic system that cleanses toxins that are already in your body and are the
+            underlying cause of health imbalances and diseases.</p>
+          <p>Ayurveda has used these cleansing treatments to rejuvenate the mind and body since ancient times. Book a
+            treatment and discover the difference Panchakarma can make to your wellbeing.</p>
+          <a class="link" href="/detox-clinic/">Find Out More →</a>
+        </div>
+        <div class="detox__figure"><img src={IMG_CLIQUE} alt="©CliquePhotographySydney_G4H4474_Edit" loading="lazy" /></div>
       </div>
-    </div>
-  </section>
 
-  <!-- ======================= PRACTITIONERS ======================= -->
-  {doctors.length > 0 && (
-    <section class="section practitioners">
-      <div class="container">
-        <SectionHeader align="center" eyebrow="In Trusted Hands" title="Meet Our Doctors" />
-        <div class="practitioners__grid">
-          {doctors.map((doc, i) => (
-            <a class="practitioner" href={doc.data.path} data-reveal style={`--reveal-delay:${i * 110}ms`}>
-              <div class="practitioner__media">
-                {cardImage(doc) ? <img src={cardImage(doc)} alt={doc.data.title} loading="lazy" /> : <div class="practitioner__ph"></div>}
-              </div>
-              <div class="practitioner__body">
-                <h3 class="practitioner__name">{doc.data.title.replace(/\s*[|–-].*$/, '')}</h3>
-                <p class="practitioner__role">Ayurvedic Doctor</p>
-                <span class="practitioner__cta">View profile →</span>
-              </div>
-            </a>
-          ))}
+      <div class="detox__block detox__block--reverse" data-reveal>
+        <div class="detox__figure"><img src={IMG_MEDITATION} alt="Ayurveda Experiences in Bondi Junction, Sydney" loading="lazy" /></div>
+        <div class="detox__text stack">
+          <h3>Why Choose Panchakarma Detox?</h3>
+          <p>For 14 years, Ayurvedic Wellness Centre has been helping Sydney clients transform their health with
+            authentic Panchakarma Detox Therapy. This ancient Ayurvedic program combines therapeutic massages, herbal
+            treatments, and gentle cleansing procedures that work synergistically to restore balance and promote
+            overall wellbeing.</p>
+          <p>This ancient Ayurvedic therapy helps to:</p>
+          <ul class="detox__list" role="list">
+            <li>Eliminate toxins</li>
+            <li>Improve digestion</li>
+            <li>Boost energy levels</li>
+            <li>Enhance mental clarity</li>
+            <li>Promote weight loss</li>
+            <li>Boost healthy skin and complexion</li>
+            <li>Strengthen the immune system</li>
+          </ul>
+          <p>You can look forward to improved health, vitality and a renewed sense of wellness after your treatment.</p>
+          <a class="btn btn--wine" href={bookHref}>Book Your Appointment</a>
         </div>
       </div>
-    </section>
-  )}
+
+      <div class="detox__longer stack" data-reveal>
+        <h3>Longer Treatments For Deeper, More Holistic Cleansing</h3>
+        <p>Ayurveda says that when Panchakarma treatments are administered daily for several days in a row, cleansing
+          begins to occur at a deeper level.</p>
+        <p>According to Ayurveda, a 7-Day treatment is ideal as it is believed to sequentially cleanse and rejuvenate
+          all 7 major bodily tissues.</p>
+        <p>At the Ayurvedic Wellness Centre, these treatments are offered under the supervision of our highly qualified
+          and experienced Ayurvedic practitioners.</p>
+        <p>Contact us for a bespoke treatment plan, which could be a 5-day, 7-day, 9-day plan based on your current
+          level of wellbeing.</p>
+        <p>Reclaim a sense of balance… book your initial consultation today.</p>
+        <a class="btn btn--wine" href={bookHref}>Book Your Appointment</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= NOT SURE WHERE ====================== -->
+  <section class="start-band">
+    <div class="start-band__media"><img src={IMG_FRAME} alt="Frame 12 (1)" loading="lazy" /></div>
+    <div class="container start-band__inner">
+      <div class="start-band__text" data-reveal>
+        <h2 class="start-band__title">Not Sure Where To Start?</h2>
+        <p>We’ll be happy to have a quick chat and suggest you the best way for you to embark on your ayurvedic journey
+          with us!</p>
+        <div class="start-band__actions">
+          <a class="btn btn--gold" href={bookHref}>Book an Appointment</a>
+          <a class="btn btn--on-dark-ghost" href={phoneHref}>Phone Us Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= REAL LIFE STORY ===================== -->
+  <section class="section story">
+    <div class="container--narrow text-center" data-reveal>
+      <p class="eyebrow eyebrow--center">Manage Your Stress &amp; Anxiety</p>
+      <h2 class="story__title">Real Life Story From Our Client</h2>
+      <Ornament variant="divider" class="story__ornament" />
+      <p class="story__copy">Vanessa completed her 7-day Ayurvedic detox to help with her stress, and anxiety and to stop
+        smoking. As a busy individual in a fast-paced job, Vanessa found herself to be stressed a lot of the time which
+        exacerbated her anxiety. Along with this, she had been smoking for several years which she wanted to stop to
+        look after herself. Watch this video to listen to her experience of the 7-day detox at the Ayurvedic Wellness
+        Centre.</p>
+      <p class="story__sub">Looking For Ways To Live Stress-Free Life?</p>
+      <p class="story__sub-copy">Don’t wait for it – we’re a call away to help you transform your life.</p>
+      <a class="btn btn--wine" href={bookHref}>Book an Appointment</a>
+    </div>
+  </section>
+
+  <!-- ============================ ABOUT ========================== -->
+  <section class="section about">
+    <div class="container">
+      <header class="about__head" data-reveal>
+        <p class="eyebrow eyebrow--center">Our Passion Is Your Wellbeing</p>
+        <h2 class="about__title">About Us &amp; Our Wellness Centre</h2>
+        <Ornament variant="divider" class="about__ornament" />
+      </header>
+      <div class="about__copy" data-reveal>
+        <p>The Ayurvedic Wellness Centre was opened in 2011 by Rita Sagrani. It is the first true oasis in Sydney that
+          offers the authentic experience of true Ayurveda. With fully qualified doctors and therapists, the Ayurvedic
+          Wellness Centre is devoted to the client, ensuring correct diagnosis, prescription of genuine, high-quality
+          Ayurvedic herbs and oils and the professional application of healing, holistic therapies. The Ayurvedic
+          Wellness Centre has become the preferred establishment in natural and holistic healing.</p>
+        <p>With the warmth, compassion and expertise of our highly trained staff, we offer a truly authentic experience,
+          restoring internal equilibrium, balance and well-being for the mind, body and soul. The Ayurvedic Wellness
+          Centre seeks to educate the wider community about the principles of Ayurveda, as well as progressing with our
+          long term goal of opening Ayurvedic Clinics and Hospitals throughout Australia to bring the power of Ayurvedic
+          healing to everyone.</p>
+      </div>
+
+      <div class="doctors">
+        <a class="doctor" href="/doctor/dr-deepika-kaushal/" data-reveal>
+          <div class="doctor__media"><img src={IMG_DEEPIKA} alt="Dr Deepika Kaushal Ayurvedic Doctor Bondi Junction" loading="lazy" /></div>
+          <div class="doctor__body">
+            <h3 class="doctor__name">Dr. Deepika Kaushal B.A.M.S. M.D</h3>
+            <p>Our Ayurvedic Doctor, Dr. Deepika is a motivated and young medicine professional with extensive
+              experience in herbal medicine and acupuncture therapy. Dr. Deepika’s expertise is to diagnose chronic and
+              complicated illnesses, and follow tailored and holistic treatment plans.</p>
+          </div>
+        </a>
+        <a class="doctor" href="/doctor/dr-taruna-yadav/" data-reveal style="--reveal-delay:110ms">
+          <div class="doctor__media"><img src={IMG_TARUNA} alt="Taruna-Yadav-newest-image" loading="lazy" /></div>
+          <div class="doctor__body">
+            <h3 class="doctor__name">Dr Taruna Yadav B.A.M.S.</h3>
+            <p>Our Ayurvedic Doctor, Taruna (Bachelor of Ayurvedic Medicine &amp; Surgery, Maharishi Dayanand
+              University, India) is registered with AAA (Australasian Association of Ayurveda).</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= INSTAGRAM ========================= -->
+  <section class="insta">
+    <div class="container text-center" data-reveal>
+      <p class="eyebrow eyebrow--center">Follow Our Centre In Instagram</p>
+      <a class="insta__handle" href={instagram} target="_blank" rel="noopener">@ayurvedicwellnesscentre</a>
+      <div><a class="btn btn--wine" href={instagram} target="_blank" rel="noopener">Follow on Instagram</a></div>
+    </div>
+  </section>
 
   <!-- ======================= TESTIMONIALS ======================== -->
-  {testimonials.length > 0 && (
-    <section class="section testimonials">
-      <div class="container">
-        <SectionHeader align="center" eyebrow="Words of Gratitude" title="Stories of Healing" />
-        <div class="testimonials__grid">
-          {testimonials.map((t, i) => (
-            <figure class="quote" data-reveal style={`--reveal-delay:${i * 110}ms`}>
-              <Ornament variant="mark" size={22} class="quote__mark" />
-              <blockquote>{t.quote}</blockquote>
-              <figcaption>{t.author}</figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
+  <section class="section testimonials">
+    <div class="container">
+      <header class="testimonials__head" data-reveal>
+        <p class="eyebrow eyebrow--center">Testimonials</p>
+        <h2 class="testimonials__title">What Our Clients Say</h2>
+        <Ornament variant="divider" class="testimonials__ornament" />
+      </header>
 
-  <!-- ========================= JOURNAL =========================== -->
-  {posts.length > 0 && (
-    <section class="section journal-preview">
-      <div class="container">
-        <div class="journal-preview__head">
-          <SectionHeader eyebrow="From the Journal" title="Ayurvedic Wisdom" />
-          <a class="link" href="/journal/">All articles →</a>
-        </div>
-        <div class="journal-preview__grid">
-          {posts.map((p, i) => (
-            <PostCard
-              href={p.data.path}
-              title={p.data.title.replace(/\s*[|–].*$/, '')}
-              image={cardImage(p)}
-              excerpt={p.data.description}
-              date={p.data.pubDate}
-              body={p.body}
-              index={i}
-            />
-          ))}
-        </div>
+      <h3 class="testimonials__sub" data-reveal>Their Testimonies</h3>
+      <div class="video-grid">
+        {VIDEO_IDS.map((id, i) => (
+          <a class="video" href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noopener"
+             data-reveal style={`--reveal-delay:${(i % 3) * 80}ms`} aria-label="Watch client testimonial on YouTube">
+            <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="Ayurvedic Wellness Centre - Client Testimonial" loading="lazy" />
+            <span class="video__play" aria-hidden="true"></span>
+          </a>
+        ))}
       </div>
-    </section>
-  )}
+
+      <h3 class="testimonials__sub testimonials__sub--written" data-reveal>Written Testimonials</h3>
+      <div class="written-grid">
+        {written.map((t, i) => (
+          <figure class="written" data-reveal style={`--reveal-delay:${(i % 3) * 80}ms`}>
+            <Ornament variant="mark" size={20} class="written__mark" />
+            <blockquote>{t.quote}</blockquote>
+            <figcaption><a href={t.href}>{t.author}</a></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
   /* ---------------- HERO ---------------- */
-  .hero { position: relative; min-height: clamp(560px, 88vh, 880px); display: grid; align-items: center; isolation: isolate; }
+  .hero { position: relative; min-height: clamp(540px, 86vh, 820px); display: grid; align-items: center; isolation: isolate; }
   .hero__media { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
   .hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: 70% center; animation: kenburns 22s var(--ease-in-out) infinite alternate; }
   @keyframes kenburns { from { transform: scale(1.04); } to { transform: scale(1.14); } }
   @media (prefers-reduced-motion: reduce) { .hero__media img { animation: none; } }
   .hero__scrim { position: absolute; inset: 0; background:
     linear-gradient(100deg, color-mix(in srgb, var(--espresso) 88%, transparent) 0%, color-mix(in srgb, var(--espresso) 55%, transparent) 42%, transparent 78%),
-    linear-gradient(to top, color-mix(in srgb, var(--espresso) 70%, transparent), transparent 40%); }
-
-  .hero__inner { position: relative; padding-block: clamp(3rem, 8vh, 7rem); max-width: 60rem; }
+    linear-gradient(to top, color-mix(in srgb, var(--espresso) 70%, transparent), transparent 42%); }
+  .hero__inner { position: relative; padding-block: clamp(3rem, 8vh, 6rem); max-width: 56rem; }
   .hero__eyebrow { color: var(--gold); }
-  .hero__title { color: var(--paper); font-size: clamp(2.7rem, 1.4rem + 5.4vw, 5.4rem); line-height: 1.04; margin-top: 1.2rem; letter-spacing: -0.01em; }
-  .hero__lead { color: var(--on-dark-soft); font-size: var(--step-1); max-width: 46ch; margin-top: 1.6rem; line-height: 1.6; }
-  .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.2rem; }
+  .hero__title { color: var(--paper); font-size: clamp(2.6rem, 1.4rem + 5vw, 5rem); line-height: 1.05; margin-top: 1.2rem; letter-spacing: -0.01em; text-transform: capitalize; }
+  .hero__lead { color: var(--on-dark-soft); font-size: var(--step-1); max-width: 40ch; margin-top: 1.5rem; line-height: 1.55; }
+  .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.1rem; }
   .hero__ghost { background: transparent; box-shadow: inset 0 0 0 1px rgba(246,237,224,0.5); color: var(--on-dark); }
   .hero__ghost:hover { background: var(--on-dark); color: var(--espresso); }
-
-  .hero__est {
-    position: absolute; right: var(--gutter); top: 50%; translate: 0 -50%;
-    writing-mode: vertical-rl; display: grid; gap: 0.4rem; text-align: center;
-    font-family: var(--font-display); color: var(--gold); font-size: 0.9rem; letter-spacing: 0.3em;
-    opacity: 0.85;
-  }
-  .hero__est::before { content: ''; display: block; height: 3rem; width: 1px; background: var(--gold); margin: 0 auto 0.6rem; opacity: 0.6; }
-  @media (max-width: 1024px) { .hero__est { display: none; } }
-
   .hero__scroll { position: absolute; bottom: 1.6rem; left: 50%; translate: -50% 0; width: 26px; height: 42px; border: 1px solid rgba(246,237,224,0.5); border-radius: 14px; display: grid; justify-items: center; padding-top: 7px; }
   .hero__scroll span { width: 3px; height: 8px; background: var(--gold); border-radius: 2px; animation: scrolldot 1.8s var(--ease-in-out) infinite; }
   @keyframes scrolldot { 0% { opacity: 0; transform: translateY(-4px); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(10px); } }
 
-  /* ---------------- PHILOSOPHY ---------------- */
-  .philosophy__grid { display: grid; grid-template-columns: 0.95fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
-  .philosophy__figure { position: relative; }
-  .philosophy__figure img { width: 100%; border-radius: var(--radius-l); box-shadow: var(--shadow-l); aspect-ratio: 4 / 5; object-fit: cover; }
-  .philosophy__badge {
-    position: absolute; bottom: -1.5rem; right: -1.5rem;
-    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-l);
-    box-shadow: var(--shadow-m); padding: 1.1rem 1.4rem; display: flex; align-items: center; gap: 0.8rem;
-    color: var(--gold-deep);
+  .btn--wine { --btn-bg: var(--wine); --btn-fg: var(--paper); }
+
+  /* ---------------- QUIZ STRIP ---------------- */
+  .quiz-strip { background: var(--espresso); color: var(--on-dark); }
+  .quiz-strip__inner { display: flex; align-items: center; gap: 1.5rem 2.5rem; padding-block: 2rem; flex-wrap: wrap; }
+  .quiz-strip__mark { color: var(--gold); flex-shrink: 0; }
+  .quiz-strip__text { flex: 1 1 22rem; }
+  .quiz-strip__title { color: var(--on-dark); font-size: var(--step-2); }
+  .quiz-strip__text p { color: var(--on-dark-soft); font-size: 0.92rem; margin-top: 0.4rem; }
+
+  /* ---------------- INTRO + OFFERINGS ---------------- */
+  .intro__head { max-width: 60rem; margin-inline: auto; text-align: center; }
+  .intro__title { font-size: var(--step-3); margin-top: 1rem; }
+  .intro__ornament { margin: 1.5rem auto; max-width: 16rem; }
+  .intro__copy { color: var(--ink-soft); font-size: var(--step-0); line-height: 1.75; }
+  .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .offer-card { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-l); overflow: hidden; transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out); }
+  .offer-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-l); }
+  .offer-card__media { aspect-ratio: 3 / 2; overflow: hidden; background: var(--paper-3); }
+  .offer-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-out); }
+  .offer-card:hover .offer-card__media img { transform: scale(1.06); }
+  .offer-card__body { padding: 1.6rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+  .offer-card__title { font-size: var(--step-2); color: var(--wine); }
+  .offer-card__copy { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.6; flex: 1; }
+  .offer-card__cta { font-size: 0.74rem; font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--gold-deep); display: inline-flex; gap: 0.5em; }
+  .offer-card__cta span { transition: transform var(--dur) var(--ease-out); }
+  .offer-card:hover .offer-card__cta span { transform: translateX(4px); }
+  .intro__actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem; }
+  @media (max-width: 880px) { .offer-grid { grid-template-columns: 1fr; max-width: 28rem; margin-inline: auto; } }
+
+  /* ---------------- WHAT IS AYURVEDA ---------------- */
+  .whatis__grid { display: grid; grid-template-columns: 0.85fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+  .whatis__figure img { width: 100%; border-radius: var(--radius-l); box-shadow: var(--shadow-l); aspect-ratio: 4 / 5; object-fit: cover; }
+  .whatis__title { font-size: var(--step-4); margin-top: 0.8rem; }
+  .whatis__copy { margin-top: 1.2rem; color: var(--ink-soft); line-height: 1.8; }
+  .whatis__text .btn { margin-top: 1.6rem; }
+  @media (max-width: 820px) { .whatis__grid { grid-template-columns: 1fr; } .whatis__figure { max-width: 24rem; } }
+
+  /* ---------------- PANCHAKARMA DETOX ---------------- */
+  .detox { background: var(--paper-2); padding-block: var(--section-y); }
+  .detox__head { max-width: 60rem; margin-inline: auto; text-align: center; }
+  .detox__title { font-size: var(--step-3); margin-top: 1rem; }
+  .detox__ornament { margin: 1.5rem auto; max-width: 16rem; }
+  .detox__lead { color: var(--ink-soft); font-size: var(--step-1); line-height: 1.6; }
+  .detox__block { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; margin-top: 4rem; }
+  .detox__text h3 { font-size: var(--step-2); color: var(--wine); }
+  .detox__text p { color: var(--ink-soft); line-height: 1.75; }
+  .detox__figure img { width: 100%; border-radius: var(--radius-l); box-shadow: var(--shadow-l); aspect-ratio: 3 / 2; object-fit: cover; }
+  .detox__list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; }
+  .detox__list li { position: relative; padding-left: 1.5rem; font-size: 0.92rem; color: var(--ink-soft); }
+  .detox__list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 0.45em; height: 0.45em; border-radius: 50%; background: var(--gold-deep); }
+  .detox__longer { max-width: 46rem; margin: 4rem auto 0; text-align: center; }
+  .detox__longer h3 { font-size: var(--step-2); color: var(--wine); }
+  .detox__longer p { color: var(--ink-soft); line-height: 1.75; }
+  @media (max-width: 820px) {
+    .detox__block { grid-template-columns: 1fr; }
+    .detox__block--reverse .detox__figure { order: -1; }
+    .detox__list { grid-template-columns: 1fr; }
   }
-  .philosophy__badge span { display: grid; font-family: var(--font-display); font-size: 2rem; color: var(--wine); line-height: 1; }
-  .philosophy__badge small { font-family: var(--font-sans); font-size: 0.62rem; text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--taupe); margin-top: 0.3rem; }
-  @media (max-width: 820px) { .philosophy__grid { grid-template-columns: 1fr; } .philosophy__figure { max-width: 26rem; } .philosophy__badge { right: 1rem; } }
 
-  /* ---------------- DOSHAS ---------------- */
-  .doshas { background: var(--paper-2); }
-  .doshas__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
-  .dosha-card {
-    --accent: var(--taupe);
-    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-l);
-    padding: 2.2rem 1.8rem; text-align: center; position: relative; overflow: hidden;
-    transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
-  }
-  .dosha-card::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--accent); }
-  .dosha-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-l); }
-  .tint-navy { --accent: var(--navy); }
-  .tint-wine { --accent: var(--wine); }
-  .tint-gold { --accent: var(--gold-deep); }
-  .dosha-card__symbol { color: var(--accent); display: flex; justify-content: center; margin-bottom: 0.8rem; }
-  .dosha-card__name { font-size: var(--step-3); color: var(--accent); }
-  .dosha-card__element { font-size: 0.72rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--taupe); margin-top: 0.4rem; }
-  .dosha-card__qual { font-family: var(--font-display); font-style: italic; font-size: 1.05rem; color: var(--ink); margin-top: 1rem; }
-  .dosha-card__note { font-size: 0.86rem; color: var(--ink-soft); margin-top: 0.8rem; line-height: 1.6; }
-  .doshas__cta { text-align: center; margin-top: 3rem; }
+  /* ---------------- NOT SURE WHERE (band) ---------------- */
+  .start-band { position: relative; isolation: isolate; color: var(--on-dark); padding-block: var(--space-3xl); }
+  .start-band__media { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+  .start-band__media img { width: 100%; height: 100%; object-fit: cover; }
+  .start-band::after { content: ''; position: absolute; inset: 0; z-index: -1; background:
+    linear-gradient(90deg, color-mix(in srgb, var(--navy-deep) 92%, transparent), color-mix(in srgb, var(--navy-deep) 72%, transparent) 55%, color-mix(in srgb, var(--navy-deep) 45%, transparent)); }
+  .start-band__text { max-width: 34rem; }
+  .start-band__title { color: var(--on-dark); font-size: var(--step-3); }
+  .start-band__text p { color: var(--on-dark-soft); margin-top: 1rem; line-height: 1.7; }
+  .start-band__actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.8rem; }
+  .btn--on-dark-ghost { box-shadow: inset 0 0 0 1px rgba(246,237,224,0.4); color: var(--on-dark); background: transparent; }
+  .btn--on-dark-ghost:hover { background: var(--on-dark); color: var(--espresso); box-shadow: none; }
 
-  /* ---------------- TREATMENTS ---------------- */
-  .treatments-feature__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-  .treatments-feature__all { white-space: nowrap; }
-  .treatments-feature__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-  @media (max-width: 940px) { .treatments-feature__grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px) { .treatments-feature__grid, .doshas__grid { grid-template-columns: 1fr; } }
+  /* ---------------- REAL LIFE STORY ---------------- */
+  .story__title { font-size: var(--step-4); margin-top: 0.8rem; }
+  .story__ornament { margin: 1.5rem auto; max-width: 16rem; }
+  .story__copy { color: var(--ink-soft); line-height: 1.8; }
+  .story__sub { font-family: var(--font-display); font-size: var(--step-2); color: var(--wine); margin-top: 2rem; }
+  .story__sub-copy { color: var(--taupe); margin-top: 0.5rem; }
+  .story .btn { margin-top: 1.8rem; }
 
-  /* ---------------- DETOX BAND ---------------- */
-  .detox-band { position: relative; isolation: isolate; color: var(--on-dark); padding-block: var(--space-3xl); margin-top: var(--space-2xl); }
-  .detox-band__media { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
-  .detox-band__media img { width: 100%; height: 100%; object-fit: cover; }
-  .detox-band::after { content: ''; position: absolute; inset: 0; z-index: -1; background:
-    linear-gradient(90deg, color-mix(in srgb, var(--navy-deep) 92%, transparent), color-mix(in srgb, var(--navy-deep) 70%, transparent) 55%, transparent); }
-  .detox-band__text { max-width: 38rem; }
-  .detox-band .eyebrow { color: var(--gold); }
-  .detox-band__title { color: var(--on-dark); font-size: var(--step-4); margin-top: 0.8rem; }
-  .detox-band__copy { color: var(--on-dark-soft); margin-top: 1.2rem; line-height: 1.7; }
-  .detox-band__list { margin-top: 1.4rem; display: grid; gap: 0.7rem; }
-  .detox-band__list li { position: relative; padding-left: 1.8rem; color: var(--on-dark-soft); font-size: 0.92rem; }
-  .detox-band__list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 0.5em; height: 0.5em; border-radius: 50%; background: var(--gold); }
-  .detox-band .btn { margin-top: 2rem; }
+  /* ---------------- ABOUT ---------------- */
+  .about__head { text-align: center; }
+  .about__title { font-size: var(--step-4); margin-top: 0.8rem; }
+  .about__ornament { margin: 1.5rem auto; max-width: 16rem; }
+  .about__copy { max-width: 50rem; margin: 0 auto; column-gap: 2.5rem; }
+  .about__copy p { color: var(--ink-soft); line-height: 1.8; }
+  .about__copy p + p { margin-top: 1.2rem; }
+  .doctors { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3.5rem; }
+  .doctor { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-l); padding: 1.6rem; transition: box-shadow var(--dur), transform var(--dur) var(--ease-out); }
+  .doctor:hover { box-shadow: var(--shadow-m); transform: translateY(-3px); }
+  .doctor__media { width: 92px; height: 92px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+  .doctor__media img { width: 100%; height: 100%; object-fit: cover; }
+  .doctor__name { font-size: var(--step-1); color: var(--wine); }
+  .doctor__body p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; margin-top: 0.5rem; }
+  @media (max-width: 760px) { .doctors { grid-template-columns: 1fr; } }
 
-  /* ---------------- PRACTITIONERS ---------------- */
-  .practitioners__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 22rem)); gap: 2rem; justify-content: center; margin-top: 3.5rem; }
-  .practitioner { display: grid; gap: 1.2rem; text-align: center; }
-  .practitioner__media { aspect-ratio: 3 / 4; border-radius: var(--radius-l); overflow: hidden; box-shadow: var(--shadow-m); background: var(--paper-3); }
-  .practitioner__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-out); }
-  .practitioner:hover .practitioner__media img { transform: scale(1.05); }
-  .practitioner__ph { width: 100%; height: 100%; background: radial-gradient(circle at 30% 30%, var(--paper-2), var(--paper-3)); }
-  .practitioner__name { font-size: var(--step-2); color: var(--wine); }
-  .practitioner__role { font-size: 0.74rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--taupe); margin-top: 0.3rem; }
-  .practitioner__cta { display: inline-block; margin-top: 0.7rem; font-size: 0.78rem; color: var(--gold-deep); font-weight: 600; }
-  @media (max-width: 600px) { .practitioners__grid { grid-template-columns: 1fr; } }
+  /* ---------------- INSTAGRAM ---------------- */
+  .insta { padding-block: var(--space-2xl); background: var(--paper-2); }
+  .insta__handle { display: inline-block; font-family: var(--font-display); font-size: var(--step-3); color: var(--wine); margin: 0.6rem 0 1.4rem; }
+  .insta__handle:hover { color: var(--gold-deep); }
 
   /* ---------------- TESTIMONIALS ---------------- */
-  .testimonials { background: var(--paper-2); }
-  .testimonials__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
-  .quote { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-l); padding: 2rem; display: grid; gap: 1rem; }
-  .quote__mark { color: var(--gold-deep); }
-  .quote blockquote { font-family: var(--font-display); font-size: 1.12rem; line-height: 1.5; color: var(--ink); font-style: italic; }
-  .quote figcaption { font-size: 0.74rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--taupe); font-weight: 600; }
-  @media (max-width: 860px) { .testimonials__grid { grid-template-columns: 1fr; } }
-
-  /* ---------------- JOURNAL ---------------- */
-  .journal-preview__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-  .journal-preview__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.2rem; margin-top: 3rem; }
-  @media (max-width: 860px) { .journal-preview__grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+  .testimonials__head { text-align: center; }
+  .testimonials__title { font-size: var(--step-4); margin-top: 0.8rem; }
+  .testimonials__ornament { margin: 1.5rem auto; max-width: 16rem; }
+  .testimonials__sub { text-align: center; font-style: italic; color: var(--navy); font-size: var(--step-2); margin-top: 1rem; }
+  .testimonials__sub--written { margin-top: 4rem; }
+  .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+  .video { position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius-m); overflow: hidden; box-shadow: var(--shadow-s); }
+  .video img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-out); }
+  .video:hover img { transform: scale(1.05); }
+  .video__play { position: absolute; inset: 0; margin: auto; width: 56px; height: 56px; border-radius: 50%; background: color-mix(in srgb, var(--wine) 88%, transparent); display: grid; place-items: center; transition: background var(--dur), transform var(--dur) var(--ease-out); }
+  .video__play::after { content: ''; border-left: 16px solid var(--paper); border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 4px; }
+  .video:hover .video__play { background: var(--gold); transform: scale(1.08); }
+  .video:hover .video__play::after { border-left-color: var(--espresso); }
+  .written-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+  .written { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-l); padding: 1.8rem; display: grid; gap: 0.9rem; }
+  .written__mark { color: var(--gold-deep); }
+  .written blockquote { font-family: var(--font-display); font-style: italic; font-size: 1.05rem; line-height: 1.5; color: var(--ink); }
+  .written figcaption { font-size: 0.72rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--taupe); font-weight: 600; }
+  .written figcaption a:hover { color: var(--wine); }
+  @media (max-width: 920px) { .video-grid { grid-template-columns: repeat(2, 1fr); } .written-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .video-grid { grid-template-columns: 1fr; } }
 </style>

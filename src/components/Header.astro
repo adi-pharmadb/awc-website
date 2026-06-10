@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets';
 import logo from '../assets/brand/logo-main.png';
 import { primaryNav, bookHref, phone, phoneHref, address } from '../data/nav';
-import Ornament from './Ornament.astro';
 ---
 <header class="site-header" data-header>
   <div class="topbar">
@@ -23,28 +22,8 @@ import Ornament from './Ornament.astro';
       <nav class="primary-nav" aria-label="Primary">
         <ul class="primary-nav__list" role="list">
           {primaryNav.map((item) => (
-            <li class:list={['nav-item', { 'has-panel': item.feature }]}>
-              <a class="nav-link" href={item.href}>
-                {item.label}
-                {item.feature && <span class="nav-caret" aria-hidden="true"></span>}
-              </a>
-              {item.feature && (
-                <div class="mega">
-                  <div class="mega__inner">
-                    <div class="mega__intro">
-                      <Ornament variant="mark" size={22} class="mega__mark" />
-                      <p class="mega__heading">{item.feature.heading}</p>
-                      <p class="mega__blurb">{item.feature.blurb}</p>
-                      <a class="link mega__all" href={item.href}>View all →</a>
-                    </div>
-                    <ul class="mega__items" role="list">
-                      {item.feature.items.map((sub) => (
-                        <li><a href={sub.href}>{sub.label}</a></li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
+            <li class="nav-item">
+              <a class="nav-link" href={item.href}>{item.label}</a>
             </li>
           ))}
         </ul>
