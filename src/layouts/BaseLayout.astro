@@ -32,7 +32,21 @@ const {
 } = Astro.props;
 const SITE_TAGLINE =
   'Authentic Ayurveda treatments, massage therapies and Panchakarma detox in Bondi Junction, Sydney.';
-const metaDescription = description || ogDescription || SITE_TAGLINE;
+// Some migrated frontmatter strings carry literal HTML entities from the WP
+// export; decode them at render so meta attributes hold the real characters
+// (matching what Yoast emitted on the live site).
+const decode = (s: string) =>
+  s
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+    .replace(/&hellip;/g, '…').replace(/&ndash;/g, '–').replace(/&mdash;/g, '—')
+    .replace(/&quot;/g, '"').replace(/&#x27;|&apos;/g, "'")
+    .replace(/&amp;/g, '&')
+    .replace(/\s+/g, ' ')
+    .trim();
+const metaDescription = decode(description || ogDescription || SITE_TAGLINE);
+const metaOgTitle = decode(ogTitle ?? title);
+const metaOgDescription = decode(ogDescription || metaDescription);
 const ogImageAbs = new URL(ogImage || '/wp-content/uploads/2023/01/featured_image.jpg', Astro.site).href;
 ---
 <!doctype html>
@@ -48,16 +62,16 @@ const ogImageAbs = new URL(ogImage || '/wp-content/uploads/2023/01/featured_imag
 
     <meta property="og:site_name" content="Ayurvedic Wellness Centre" />
     <meta property="og:locale" content="en_AU" />
-    <meta property="og:title" content={ogTitle ?? title} />
-    <meta property="og:description" content={ogDescription || metaDescription} />
+    <meta property="og:title" content={metaOgTitle} />
+    <meta property="og:description" content={metaOgDescription} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageAbs} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@AyurvedicSydney" />
     <meta name="twitter:creator" content="@AyurvedicSydney" />
-    <meta name="twitter:title" content={ogTitle ?? title} />
-    <meta name="twitter:description" content={ogDescription || metaDescription} />
+    <meta name="twitter:title" content={metaOgTitle} />
+    <meta name="twitter:description" content={metaOgDescription} />
     <meta name="twitter:image" content={ogImageAbs} />
     <meta name="theme-color" content="#780032" />
 

@@ -43,7 +43,6 @@ import { primaryNav, bookHref, phone, phoneHref, address } from '../data/nav';
     <nav class="mobile-menu__nav" aria-label="Mobile">
       <ul role="list">
         {primaryNav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
-        <li><a href="/contact-us/">Contact</a></li>
       </ul>
       <a class="btn btn--gold mobile-menu__book" href={bookHref}>Book an Appointment</a>
       <div class="mobile-menu__meta">
@@ -168,15 +167,31 @@ import { primaryNav, bookHref, phone, phoneHref, address } from '../data/nav';
 
   .mobile-menu {
     position: fixed; inset: 0; z-index: 90;
-    background: var(--paper); padding: 7rem var(--gutter) 3rem;
-    display: grid; align-content: start; overflow-y: auto;
+    background-color: var(--paper);
+    background-image: radial-gradient(80vw 30vh at 50% 0%, rgba(253, 197, 120, 0.18), transparent 70%);
+    padding: 6rem var(--gutter) 2.5rem;
+    overflow-y: auto;
     animation: menuIn var(--dur) var(--ease-out);
   }
   @keyframes menuIn { from { opacity: 0; } to { opacity: 1; } }
-  .mobile-menu__nav ul { display: grid; gap: 0.2rem; border-bottom: 1px solid var(--line); padding-bottom: 1.5rem; }
-  .mobile-menu__nav a { display: block; font-family: var(--font-display); font-size: 1.7rem; color: var(--wine); padding: 0.5rem 0; }
-  .mobile-menu__book { margin-top: 1.6rem; justify-content: center; }
-  .mobile-menu__meta { margin-top: 1.6rem; display: grid; gap: 0.4rem; font-size: 0.85rem; color: var(--taupe); }
+  .mobile-menu__nav ul { border-top: 1px solid var(--line); }
+  .mobile-menu__nav li { border-bottom: 1px solid var(--line); }
+  .mobile-menu__nav a {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    font-family: var(--font-display); font-size: 1.25rem; line-height: 1.25;
+    color: var(--wine); padding: 0.85rem 0.1rem;
+  }
+  .mobile-menu__nav a::after { content: '›'; font-style: italic; color: var(--gold-deep); }
+  .mobile-menu__book {
+    display: inline-flex; width: auto;
+    margin-top: 1.5rem;
+    font-size: 0.7rem; padding: 0.95em 1.8em;
+  }
+  .mobile-menu__meta {
+    margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 0.3rem 1.4rem; align-items: baseline;
+    font-size: 0.82rem; color: var(--taupe);
+  }
   .mobile-menu__meta a { color: var(--wine); font-weight: 600; }
 
   @media (max-width: 1080px) {

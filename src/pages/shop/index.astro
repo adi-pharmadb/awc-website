@@ -3,15 +3,19 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
+import { getJsonLd } from '../../lib/seo';
 import { cardImage, routable, clean } from '../../lib/content';
 
+// SEO comes verbatim from the migrated WP "shop" page; only the body is ours.
+const entry = (await getCollection('pages')).find((e) => e.data.slug === 'shop')!;
+const d = entry.data;
 const products = (await getCollection('products', routable))
   .sort((a, b) => clean(a.data.title).localeCompare(clean(b.data.title)));
 ---
 <BaseLayout
-  title="Gift Vouchers & Wellness Packages — Ayurvedic Wellness Centre"
-  description="Give the gift of balance. Browse our Ayurvedic gift vouchers, massage packages and seasonal rituals — available in clinic or by phone."
-  canonical="https://www.ayurvedicwellnesscentre.com.au/shop/"
+  title={d.title} description={d.description} canonical={d.canonical} robots={d.robots}
+  ogTitle={d.ogTitle} ogDescription={d.ogDescription} ogImage={d.ogImage} ogType={d.ogType}
+  jsonLd={getJsonLd('pages', d.slug)}
 >
   <PageHero title="Shop" />
   <section class="section listing">
