@@ -19,10 +19,12 @@ const d = entry.data;
     <div class="container--narrow">
       <p class="lead dropcap" data-reveal>To book appointment(s) with Ayurvedic Wellness Centre online select your Appointment Type, then choose your date range. The list below will show you availability for 7 days, you can then select the suitable time slot for your appointment(s). To be able to manage all your bookings online you will need to register for a Mindbody account.</p>
 
-      <!-- Mindbody (Healcode) appointments widget — same embed as the live site -->
+      <!-- Mindbody (Healcode) appointments widget — the live site's rendered
+           widget is ae2088177ea (7820881ea90 only appears there as a code
+           snippet inside a <pre>, an authoring leftover) -->
       <div class="ba-widget" data-reveal>
         <script src="https://widgets.healcode.com/javascripts/healcode.js" type="text/javascript" is:inline></script>
-        <healcode-widget data-type="appointments" data-widget-partner="mb" data-widget-id="7820881ea90" data-widget-version="0.1"></healcode-widget>
+        <healcode-widget data-type="appointments" data-widget-partner="mb" data-widget-id="ae2088177ea" data-widget-version="0.1"></healcode-widget>
       </div>
 
       <div class="ba-info" data-reveal>
@@ -77,7 +79,7 @@ const d = entry.data;
 
   .ba-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: clamp(2.2rem, 4.5vw, 3.5rem); }
   .ba-btn {
-    display: inline-flex; align-items: center;
+    display: inline-flex; align-items: center; white-space: nowrap;
     font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700;
     letter-spacing: 0.16em; text-transform: uppercase;
     padding: 1.05em 2.1em; border-radius: var(--radius-pill);

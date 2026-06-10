@@ -33,9 +33,60 @@ const mapsHref = 'https://www.google.com/maps/place/Ayurvedic+Wellness+Centre/@-
       </div>
 
       <p class="cu__note" data-reveal><em>Please note, if it is less than 24 hours before your desired booking or if you can’t find the booking of your choice online please call us to book with reception.</em></p>
+
+      <!-- message form -->
+      <form class="cu-form" data-reveal id="contact-form">
+        <h3 class="cu-form__title">Send us a message</h3>
+        <div class="cu-form__grid">
+          <label>Name<input type="text" name="name" autocomplete="name" required /></label>
+          <label>Email<input type="email" name="email" autocomplete="email" required /></label>
+          <label>Phone <span>(optional)</span><input type="tel" name="phone" autocomplete="tel" /></label>
+          <label class="cu-form__wide">Message<textarea name="message" rows="5" required></textarea></label>
+          <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
+        </div>
+        <button class="btn btn--gold cu-form__submit" type="submit">Send Message</button>
+        <p class="cu-form__status" data-status hidden></p>
+      </form>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  import { LEAD_ENDPOINT } from '../../lib/forms';
+
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const status = form.querySelector<HTMLElement>('[data-status]')!;
+  const submit = form.querySelector<HTMLButtonElement>('.cu-form__submit')!;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submit.disabled = true;
+    submit.textContent = 'Sending…';
+    const data = new FormData(form);
+    try {
+      const res = await fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          form: 'contact',
+          name: data.get('name'),
+          email: data.get('email'),
+          phone: data.get('phone'),
+          message: data.get('message'),
+          botcheck: data.get('botcheck'),
+        }),
+      });
+      if (!res.ok) throw new Error();
+      form.reset();
+      status.textContent = 'Thank you — your message is on its way. We’ll be in touch soon.';
+    } catch {
+      status.textContent = 'Something went wrong sending your message — please call us on 02 9389 2581.';
+    }
+    status.hidden = false;
+    submit.disabled = false;
+    submit.textContent = 'Send Message';
+  });
+</script>
 
 <style>
   .cu { padding-block: clamp(3rem, 6vw, 5rem) clamp(4rem, 9vw, 8rem); }
@@ -60,8 +111,29 @@ const mapsHref = 'https://www.google.com/maps/place/Ayurvedic+Wellness+Centre/@-
 
   .cu__note { margin-top: 2rem; text-align: center; font-family: var(--font-display); color: var(--taupe); font-size: var(--step-0); line-height: 1.6; }
 
+  .cu-form {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    border-top: 1px solid var(--line);
+    padding-top: clamp(1.8rem, 3.5vw, 2.6rem);
+  }
+  .cu-form__title { font-size: var(--step-2); color: var(--wine); }
+  .cu-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.4rem; }
+  .cu-form__wide { grid-column: 1 / -1; }
+  .cu-form__grid label { display: grid; gap: 0.4rem; font-family: var(--font-sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); }
+  .cu-form__grid label span { font-weight: 500; letter-spacing: 0.08em; text-transform: none; color: var(--mushroom); }
+  .cu-form__grid input, .cu-form__grid textarea {
+    border: 1px solid var(--line); background: #fffdf8;
+    padding: 0.85em 1em; font-size: 1rem; font-family: var(--font-sans);
+    resize: vertical;
+    transition: border-color var(--dur-fast);
+  }
+  .cu-form__grid input:focus, .cu-form__grid textarea:focus { outline: none; border-color: var(--gold-deep); }
+  .cu-form__submit { margin-top: 1.4rem; }
+  .cu-form__status { margin-top: 1.2rem; font-family: var(--font-display); font-style: italic; color: var(--wine); line-height: 1.5; }
+
   @media (max-width: 700px) {
     .cu-plaque { grid-template-columns: 1fr; }
     .cu-cell + .cu-cell { border-left: 0; border-top: 1px solid var(--line); }
+    .cu-form__grid { grid-template-columns: 1fr; }
   }
 </style>

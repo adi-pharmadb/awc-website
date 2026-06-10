@@ -84,7 +84,7 @@ const separator = '/wp-content/uploads/2023/05/asset_header_separator.svg';
         <a class="btn btn--ghost" href="tel:0293892581">Call Now</a>
       </div>
     </div>
-    <div class="horizon wrap" aria-hidden="true"><span>scroll · the day begins</span></div>
+    <div class="horizon wrap" aria-hidden="true"></div>
   </section>
 
   <!-- ============================================ MORNING · dosha + practice -->
@@ -93,9 +93,9 @@ const separator = '/wp-content/uploads/2023/05/asset_header_separator.svg';
       <div class="dosha__row">
         <div>
           <h2 class="dosha__title">Get A Free Quiz To Discover Your DOSHA!</h2>
-          <p class="dosha__note">Sign up to our newsletter text, or something more in-depth to give more context to what’s behind the quiz.</p>
+          <p class="dosha__note">Ten quick questions to discover your Ayurvedic constitution — Vata, Pitta or Kapha — and the daily habits that keep it in balance.</p>
         </div>
-        <a class="btn" href="/what-is-your-dosha">Download Now</a>
+        <a class="btn" href="/what-is-your-dosha/">Take the Quiz</a>
       </div>
     </div>
 
@@ -495,11 +495,6 @@ const separator = '/wp-content/uploads/2023/05/asset_header_separator.svg';
   @keyframes rise { to { opacity: 1; transform: none; } }
   .horizon { position: absolute; left: 0; right: 0; bottom: clamp(1.6rem, 4vh, 3rem); }
   .horizon::before { content: ''; display: block; height: 1px; background: var(--mushroom); opacity: 0.55; }
-  .horizon span {
-    float: right; margin-top: 0.7rem;
-    font-family: var(--font-sans); font-size: 0.56rem; font-weight: 700;
-    letter-spacing: 0.3em; text-transform: uppercase; color: var(--taupe);
-  }
 
   /* =========================================================== morning */
   .ch--morning {

@@ -1,0 +1,25 @@
+---
+// Mindbody (Healcode) embed — same widgets as the live site, mounted on a
+// gold-framed plate. Widget ids come from the WP export per page.
+interface Props { widgetId: string; type?: string }
+const { widgetId, type = 'appointments' } = Astro.props;
+---
+<div class="mb-widget">
+  <script src="https://widgets.healcode.com/javascripts/healcode.js" type="text/javascript" is:inline></script>
+  <healcode-widget data-type={type} data-widget-partner="mb" data-widget-id={widgetId} data-widget-version="0.1"></healcode-widget>
+</div>
+
+<style>
+  .mb-widget {
+    margin-block: clamp(2rem, 4vw, 3rem);
+    position: relative;
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: clamp(1rem, 2.5vw, 1.8rem);
+    min-height: 18rem;
+  }
+  .mb-widget::after {
+    content: ''; position: absolute; inset: 0; translate: 13px 13px;
+    border: 1px solid var(--gold-deep); opacity: 0.5; z-index: -1;
+  }
+</style>

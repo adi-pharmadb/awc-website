@@ -1,0 +1,448 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"src": "^/\\.well-known(?:/.*)?$"
+		},
+		{
+			"src": "^/((?:[^/]+/)*[^/\\.]+)$",
+			"headers": {
+				"Location": "/$1/"
+			},
+			"status": 308
+		},
+		{
+			"src": "^/((?:[^/]+/)*[^/]+\\.\\w+)/$",
+			"headers": {
+				"Location": "/$1"
+			},
+			"status": 308
+		},
+		{
+			"src": "^/2016/01/08/benefits-of-ayurvedic-massage-abhyanga$",
+			"headers": {
+				"Location": "/benefits-of-ayurvedic-massage-abhyanga/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/2016/01/08/shiro-abhyanga-indian-head-massage-and-ayurveda$",
+			"headers": {
+				"Location": "/shiro-abhyanga-indian-head-massage-and-ayurveda/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/abhyanga-full-body-massage$",
+			"headers": {
+				"Location": "/services/full-body-massage-bondi-junction-sydney/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/anxiety-and-stress$",
+			"headers": {
+				"Location": "/stress-anxiety/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/appointments$",
+			"headers": {
+				"Location": "/book-appointment/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/ayurvedic-doctor$",
+			"headers": {
+				"Location": "/ayurvedic-doctor-bondi-junction-sydney/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/ayurvedic-massage-in-bondi-junction$",
+			"headers": {
+				"Location": "/services/ayurvedic-massage-in-bondi-junction/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/ayurvedic-massage-treatments$",
+			"headers": {
+				"Location": "/treatments/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/ayurvedic-medicine$",
+			"headers": {
+				"Location": "/ayurvedic-medicine-in-sydney/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/ayurvedic-remedies-2$",
+			"headers": {
+				"Location": "/ayurvedic-remedies/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/ayurvedic-spa/remedial-massage-bondi-junctionsydney$",
+			"headers": {
+				"Location": "/services/remedial-massage-bondi-junction-sydney/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/blog$",
+			"headers": {
+				"Location": "/journal/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/champi-head-shoulder-massage$",
+			"headers": {
+				"Location": "/services/champi-head-shoulder-massage/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/colitis$",
+			"headers": {
+				"Location": "/services/ulcerative-colitis-treatment-sydney/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/consultation$",
+			"headers": {
+				"Location": "/ayurveda-consultation/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/couples-massage$",
+			"headers": {
+				"Location": "/services/couples-massage/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/deep-relaxation-package$",
+			"headers": {
+				"Location": "/services/deep-relaxation-package/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/detox-panchakarma/what-is-panchakarma$",
+			"headers": {
+				"Location": "/what-is-panchakarma/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/detox-panchakarma-program-2020$",
+			"headers": {
+				"Location": "/panchakarma-detox-program/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/dr-deepika-kaushal$",
+			"headers": {
+				"Location": "/doctor/dr-deepika-kaushal/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/dr-kalpana$",
+			"headers": {
+				"Location": "/team/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/dr-rajneesh$",
+			"headers": {
+				"Location": "/team/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/full-body-massage$",
+			"headers": {
+				"Location": "/services/full-body-massage-bondi-junction-sydney/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/how-to-boost-your-immunity-avoid-colds-flu-with-ayurveda-part-1-2$",
+			"headers": {
+				"Location": "/how-to-boost-your-immunity-avoid-colds-flu-with-ayurveda-part-1/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/how-to-boost-your-immunity-avoid-colds-flu-with-ayurveda-part-2-2$",
+			"headers": {
+				"Location": "/how-to-boost-your-immunity-avoid-colds-flu-with-ayurveda-part-2/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/indian-head-massage-2$",
+			"headers": {
+				"Location": "/indian-head-massage/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/insomnia$",
+			"headers": {
+				"Location": "/services/insomnia/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/kati-basti$",
+			"headers": {
+				"Location": "/services/kati-basti/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/kizhi-herb-pouch-massage$",
+			"headers": {
+				"Location": "/services/kizhi-herb-pouch-massage/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/marma-body-energiser$",
+			"headers": {
+				"Location": "/services/triggerpoint-body-energiser/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/meet-our-ayurvedic-doctor$",
+			"headers": {
+				"Location": "/meet-our-doctor-dr-taruna-yadav/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/meet-our-doctors$",
+			"headers": {
+				"Location": "/team/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/nasya-nasal-head-treatment$",
+			"headers": {
+				"Location": "/services/ayurveda-nasya-treatment/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/page/2$",
+			"headers": {
+				"Location": "/journal/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/page/21$",
+			"headers": {
+				"Location": "/journal/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/page/3$",
+			"headers": {
+				"Location": "/journal/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/panchakarma-ayurvedic-detox$",
+			"headers": {
+				"Location": "/panchakarma-detox/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/panchakarma-ayurvedic-detox-sydney$",
+			"headers": {
+				"Location": "/services/panchakarma-ayurvedic-detox-sydney/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/photos-on-this-website$",
+			"headers": {
+				"Location": "/about-us/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/pinda-sweda$",
+			"headers": {
+				"Location": "/services/pinda-sweda/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/pizzichil-treatment$",
+			"headers": {
+				"Location": "/services/pizzichil-treatment/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/product/deep-relaxation-package$",
+			"headers": {
+				"Location": "/services/deep-relaxation-package/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/product/kizhi-gift-voucher$",
+			"headers": {
+				"Location": "/shop/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/product/pure-bliss-package-gift-voucher$",
+			"headers": {
+				"Location": "/product/pure-bliss-package/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/product-category/gift-voucher$",
+			"headers": {
+				"Location": "/shop/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/rejuvenation-package$",
+			"headers": {
+				"Location": "/services/rejuvenation-package/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/services/full-body-massage$",
+			"headers": {
+				"Location": "/services/full-body-massage-bondi-junction-sydney/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/services/shirodhara-treatment$",
+			"headers": {
+				"Location": "/services/shirodhara-treatment-bondi-sydney/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/shirodhara-treatment$",
+			"headers": {
+				"Location": "/services/shirodhara-treatment-bondi-sydney/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/skin-problems$",
+			"headers": {
+				"Location": "/services/skin-problems/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/stress-reduction-package$",
+			"headers": {
+				"Location": "/services/stress-reduction-package/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/takradhara-treatment$",
+			"headers": {
+				"Location": "/services/takradhara-treatment/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/therapeutic-massage$",
+			"headers": {
+				"Location": "/services/therapeutic-massage/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/treating-ulcers-ayurveda-2$",
+			"headers": {
+				"Location": "/treating-ulcers-ayurveda/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/udvartana-weight-loss$",
+			"headers": {
+				"Location": "/services/udvartana-massage-for-weight-loss-sydney/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/what-is-ayurveda/what-dosha-are-you$",
+			"headers": {
+				"Location": "/what-dosha-are-you-pitta-dosha/"
+			},
+			"status": 301
+		},
+		{
+			"src": "^/what-is-panchakarma-2$",
+			"headers": {
+				"Location": "/what-is-panchakarma/"
+			},
+			"status": 301
+		},
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "^/_astro/(.*)$",
+			"headers": {
+				"cache-control": "public, max-age=31536000, immutable"
+			},
+			"continue": true
+		},
+		{
+			"src": "^/_server-islands/([^/]+?)/$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/_image/$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/api/lead/$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/.*$",
+			"dest": "/404.html",
+			"status": 404
+		}
+	]
+}

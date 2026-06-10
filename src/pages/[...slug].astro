@@ -1,8 +1,16 @@
 ---
 import { getCollection, render } from 'astro:content';
 import ContentLayout from '../layouts/ContentLayout.astro';
+import MindbodyWidget from '../components/MindbodyWidget.astro';
 import { getJsonLd } from '../lib/seo';
 import { formatDate, readingTime } from '../lib/content';
+
+// Pages that carry a Mindbody booking widget on the live site (from the WP
+// export): slug -> healcode widget id.
+const MINDBODY: Record<string, string> = {
+  'ayurvedic-doctor-bondi-junction-sydney': 'ae11689977ea',
+  'ayurvedic-doctor-duplicate': 'ae11689977ea',
+};
 
 export async function getStaticPaths() {
   // Render EVERY post + page at its exact original URL (noindex preserved via robots).
@@ -12,7 +20,7 @@ export async function getStaticPaths() {
   const pages = await getCollection('pages');
   const designed = new Set([
     'shop', 'ayurvedic-treatments', 'ayurvedic-spa', 'detox-clinic',
-    'about-us', 'contact-us', 'book-appointment',
+    'about-us', 'contact-us', 'book-appointment', 'what-is-your-dosha',
   ]);
   return [...blog, ...pages]
     .filter((e) => !e.data.draft && e.data.path !== '/' && !designed.has(e.data.slug))
@@ -48,4 +56,5 @@ const breadcrumbs = isBlog ? [{ label: 'Journal', href: '/journal/' }] : [];
   width="narrow"
 >
   <Content />
+  {MINDBODY[d.slug] && <MindbodyWidget widgetId={MINDBODY[d.slug]} />}
 </ContentLayout>

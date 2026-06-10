@@ -1,0 +1,298 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DawnHero from '../../components/DawnHero.astro';
+import { getJsonLd } from '../../lib/seo';
+
+// DESIGNED route for the WP "What is your Dosha?" page (the original body was
+// empty). SEO comes verbatim from the migrated entry; the quiz is the lead
+// magnet the page always promised.
+const entry = (await getCollection('pages')).find((e) => e.data.slug === 'what-is-your-dosha')!;
+const d = entry.data;
+---
+<BaseLayout
+  title={d.title} description={d.description} canonical={d.canonical} robots={d.robots}
+  ogTitle={d.ogTitle} ogDescription={d.ogDescription} ogType={d.ogType}
+  jsonLd={getJsonLd('pages', d.slug)}
+>
+  <DawnHero title="What Is Your Dosha" />
+
+  <section class="dq">
+    <div class="container--narrow">
+      <p class="dq-intro" data-reveal>In Ayurveda, every constitution is a blend of three energies: <em>Vata</em> (air), <em>Pitta</em> (fire) and <em>Kapha</em> (earth). Answer ten quick questions to discover which dosha leads in you, and what keeps it in balance.</p>
+
+      <!-- quiz card -->
+      <div class="dq-card" data-reveal id="quiz">
+        <!-- question stage -->
+        <div class="dq-stage" data-stage="question">
+          <div class="dq-progress">
+            <span class="dq-progress__label"><i data-qno>i</i> of x</span>
+            <span class="dq-progress__bar"><span data-bar></span></span>
+          </div>
+          <h2 class="dq-question" data-question></h2>
+          <div class="dq-options" data-options></div>
+          <button class="dq-back" data-back hidden>‹ previous question</button>
+        </div>
+
+        <!-- lead gate -->
+        <form class="dq-stage" data-stage="gate" hidden>
+          <p class="kicker">Your result is ready</p>
+          <h2 class="dq-question">Unlock your dosha profile</h2>
+          <p class="dq-note">Enter your details to see your constitution, with what keeps it in balance. We’ll also email occasional seasonal Ayurveda tips from the centre — unsubscribe any time.</p>
+          <div class="dq-fields">
+            <label>Name<input type="text" name="name" autocomplete="name" required /></label>
+            <label>Email<input type="email" name="email" autocomplete="email" required /></label>
+            <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
+          </div>
+          <button class="btn btn--gold dq-submit" type="submit">Unlock My Result</button>
+        </form>
+
+        <!-- result stage -->
+        <div class="dq-stage" data-stage="result" hidden>
+          <p class="kicker">Your leading dosha</p>
+          <h2 class="dq-result-name" data-result-name></h2>
+          <p class="dq-result-sub" data-result-sub></p>
+          <div class="dq-mix" data-result-mix></div>
+          <p class="dq-result-body" data-result-body></p>
+          <h3 class="dq-result-h3">What keeps it in balance</h3>
+          <ul class="dq-tips" role="list" data-result-tips></ul>
+          <p class="dq-disclaimer">A quiz is a guide, not a diagnosis — our doctors confirm your constitution in person through pulse and tongue diagnosis.</p>
+          <div class="dq-cta">
+            <a class="btn btn--gold" href="/book-appointment/">Book a Consultation</a>
+            <a class="btn btn--ghost-q" href="/what-is-ayurveda/">What is Ayurveda?</a>
+          </div>
+          <button class="dq-skip" data-restart type="button">retake the quiz</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { LEAD_ENDPOINT } from '../../lib/forms';
+
+  const QUESTIONS: { q: string; a: [string, string, string] }[] = [
+    { q: 'Your natural build is…', a: ['Slim and light — I find it hard to gain weight', 'Medium and athletic — defined, steady', 'Solid and sturdy — I gain easily, lose slowly'] },
+    { q: 'Your skin tends to be…', a: ['Dry, thin, cool to the touch', 'Warm, prone to redness or freckles', 'Smooth, soft, often oily'] },
+    { q: 'Your hair is…', a: ['Dry, fine, sometimes frizzy', 'Straight, fine, early to grey or thin', 'Thick, full, lustrous'] },
+    { q: 'Your appetite is…', a: ['Irregular — I forget meals, then snack', 'Sharp — I get irritable when hungry', 'Steady — I can comfortably skip a meal'] },
+    { q: 'Under pressure, you become…', a: ['Anxious, scattered, worried', 'Intense, impatient, snappy', 'Withdrawn, slow to react, steady'] },
+    { q: 'Your sleep is usually…', a: ['Light — I wake easily and remember dreams', 'Sound but short — I run hot at night', 'Deep and long — I love a sleep-in'] },
+    { q: 'The weather you find hardest is…', a: ['Cold, dry and windy days', 'Hot, humid summer afternoons', 'Cool, damp, grey stretches'] },
+    { q: 'Your pace of speaking and moving is…', a: ['Quick, animated, changeable', 'Purposeful, persuasive, direct', 'Calm, unhurried, deliberate'] },
+    { q: 'Your memory works like this…', a: ['Quick to learn, quick to forget', 'Sharp and precise', 'Slow to take in, but I never forget'] },
+    { q: 'Your energy through the day is…', a: ['In bursts — lively, then suddenly spent', 'Strong and driven, especially midday', 'Even and enduring, slow to start'] },
+  ];
+
+  const RESULTS = {
+    vata: {
+      name: 'Vata',
+      sub: 'Air & ether · the energy of movement',
+      body: 'Vata types are quick, creative and light on their feet — enthusiastic learners with vivid imaginations. When vata accumulates, it shows as restlessness, dry skin, cold hands and feet, irregular digestion and a busy mind at bedtime.',
+      tips: ['Favour warm, cooked, lightly oiled meals over raw and cold food', 'Keep a steady daily rhythm — regular meals and an early night', 'Warm oil massage (Abhyanga) and Shirodhara deeply settle vata', 'Gentle movement over intense exercise: walking, yoga, stretching'],
+    },
+    pitta: {
+      name: 'Pitta',
+      sub: 'Fire & water · the energy of transformation',
+      body: 'Pitta types are sharp, focused and natural leaders, with strong digestion and drive. When pitta accumulates, it shows as impatience, inflammation, skin flare-ups, acidity and overheating — in body and in temper.',
+      tips: ['Favour cooling foods — sweet fruit, greens, coconut; ease off chilli and fried food', 'Don’t skip meals — a hungry pitta is an angry pitta', 'Make room for play that isn’t competition', 'Cooling treatments and meditation temper the fire'],
+    },
+    kapha: {
+      name: 'Kapha',
+      sub: 'Earth & water · the energy of structure',
+      body: 'Kapha types are steady, warm and dependable, with natural strength and endurance. When kapha accumulates, it shows as sluggishness, weight gain, congestion, and a reluctance to change course.',
+      tips: ['Favour light, warm, spiced food; ease off heavy, sweet and fried meals', 'Rise early — long sleep-ins feed kapha', 'Vigorous regular movement is your best medicine', 'Invigorating treatments like Udvartana (herbal powder massage) stimulate kapha'],
+    },
+  } as const;
+
+  type DoshaKey = keyof typeof RESULTS;
+
+  const card = document.getElementById('quiz')!;
+  const stages = {
+    question: card.querySelector<HTMLElement>('[data-stage="question"]')!,
+    gate: card.querySelector<HTMLFormElement>('[data-stage="gate"]')!,
+    result: card.querySelector<HTMLElement>('[data-stage="result"]')!,
+  };
+  const qEl = card.querySelector<HTMLElement>('[data-question]')!;
+  const optsEl = card.querySelector<HTMLElement>('[data-options]')!;
+  const qnoEl = card.querySelector<HTMLElement>('[data-qno]')!;
+  const barEl = card.querySelector<HTMLElement>('[data-bar]')!;
+  const backBtn = card.querySelector<HTMLButtonElement>('[data-back]')!;
+  const roman = ['i','ii','iii','iv','v','vi','vii','viii','ix','x'];
+
+  let answers: number[] = [];
+
+  function show(stage: keyof typeof stages) {
+    (Object.keys(stages) as (keyof typeof stages)[]).forEach((k) => { stages[k].hidden = k !== stage; });
+    card.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+
+  function renderQuestion() {
+    const i = answers.length;
+    const item = QUESTIONS[i];
+    qnoEl.textContent = roman[i];
+    qEl.textContent = item.q;
+    barEl.style.transform = `scaleX(${i / QUESTIONS.length})`;
+    backBtn.hidden = i === 0;
+    optsEl.innerHTML = '';
+    item.a.forEach((label, idx) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'dq-option';
+      b.innerHTML = `<i></i><span>${label}</span>`;
+      b.addEventListener('click', () => {
+        answers.push(idx);
+        if (answers.length === QUESTIONS.length) show('gate');
+        else renderQuestion();
+      });
+      optsEl.appendChild(b);
+    });
+  }
+
+  const ORDER: DoshaKey[] = ['vata', 'pitta', 'kapha'];
+
+  function tally(): number[] {
+    const t = [0, 0, 0];
+    answers.forEach((a) => t[a]++);
+    return t;
+  }
+  function dominant(): DoshaKey {
+    const t = tally();
+    return ORDER[t.indexOf(Math.max(...t))];
+  }
+
+  function renderResult() {
+    const t = tally();
+    const ranked = ORDER.map((k, i) => ({ k, n: t[i] })).sort((a, b) => b.n - a.n);
+    const key = ranked[0].k;
+    const r = RESULTS[key];
+    // dual-dosha constitutions are common: name both when the top two are close
+    const isDual = ranked[0].n - ranked[1].n <= 1 && ranked[1].n > 0;
+    card.querySelector('[data-result-name]')!.textContent =
+      isDual ? `${RESULTS[ranked[0].k].name}–${RESULTS[ranked[1].k].name}` : r.name;
+    card.querySelector('[data-result-sub]')!.textContent = r.sub;
+    card.querySelector('[data-result-body]')!.textContent = isDual
+      ? `${r.body} Your ${RESULTS[ranked[1].k].name.toLowerCase()} runs a close second, so traits of both will feel familiar.`
+      : r.body;
+    // the full three-dosha breakdown
+    const mix = card.querySelector<HTMLElement>('[data-result-mix]')!;
+    mix.innerHTML = '';
+    ORDER.forEach((k, i) => {
+      const pct = Math.round((t[i] / answers.length) * 100);
+      const row = document.createElement('div');
+      row.className = 'dq-mix__row';
+      row.innerHTML = `<span class="dq-mix__name">${RESULTS[k].name}</span><span class="dq-mix__bar"><span style="transform: scaleX(${t[i] / answers.length})"></span></span><span class="dq-mix__pct">${pct}%</span>`;
+      mix.appendChild(row);
+    });
+    const tips = card.querySelector('[data-result-tips]')!;
+    tips.innerHTML = '';
+    r.tips.forEach((tip) => { const li = document.createElement('li'); li.textContent = tip; tips.appendChild(li); });
+    show('result');
+  }
+
+  backBtn.addEventListener('click', () => { answers.pop(); renderQuestion(); });
+  card.querySelector('[data-restart]')!.addEventListener('click', () => { answers = []; renderQuestion(); show('question'); });
+
+  stages.gate.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = stages.gate;
+    const submit = form.querySelector<HTMLButtonElement>('.dq-submit')!;
+    submit.disabled = true;
+    submit.textContent = 'One moment…';
+    try {
+      const data = new FormData(form);
+      await fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          form: 'dosha-quiz',
+          name: data.get('name'),
+          email: data.get('email'),
+          dosha: RESULTS[dominant()].name,
+          answers: answers.join(','),
+          botcheck: data.get('botcheck'),
+        }),
+      });
+    } catch { /* never block the visitor's result on a network error */ }
+    renderResult();
+  });
+
+  renderQuestion();
+</script>
+
+<style>
+  .dq { padding-block: clamp(2.5rem, 5vw, 4rem) clamp(4rem, 9vw, 8rem); }
+  .dq-intro { text-align: center; max-width: 54ch; margin-inline: auto; font-size: var(--step-1); line-height: 1.6; color: var(--ink-soft); }
+  .dq-intro em { font-style: italic; color: var(--wine); }
+
+  .dq-card {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    position: relative;
+    background: #fffdf8;
+    border: 1px solid var(--line);
+    padding: clamp(1.8rem, 4.5vw, 3.2rem);
+  }
+  .dq-card::after { content: ''; position: absolute; inset: 0; translate: 13px 13px; border: 1px solid var(--gold-deep); opacity: 0.5; z-index: -1; pointer-events: none; }
+
+  .dq-progress { display: flex; align-items: center; gap: 1.1rem; }
+  .dq-progress__label { font-family: var(--font-display); font-style: italic; font-size: 1rem; color: var(--gold-deep); white-space: nowrap; }
+  .dq-progress__bar { flex: 1; height: 1px; background: var(--line); position: relative; overflow: hidden; }
+  .dq-progress__bar span { position: absolute; inset: 0; background: var(--gold-deep); transform: scaleX(0); transform-origin: left; transition: transform var(--dur) var(--ease-out); }
+
+  .dq-question { font-size: var(--step-2); color: var(--wine); line-height: 1.2; margin-top: 1.4rem; }
+
+  .dq-options { display: grid; gap: 0.7rem; margin-top: 1.6rem; }
+  :global(.dq-option) {
+    display: flex; align-items: baseline; gap: 0.9rem; text-align: left;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--line); background: var(--paper);
+    font-family: var(--font-sans); font-size: 0.95rem; line-height: 1.5; color: var(--ink-soft);
+    cursor: pointer;
+    transition: border-color var(--dur-fast), background var(--dur-fast), transform var(--dur-fast) var(--ease-out);
+  }
+  :global(.dq-option:hover) { border-color: var(--gold-deep); background: #fffdf8; }
+  :global(.dq-option:active) { transform: scale(0.99); }
+  :global(.dq-option i) { flex-shrink: 0; width: 0.45em; height: 0.45em; rotate: 45deg; background: var(--gold-deep); }
+
+  .dq-back, .dq-skip {
+    margin-top: 1.4rem;
+    font-family: var(--font-display); font-style: italic; font-size: 0.95rem; color: var(--taupe);
+    border-bottom: 1px solid rgba(116, 98, 60, 0.4); padding: 0;
+    background: none; cursor: pointer;
+  }
+  .dq-back:hover, .dq-skip:hover { color: var(--wine); }
+  .dq-skip { display: block; }
+
+  .dq-note { margin-top: 0.8rem; color: var(--ink-soft); line-height: 1.6; max-width: 48ch; }
+  .dq-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.6rem; }
+  .dq-fields label { display: grid; gap: 0.4rem; font-family: var(--font-sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); }
+  .dq-fields input {
+    border: 1px solid var(--line); background: var(--paper);
+    padding: 0.85em 1em; font-size: 1rem; font-family: var(--font-sans);
+    transition: border-color var(--dur-fast);
+  }
+  .dq-fields input:focus { outline: none; border-color: var(--gold-deep); }
+  .dq-submit { margin-top: 1.6rem; }
+
+  .dq-result-name { font-size: var(--step-4); color: var(--wine); line-height: 1; margin-top: 0.6rem; }
+  .dq-result-sub { font-family: var(--font-display); font-style: italic; font-size: var(--step-1); color: var(--gold-deep); margin-top: 0.5rem; }
+  .dq-mix { margin-top: 1.6rem; display: grid; gap: 0.55rem; max-width: 30rem; }
+  .dq-mix :global(.dq-mix__row) { display: grid; grid-template-columns: 4.5rem 1fr 3rem; align-items: center; gap: 0.9rem; }
+  .dq-mix :global(.dq-mix__name) { font-family: var(--font-display); font-style: italic; color: var(--ink); }
+  .dq-mix :global(.dq-mix__bar) { height: 4px; background: var(--paper-2); border: 1px solid var(--line); position: relative; overflow: hidden; }
+  .dq-mix :global(.dq-mix__bar span) { position: absolute; inset: 0; background: var(--gold-deep); transform-origin: left; }
+  .dq-mix :global(.dq-mix__pct) { font-family: var(--font-sans); font-size: 0.74rem; font-weight: 600; color: var(--taupe); text-align: right; }
+  .dq-result-body { margin-top: 1.2rem; line-height: var(--leading-body); color: var(--ink-soft); max-width: 58ch; }
+  .dq-result-h3 { font-size: var(--step-1); color: var(--navy); font-style: italic; margin-top: 1.8rem; }
+  .dq-tips { margin-top: 0.9rem; display: grid; gap: 0.55rem; padding: 0; }
+  .dq-tips :global(li) { position: relative; padding-left: 1.6em; color: var(--ink-soft); line-height: 1.6; }
+  .dq-tips :global(li)::before { content: ''; position: absolute; left: 0; top: 0.56em; width: 0.42em; height: 0.42em; rotate: 45deg; background: var(--gold-deep); }
+  .dq-disclaimer { margin-top: 1.6rem; font-family: var(--font-display); font-style: italic; color: var(--taupe); line-height: 1.5; max-width: 52ch; }
+  .dq-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.6rem; }
+  .btn--ghost-q { --btn-fg: var(--wine); background: transparent; box-shadow: inset 0 0 0 1.5px var(--wine); }
+  .btn--ghost-q:hover { background: var(--wine); --btn-fg: var(--paper); }
+
+  @media (max-width: 600px) {
+    .dq-fields { grid-template-columns: 1fr; }
+  }
+</style>

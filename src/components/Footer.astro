@@ -5,41 +5,31 @@ import Ornament from './Ornament.astro';
 import { bookHref, phone, phoneHref, email, address } from '../data/nav';
 
 const year = 2026;
-const columns = [
-  {
-    title: 'Treatments',
-    links: [
-      { label: 'All Treatments', href: '/treatments/' },
-      { label: 'Shirodhara', href: '/services/shirodhara-treatment-bondi-sydney/' },
-      { label: 'Abhyanga Massage', href: '/services/ayurvedic-massage-in-bondi-junction/' },
-      { label: 'Panchakarma Detox', href: '/detox-clinic/' },
-      { label: 'The Spa', href: '/ayurvedic-spa/' },
-    ],
-  },
-  {
-    title: 'Explore',
-    links: [
-      { label: 'What is Ayurveda', href: '/what-is-ayurveda/' },
-      { label: 'Conditions We Treat', href: '/conditions/' },
-      { label: 'Our Practitioners', href: '/team/' },
-      { label: 'Journal', href: '/journal/' },
-      { label: 'Shop & Gift Vouchers', href: '/shop/' },
-    ],
-  },
-  {
-    title: 'Visit',
-    links: [
-      { label: 'About Us', href: '/about-us/' },
-      { label: 'Contact', href: '/contact-us/' },
-      { label: 'Book an Appointment', href: '/book-appointment/' },
-      { label: 'FAQs', href: '/frequently-asked-questions/' },
-    ],
-  },
+// the live site's footer menu, verbatim
+const menu = [
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about-us/' },
+  { label: 'Ayurvedic Therapies', href: '/ayurvedic-therapies/' },
+  { label: 'What Is Ayurveda', href: '/what-is-ayurveda/' },
+  { label: 'Shop', href: '/shop/' },
+  { label: 'Privacy Policy', href: '/privacy-policy/' },
+  { label: 'Blogs', href: '/blogs-media/' },
+  { label: 'Links and Resources', href: '/links-and-resources/' },
+  { label: 'Events', href: '/events/' },
+  { label: '14 Years Offering Panchakarma Detox', href: '/14-years-offering-panchakarma-detox/' },
 ];
+const mapsHref = 'https://maps.app.goo.gl/h96eZm6iJgiV3r5CA';
 const socials = [
   { label: 'Instagram', href: 'https://www.instagram.com/ayurvedicwellnesscentre/' },
   { label: 'Facebook', href: 'https://www.facebook.com/AyurvedicWellnessCentre' },
-  { label: 'YouTube', href: 'https://www.youtube.com/@AyurvedicWellness' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@AyurvedicWellness/featured' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/ayurvedic-wellness-centre/posts/?feedView=all' },
+];
+// credibility badges, as on the live footer
+const badges = [
+  { src: '/wp-content/uploads/2019/06/ayurvedicwellness-tripadvisor2.png', alt: 'Trip Advisor', w: 149, h: 102 },
+  { src: '/wp-content/uploads/elementor/thumbs/10649810_524779857652060_435001554542558820_n-rkuf4t0srx8eruerdqkjixwxlo5b8f8lcflemxb714.jpg', alt: 'Finalist of the India Australia Business & Community Awards 2016', w: 220, h: 60 },
+  { src: '/wp-content/uploads/elementor/thumbs/13754681_299830797034573_6872806053930908600_n-rkuf4t0t0ozl04kneb0a8qilqdasplhi03evgm3n88.png', alt: 'Ayurvedic Wellness Centre is a member of the Ayurvedic Association of Australasia', w: 240, h: 60 },
 ];
 ---
 <footer class="site-footer">
@@ -63,18 +53,33 @@ const socials = [
       <div class="footer-contact">
         <a href={phoneHref}>{phone}</a>
         <a href={`mailto:${email}`}>{email}</a>
-        <span>{address}</span>
+      </div>
+      <div class="footer-badges">
+        {badges.map((b) => <img src={b.src} alt={b.alt} width={b.w} height={b.h} loading="lazy" />)}
       </div>
     </div>
 
-    {columns.map((col) => (
-      <nav class="footer-col" aria-label={col.title}>
-        <p class="footer-col__title">{col.title}</p>
-        <ul role="list">
-          {col.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
-        </ul>
-      </nav>
-    ))}
+    <nav class="footer-col" aria-label="Menu">
+      <p class="footer-col__title">Menu</p>
+      <ul role="list">
+        {menu.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="footer-col">
+      <p class="footer-col__title">Wellness Centre Address</p>
+      <p class="footer-col__body"><a href={mapsHref} target="_blank" rel="noopener">1 Bondi Rd (corner Oxford street), Bondi Junction NSW 2022, Australia</a></p>
+      <p class="footer-col__title footer-col__title--gap">Contact</p>
+      <p class="footer-col__body">We’re available 7 days a week,<br />8AM – 8PM</p>
+      <p class="footer-col__body"><a href={phoneHref}>{phone}</a></p>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-col__title">Consultations</p>
+      <p class="footer-col__body">Zoom Consultations Available On Demand</p>
+      <p class="footer-col__body"><a href="/book-appointment/">Book an Appointment</a></p>
+      <p class="footer-col__body"><a href="/what-is-your-dosha/">Discover Your Dosha</a></p>
+    </div>
   </div>
 
   <div class="footer-bottom container--wide">
@@ -113,7 +118,15 @@ const socials = [
   .footer-contact { display: grid; gap: 0.35rem; margin-top: 1.4rem; font-size: 0.88rem; }
   .footer-contact a:hover { color: var(--gold); }
 
+  .footer-badges { display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; margin-top: 1.6rem; }
+  .footer-badges img { height: 44px; width: auto; opacity: 0.92; background: #fff; padding: 3px 6px; border-radius: 3px; }
+
   .footer-col__title { font-family: var(--font-sans); font-size: 0.72rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--gold); margin-bottom: 1.1rem; }
+  .footer-col__title--gap { margin-top: 1.6rem; }
+  .footer-col__body { font-size: 0.9rem; line-height: 1.65; color: var(--on-dark-soft); }
+  .footer-col__body + .footer-col__body { margin-top: 0.5rem; }
+  .footer-col__body a { transition: color var(--dur); }
+  .footer-col__body a:hover { color: var(--gold); }
   .footer-col ul { display: grid; gap: 0.6rem; }
   .footer-col a { font-size: 0.9rem; color: var(--on-dark-soft); transition: color var(--dur), padding-left var(--dur); }
   .footer-col a:hover { color: var(--on-dark); padding-left: 0.3rem; }

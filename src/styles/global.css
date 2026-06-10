@@ -131,6 +131,7 @@ em { font-style: italic; }
   --btn-bg: var(--wine);
   --btn-fg: var(--paper);
   display: inline-flex; align-items: center; gap: 0.7em;
+  white-space: nowrap;
   font-family: var(--font-sans);
   font-size: var(--step--1);
   font-weight: 600;
