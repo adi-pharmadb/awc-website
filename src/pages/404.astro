@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Ornament from '../components/Ornament.astro';
+import { bookHref } from '../data/nav';
+---
+<BaseLayout
+  title="Page Not Found — Ayurvedic Wellness Centre"
+  description="The page you were looking for could not be found."
+  canonical="https://www.ayurvedicwellnesscentre.com.au/404/"
+  robots="noindex, follow"
+>
+  <section class="notfound">
+    <div class="container--narrow text-center">
+      <Ornament variant="mark" size={34} class="notfound__mark" />
+      <p class="eyebrow eyebrow--center">Lost your balance?</p>
+      <h1 class="notfound__title">This Path Has Wandered</h1>
+      <p class="notfound__copy">
+        The page you were seeking isn't here — but your journey to wellbeing needn't pause.
+        Let us guide you back to centre.
+      </p>
+      <div class="notfound__actions">
+        <a class="btn btn--gold" href="/">Return Home</a>
+        <a class="btn btn--ghost" href="/treatments/">Browse Treatments</a>
+      </div>
+      <p class="notfound__links">
+        Or visit <a class="link" href="/journal/">the Journal</a>,
+        <a class="link" href="/conditions/">Conditions</a>, or
+        <a class="link" href={bookHref}>book an appointment</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound { padding-block: clamp(4rem, 12vh, 9rem); text-align: center; }
+  .notfound__mark { color: var(--gold-deep); margin: 0 auto 1.4rem; }
+  .notfound__title { font-size: var(--step-4); margin-top: 0.8rem; }
+  .notfound__copy { max-width: 42ch; margin: 1.3rem auto 0; color: var(--taupe); font-size: var(--step-1); line-height: 1.5; }
+  .notfound__actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2.2rem; }
+  .notfound__links { margin-top: 2rem; font-size: 0.9rem; color: var(--ink-soft); }
+</style>

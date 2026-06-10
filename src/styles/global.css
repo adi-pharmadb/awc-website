@@ -68,6 +68,15 @@ em { font-style: italic; }
   outline-offset: 3px;
   border-radius: 2px;
 }
+/* cards lift on keyboard focus, matching their hover affordance */
+.service-card:focus-visible,
+.post-card a:focus-visible,
+.practitioner:focus-visible,
+.team-member:focus-visible {
+  outline-offset: 4px;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-l);
+}
 
 /* --- Layout primitives ----------------------------------------------------- */
 .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
@@ -238,6 +247,12 @@ em { font-style: italic; }
   border-radius: var(--radius-m);
   box-shadow: var(--shadow-m);
   margin-inline: auto;
+}
+/* decorative separator flourishes from WP render oddly as shadowed images — hide them */
+.prose img[src*="separator"],
+.prose img[alt*="separator"],
+.prose img[src$=".svg"] {
+  display: none;
 }
 
 .prose hr { margin-block: var(--space-xl); border: 0; height: 1px; background: var(--line); }

@@ -2,10 +2,9 @@
 import { getCollection, render } from 'astro:content';
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import { getJsonLd } from '../../lib/seo';
-import { routable } from '../../lib/content';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('doctors', routable);
+  const entries = (await getCollection('doctors')).filter((e) => !e.data.draft);
   return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
 }
 

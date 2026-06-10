@@ -5,7 +5,7 @@ import SectionHeader from '../components/SectionHeader.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import PostCard from '../components/PostCard.astro';
 import Ornament from '../components/Ornament.astro';
-import { cardImage, routable } from '../lib/content';
+import { cardImage, routable, clean, pullQuote } from '../lib/content';
 import { bookHref } from '../data/nav';
 
 const services = await getCollection('services', routable);
@@ -28,7 +28,9 @@ const posts = (await getCollection('blog', routable))
 const doctors = await getCollection('doctors', routable);
 
 const testimonials = (await getCollection('testimonials'))
-  .filter((t) => (t.data.ogDescription ?? '').length > 120 && !/ddd|test/i.test(t.data.slug))
+  .filter((t) => (t.body ?? '').length > 160 && !/ddd|test|sample/i.test(t.data.slug))
+  .map((t) => ({ quote: pullQuote(t.body, 230), author: clean(t.data.ogTitle ?? t.data.title) }))
+  .filter((t) => t.quote.length > 60)
   .slice(0, 3);
 
 const doshas = [
@@ -233,8 +235,8 @@ const orgSchema = {
           {testimonials.map((t, i) => (
             <figure class="quote" data-reveal style={`--reveal-delay:${i * 110}ms`}>
               <Ornament variant="mark" size={22} class="quote__mark" />
-              <blockquote>{(t.data.ogDescription ?? '').replace(/\s*\[&hellip;\].*$/, '…').slice(0, 240)}</blockquote>
-              <figcaption>{(t.data.ogTitle ?? t.data.title).replace(/\s*[|].*$/, '')}</figcaption>
+              <blockquote>{t.quote}</blockquote>
+              <figcaption>{t.author}</figcaption>
             </figure>
           ))}
         </div>
@@ -294,7 +296,7 @@ const orgSchema = {
     opacity: 0.85;
   }
   .hero__est::before { content: ''; display: block; height: 3rem; width: 1px; background: var(--gold); margin: 0 auto 0.6rem; opacity: 0.6; }
-  @media (max-width: 900px) { .hero__est { display: none; } }
+  @media (max-width: 1024px) { .hero__est { display: none; } }
 
   .hero__scroll { position: absolute; bottom: 1.6rem; left: 50%; translate: -50% 0; width: 26px; height: 42px; border: 1px solid rgba(246,237,224,0.5); border-radius: 14px; display: grid; justify-items: center; padding-top: 7px; }
   .hero__scroll span { width: 3px; height: 8px; background: var(--gold); border-radius: 2px; animation: scrolldot 1.8s var(--ease-in-out) infinite; }

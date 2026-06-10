@@ -2,16 +2,17 @@
 import { getCollection, render } from 'astro:content';
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import { getJsonLd } from '../../lib/seo';
+import { clean } from '../../lib/content';
 
 export async function getStaticPaths() {
-  const entries = (await getCollection('products')).filter((e) => !e.data.draft);
+  const entries = (await getCollection('testimonials')).filter((e) => !e.data.draft);
   return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
 }
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
-const cleanTitle = (d.ogTitle || d.title).replace(/\s*[|]\s*Ayurvedic Wellness.*$/i, '').trim();
+const cleanTitle = clean(d.ogTitle || d.title);
 ---
 <ContentLayout
   title={d.title}
@@ -23,10 +24,9 @@ const cleanTitle = (d.ogTitle || d.title).replace(/\s*[|]\s*Ayurvedic Wellness.*
   ogDescription={d.ogDescription}
   ogImage={d.ogImage}
   ogType={d.ogType}
-  jsonLd={getJsonLd('products', d.slug)}
-  eyebrow="Gift Vouchers & Packages"
-  breadcrumbs={[{ label: 'Shop', href: '/shop/' }]}
-  cta={{ label: 'Purchase or enquire', href: '/contact-us/', note: 'Gift vouchers can be purchased in clinic or by phone.' }}
+  jsonLd={getJsonLd('testimonials', d.slug)}
+  eyebrow="Words of Gratitude"
+  breadcrumbs={[{ label: 'About', href: '/about-us/' }]}
 >
   <Content />
 </ContentLayout>

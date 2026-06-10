@@ -40,6 +40,35 @@ export function clean(title: string): string {
   return title.replace(/\s*[|]\s*Ayurvedic Wellness.*$/i, '').replace(/\s*[|].*$/, '').trim();
 }
 
+const ENTITIES: Record<string, string> = {
+  '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&nbsp;': ' ',
+  '&hellip;': '…', '&mdash;': '—', '&ndash;': '–',
+  '&rsquo;': '’', '&lsquo;': '‘', '&rdquo;': '”', '&ldquo;': '“',
+  '&#039;': '’', '&#39;': '’',
+};
+
+/** Decode the common HTML entities WordPress leaves in excerpts. */
+export function decodeEntities(s: string): string {
+  if (!s) return '';
+  let out = s.replace(/&(amp|lt|gt|quot|nbsp|hellip|mdash|ndash|rsquo|lsquo|rdquo|ldquo|#0?39);/g, (m) => ENTITIES[m] ?? m);
+  out = out.replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)));
+  return out;
+}
+
+/** A clean pull-quote: first real paragraph of a body, decoded, trimmed to a word/sentence boundary. */
+export function pullQuote(body: string | undefined, max = 220): string {
+  if (!body) return '';
+  const firstPara = body.split(/\n{2,}/).map((p) => p.trim()).find((p) => p.length > 40) || '';
+  let q = decodeEntities(firstPara.replace(/\s+/g, ' ')).trim();
+  if (q.length <= max) return q;
+  const slice = q.slice(0, max);
+  const lastStop = Math.max(slice.lastIndexOf('. '), slice.lastIndexOf('! '), slice.lastIndexOf('? '));
+  if (lastStop > max * 0.5) {
+    return slice.slice(0, lastStop + 1).trim(); // complete sentence — no ellipsis
+  }
+  return slice.slice(0, slice.lastIndexOf(' ')).replace(/[,;:\s]+$/, '') + '…';
+}
+
 const THERAPY_RE = /massage|shirodhara|abhyanga|pizzichil|basti|sweda|nasya|udvartana|kizhi|champi|facial|panchakarma|detox|rasayan|relaxation|package|energiser|dhara|remedial|couples|therapeutic|rejuvenation|anti-ag|pinda|spa|cleanse|ritual/i;
 const CONDITION_RE = /stress|anxiety|insomnia|depression|ocd|migraine|headache|allerg|asthma|fatigue|sinus|diabet|blood-pressure|hypertension|fatty-liver|gastritis|crohn|colitis|irritable-bowel|ibs|constipation|infertility|menopause|menstr|pms|dysmen|foot-problem|joint|arthr|skin|eczema|ulcer|thyroid|vagus|ailment/i;
 

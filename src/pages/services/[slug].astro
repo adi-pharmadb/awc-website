@@ -2,10 +2,10 @@
 import { getCollection, render } from 'astro:content';
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import { getJsonLd } from '../../lib/seo';
-import { routable } from '../../lib/content';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('services', routable);
+  // every service migrated (noindex preserved via its robots tag)
+  const entries = (await getCollection('services')).filter((e) => !e.data.draft);
   return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
 }
 

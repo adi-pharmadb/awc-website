@@ -2,16 +2,21 @@
 import { getCollection, render } from 'astro:content';
 import ContentLayout from '../layouts/ContentLayout.astro';
 import { getJsonLd } from '../lib/seo';
-import { routable, formatDate, readingTime } from '../lib/content';
+import { formatDate, readingTime } from '../lib/content';
 
 export async function getStaticPaths() {
-  // Slugs that have dedicated designed routes (must not also build here).
-  const OVERRIDE = new Set(['shop', 'home']);
-  const blog = await getCollection('blog', routable);
-  const pages = await getCollection('pages', routable);
+  // Render EVERY post + page at its exact original URL (noindex preserved via robots).
+  // Excluded only: the homepage (path '/', replaced by the designed index) and the
+  // 'shop' page (replaced by the designed /shop/ product index).
+  const blog = await getCollection('blog');
+  const pages = await getCollection('pages');
   return [...blog, ...pages]
-    .filter((e) => !OVERRIDE.has(e.data.slug) && e.data.path !== '/')
-    .map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+    .filter((e) => !e.data.draft && e.data.path !== '/' && e.data.slug !== 'shop')
+    .map((entry) => ({
+      // full path (handles nested URLs like /about/rita-sagrani/)
+      params: { slug: entry.data.path.replace(/^\/|\/$/g, '') },
+      props: { entry },
+    }));
 }
 
 const { entry } = Astro.props;

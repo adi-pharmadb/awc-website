@@ -30,6 +30,9 @@ const {
   jsonLd = null,
   bodyClass = '',
 } = Astro.props;
+const SITE_TAGLINE =
+  'Authentic Ayurveda treatments, massage therapies and Panchakarma detox in Bondi Junction, Sydney.';
+const metaDescription = description || ogDescription || SITE_TAGLINE;
 const ogImageAbs = new URL(ogImage || '/wp-content/uploads/2023/01/featured_image.jpg', Astro.site).href;
 ---
 <!doctype html>
@@ -39,17 +42,23 @@ const ogImageAbs = new URL(ogImage || '/wp-content/uploads/2023/01/featured_imag
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <title>{title}</title>
-    {description && <meta name="description" content={description} />}
+    <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonical} />
     <meta name="robots" content={robots} />
 
     <meta property="og:site_name" content="Ayurvedic Wellness Centre" />
+    <meta property="og:locale" content="en_AU" />
     <meta property="og:title" content={ogTitle ?? title} />
-    <meta property="og:description" content={ogDescription ?? description} />
+    <meta property="og:description" content={ogDescription || metaDescription} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageAbs} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@AyurvedicSydney" />
+    <meta name="twitter:creator" content="@AyurvedicSydney" />
+    <meta name="twitter:title" content={ogTitle ?? title} />
+    <meta name="twitter:description" content={ogDescription || metaDescription} />
+    <meta name="twitter:image" content={ogImageAbs} />
     <meta name="theme-color" content="#780032" />
 
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
