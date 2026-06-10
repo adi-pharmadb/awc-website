@@ -26,8 +26,8 @@ const products = (await getCollection('products', routable))
 </BaseLayout>
 
 <style>
-  .listing { padding-top: 2.5rem; }
-  .listing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .listing { padding-top: 3rem; }
+  .listing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem 2rem; }
   @media (max-width: 940px) { .listing__grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px) { .listing__grid { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .listing__grid { grid-template-columns: 1fr; gap: 2.8rem; } }
 </style>

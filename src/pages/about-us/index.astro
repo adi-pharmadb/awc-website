@@ -1,0 +1,133 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DawnHero from '../../components/DawnHero.astro';
+import { getJsonLd } from '../../lib/seo';
+
+// DESIGNED route for the WP "About Us" page. All text and images verbatim;
+// the WP image strip becomes a proper gallery of the centre.
+const entry = (await getCollection('pages')).find((e) => e.data.slug === 'about-us')!;
+const d = entry.data;
+
+// gallery: the 12 linked photographs, verbatim from the body
+const gallery = [...(entry.body ?? '').matchAll(
+  /\[!\[([^\]]*)\]\((\/wp-content[^\s)]+)\)\]\((\/wp-content[^\s)]+)/g
+)].map((m) => ({ alt: m[1], src: m[2], full: m[3] }));
+---
+<BaseLayout
+  title={d.title} description={d.description} canonical={d.canonical} robots={d.robots}
+  ogTitle={d.ogTitle} ogDescription={d.ogDescription} ogImage={d.ogImage} ogType={d.ogType}
+  jsonLd={getJsonLd('pages', d.slug)}
+>
+  <DawnHero title="About Us" />
+
+  <!-- opening, verbatim -->
+  <section class="au-open">
+    <div class="container--narrow" data-reveal>
+      <p class="kicker text-center au-open__kick">Offering Authentic Ayurveda Experiences in Bondi Junction, Sydney</p>
+      <p class="lead dropcap">The Ayurvedic Wellness Centre was opened in 2011 by Rita Sagrani. It is the first true oasis in Sydney that offers the authentic experience of true Ayurveda. With fully qualified doctors and therapists, the Ayurvedic Wellness Centre is devoted to the client, ensuring correct diagnosis, prescription of genuine, high-quality Ayurvedic herbs and oils and the professional application of healing, holistic therapies.</p>
+    </div>
+  </section>
+
+  <!-- the founder, verbatim -->
+  <section class="au-founder">
+    <div class="container au-founder__grid">
+      <figure class="au-portrait" data-reveal>
+        <span class="au-portrait__disc">
+          <img src="/wp-content/uploads/elementor/thumbs/thumb_©CliquePhotographySydney052A7644_1024-rkuf558tvf52ac0cg1pj4xlq9kg78gxwtzsqijlgew.jpg" alt="thumb_©CliquePhotographySydney052A7644_1024" width="600" height="600" loading="lazy" />
+        </span>
+      </figure>
+      <div data-reveal style="--reveal-delay: 120ms">
+        <p class="kicker">Founder Of The Ayurvedic Wellness Centre</p>
+        <h2 class="au-h2">Rita Sagrani</h2>
+        <p class="body-p">Rita began her journey into Ayurveda two decades ago when she was diagnosed with Crohn’s disease. Despite consulting with many specialists and doctors, Western medicine failed to yield a proper cure, and the disease took a debilitating toll on Rita’s career in the fashion industry, as well as her day to day life.</p>
+        <a class="ilink" href="/book-appointment/">Book Your Appointment ›</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- the centre, in photographs (verbatim gallery) -->
+  <section class="au-gallery">
+    <div class="container">
+      <div class="au-gallery__grid">
+        {gallery.map((g, i) => (
+          <a class:list={['au-shot', { 'au-shot--feature': i === 0 || i === 7 }]} href={g.full} target="_blank" rel="noopener" data-reveal style={`--reveal-delay:${(i % 4) * 70}ms`}>
+            <img src={g.src} alt={g.alt} width="900" height="600" loading="lazy" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- the story, verbatim -->
+  <section class="au-story">
+    <div class="container au-story__grid">
+      <div data-reveal>
+        <p class="kicker">Ayurveda Massage Room at The Ayurvedic Wellness Centre</p>
+        <h2 class="au-h2">Ayurvedic Wellness Centre</h2>
+        <p class="body-p dropcap">Frustrated by the inadequacy of Western medicine, Rita turned to her roots. Growing up in an Ayurvedic household, Rita found herself inspired by her grandmother’s status amongst the community as an Ayurvedic doctor.</p>
+        <p class="body-p">Returning to India, Rita sought out an Ayurvedic clinic and underwent a Panchakarma detox with an intensive cycle of therapies to restore her depleted energy. Her doctor ordered a change of diet and prescribed certain herbal supplements, as well as a daily schedule of yoga and meditation.</p>
+        <p class="body-p">After just seven days, there were clear signs that her body was healing. At that moment, she knew she had found the solution. With renewed energy, Rita continued with her successful international business career and also travelling back to India for 25 years to continue her Ayurvedic treatment and therapy.</p>
+        <p class="body-p">After years studying health care, the drug industry and studying Ayurveda with Deepak Chopra, Rita opened the Ayurvedic Wellness Centre in Bondi Junction in 2011.</p>
+        <p class="body-p">The Ayurvedic Wellness Centre has become the preferred establishment in natural and holistic healing. With the warmth, compassion and expertise of our highly trained staff, we offer a truly authentic experience, restoring internal equilibrium, balance and well-being for the mind, body and soul.</p>
+        <p class="body-p">The Ayurvedic Wellness Centre seeks to educate the wider community about the principles of Ayurveda, as well as progressing with our long term goal of opening Ayurvedic Clinics and Hospitals throughout Australia to bring the power of Ayurvedic healing to everyone.</p>
+        <a class="rbtn-like" href="/book-appointment/">Book Your Appointment</a>
+      </div>
+      <figure class="plate" data-reveal style="--reveal-delay: 120ms">
+        <img src="/wp-content/uploads/elementor/thumbs/thumb_©CliquePhotographySydney052A7204_1024-rkuf558xizf8l33yudkik31r9flz7cpk77c5th4rro.jpg" alt="thumb_©CliquePhotographySydney052A7204_1024" width="600" height="400" loading="lazy" />
+      </figure>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lead { font-size: var(--step-1); line-height: 1.6; color: var(--ink); }
+  .body-p { margin-top: 1.2rem; line-height: var(--leading-body); color: var(--ink-soft); max-width: 58ch; }
+  .dropcap::first-letter { font-family: var(--font-display); font-size: 2.9em; line-height: 0.78; float: left; padding-right: 0.12em; color: var(--wine); }
+  .au-h2 { font-size: var(--step-3); color: var(--wine); margin-top: 0.5rem; }
+  .ilink { font-family: var(--font-display); font-style: italic; font-size: var(--step-0); color: var(--gold-deep); border-bottom: 1px solid rgba(201, 138, 46, 0.55); display: inline-block; margin-top: 1.4rem; }
+  .ilink:hover { color: var(--wine); }
+  .rbtn-like {
+    display: inline-flex; margin-top: 1.8rem;
+    font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 1em 2em; border-radius: var(--radius-pill);
+    background: var(--wine); color: var(--paper);
+    transition: background var(--dur-fast);
+  }
+  .rbtn-like:hover { background: var(--wine-deep); }
+  .plate { margin: 0; position: relative; max-width: 24rem; justify-self: end; }
+  .plate::after { content: ''; position: absolute; inset: 0; translate: 12px 12px; border: 1px solid var(--gold-deep); opacity: 0.5; z-index: -1; }
+  .plate img { width: 100%; border: 1px solid var(--line); display: block; }
+
+  .au-open { padding-block: clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem); text-align: center; }
+  .au-open__kick { display: block; margin-bottom: 1.3rem; }
+
+  .au-founder { padding-block: clamp(2rem, 4vw, 3.5rem); }
+  .au-founder__grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(2.5rem, 6vw, 5rem); align-items: center; }
+  .au-portrait { margin: 0; justify-self: center; }
+  .au-portrait__disc {
+    display: block; width: clamp(220px, 24vw, 300px); height: clamp(220px, 24vw, 300px);
+    border-radius: 50%; overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(51, 23, 3, 0.35), 0 0 0 8px rgba(253, 197, 120, 0.22), 0 22px 48px -20px rgba(51, 23, 3, 0.5);
+  }
+  .au-portrait__disc img { width: 100%; height: 100%; object-fit: cover; }
+
+  .au-gallery { padding-block: clamp(2.5rem, 5vw, 4rem); background: var(--paper-2); border-block: 1px solid var(--line); }
+  .au-gallery__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; grid-auto-flow: dense; }
+  .au-shot { display: block; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 3 / 2; }
+  .au-shot--feature { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+  .au-shot--feature img { height: 100%; }
+  .au-shot img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-out); }
+  .au-shot:hover img { transform: scale(1.05); }
+
+  .au-story { padding-block: clamp(3rem, 6vw, 5rem) clamp(4rem, 8vw, 6rem); }
+  .au-story__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(2.5rem, 6vw, 5rem); align-items: start; }
+  .au-story .plate { position: sticky; top: 7rem; }
+
+  @media (max-width: 940px) {
+    .au-founder__grid, .au-story__grid { grid-template-columns: 1fr; }
+    .au-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+    .au-story .plate { position: static; justify-self: start; }
+  }
+</style>

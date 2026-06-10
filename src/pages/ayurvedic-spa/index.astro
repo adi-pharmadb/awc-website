@@ -1,0 +1,129 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DawnHero from '../../components/DawnHero.astro';
+import { getJsonLd } from '../../lib/seo';
+
+// DESIGNED route for the WP "Ayurveda Spa Sydney" page. All text, links and
+// images verbatim from the migrated entry; presentation is ours.
+const entry = (await getCollection('pages')).find((e) => e.data.slug === 'ayurvedic-spa')!;
+const d = entry.data;
+
+// the spa packages, parsed verbatim from the entry body (image + title + link)
+const items = [...(entry.body ?? '').matchAll(
+  /!\[([^\]]*)\]\((\/wp-content[^\s)]+)[^)]*\)\s*\n+####\s+(.+?)\s*\n+\[([^\]]+)\]\(([^)]+)\)/g
+)].map((m) => ({ alt: m[1], img: m[2], title: m[3].trim(), label: m[4].trim(), href: m[5].trim() }));
+---
+<BaseLayout
+  title={d.title} description={d.description} canonical={d.canonical} robots={d.robots}
+  ogTitle={d.ogTitle} ogDescription={d.ogDescription} ogImage={d.ogImage} ogType={d.ogType}
+  jsonLd={getJsonLd('pages', d.slug)}
+>
+  <DawnHero title="Ayurveda Spa Sydney" />
+
+  <!-- introduction, verbatim -->
+  <section class="spa-intro">
+    <div class="container spa-intro__grid">
+      <div data-reveal>
+        <p class="kicker">Ayurveda spa at Ayurvedic wellness centre, Bondi junction, Sydney</p>
+        <p class="lead dropcap">The foundations of Ayurveda are birthed from Vedic Traditions. Self care is a form of therapy that is highly regarded as ancient art within these texts. These natural therapies have been tried and tested and formally were only used on royalty and elites back 5000 + years ago. Using 100% natural products derived of plant and flower extracts which have been introduced to the West for cosmetic and medicinal purposes. All Ayurvedic Massage, Ayurvedic treatments and Ayurvedic facials are fit for a queen, guaranteed to leave you with a sense of renewal.</p>
+        <p class="body-p">A specific Panchakarma program is devised with each individual’s constitution, disorders or needs in mind and body and requires close observation and supervision. As a client at our Detox Clinic, you’ll feel that your Indian Ayurvedic therapist is in tune with your body and is intuitive to its needs to deliver your treatment in perfect harmony. Treatment will vary according to each person’s individuality and needs. Results will depend on how the client’s body reacts to particular detoxification processes.</p>
+        <p class="body-p">Pancha means “five” and karma means “actions” as Panchakarma comprises five types of treatment for clearing excess doshas and removing toxins. These practices are extremely helpful in relieving deep seated diseases as well as for maintaining and improving physical and mental health. Our Detox Clinic program helps the body to remove stress and illness-causing toxins and will help to balance life forces or dosha. <em>Panchakarma</em> aims on the prevention of disease, restoration of good health and rejuvenation of the body.</p>
+      </div>
+      <figure class="plate" data-reveal style="--reveal-delay: 120ms">
+        <img src="/wp-content/uploads/elementor/thumbs/©CliquePhotographySydney052A1227-rkuf4uwpft1xq9jf0v4b3bepayp8rijae0ekkvck8g.jpg" alt="Abhyanga Full body Massage at Bondi" width="600" height="400" loading="lazy" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- benefits, verbatim -->
+  <section class="spa-benefits">
+    <div class="container spa-benefits__grid">
+      <div data-reveal>
+        <h2 class="spa-h3">Here are the benefits of this alternative and Ayurvedic remedy for an under-active thyroid:</h2>
+        <ul class="benefits" role="list">
+          <li>Elimination of harmful toxins</li>
+          <li>Restore balance, vitality and harmony within one’s environment</li>
+          <li>Strengthen immune defence to illness and stress</li>
+          <li>Reverse the harmful effects of oxidation process in the body</li>
+          <li>Delay ageing process</li>
+          <li>Enhance strength, vitality, energy and mental capacity</li>
+          <li>Relaxation techniques</li>
+          <li>Promote good health and sense of well-being</li>
+        </ul>
+      </div>
+      <div data-reveal style="--reveal-delay: 120ms">
+        <h2 class="spa-h3">Pre-Treatment consultation, assessments and recommendations with our Ayurvedic Doctors:</h2>
+        <p class="body-p">Once you experience the beautiful detoxifying treatment of a Panchakarma you will know why it is so important to your physical and mental well being. The changing of the seasons is always a good time to take some time out for yourself and get back on track, restoring balance and harmony by freeing your mind and body of its accumulated toxins. Panchakarma is an excellent way to jump start your weight loss and it is an exceptional way to propel yourself to optimal health.</p>
+        <figure class="plate plate--small">
+          <img src="/wp-content/uploads/elementor/thumbs/Marma-Pressure-Point-Ayurvedic-Massage-in-Bondi-Junction-scaled-rkuf4uwme634xjt85mam2o7swje9r2hkz9ok7uezog.jpg" alt="Ayurvedic Massage Bondi Junction,Sydney" width="600" height="400" loading="lazy" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- the packages, as time discs -->
+  <section class="spa-menu">
+    <div class="container">
+      <div class="spa-menu__grid">
+        {items.map((it, i) => (
+          <a class="spa-item" href={it.href} data-reveal style={`--reveal-delay:${(i % 3) * 90}ms`}>
+            <span class="spa-item__disc"><img src={it.img} alt={it.alt} width="400" height="400" loading="lazy" /></span>
+            <span class="spa-item__no">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="spa-item__title">{it.title}</h3>
+            <span class="spa-item__cta">{it.label} ›</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lead { font-size: var(--step-1); line-height: 1.6; color: var(--ink); max-width: 58ch; }
+  .body-p { margin-top: 1.2rem; line-height: var(--leading-body); color: var(--ink-soft); max-width: 58ch; }
+  .dropcap::first-letter { font-family: var(--font-display); font-size: 2.9em; line-height: 0.78; float: left; padding-right: 0.12em; color: var(--wine); }
+  .kicker + .lead { margin-top: 1.3rem; }
+  .plate { margin: 0; position: relative; max-width: 26rem; justify-self: end; }
+  .plate::after { content: ''; position: absolute; inset: 0; translate: 12px 12px; border: 1px solid var(--gold-deep); opacity: 0.5; z-index: -1; }
+  .plate img { width: 100%; border: 1px solid var(--line); display: block; }
+  .plate--small { max-width: 22rem; justify-self: start; margin-top: 1.8rem; }
+
+  .spa-intro { padding-block: clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem); }
+  .spa-intro__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(2.5rem, 6vw, 5rem); align-items: start; }
+
+  .spa-benefits { padding-block: clamp(2rem, 4vw, 3.5rem); background: var(--paper-2); border-block: 1px solid var(--line); }
+  .spa-benefits__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 6vw, 5rem); align-items: start; }
+  .spa-h3 { font-size: var(--step-1); color: var(--wine); line-height: 1.3; max-width: 32ch; }
+  .benefits { margin-top: 1.2rem; display: grid; gap: 0.55rem; padding: 0; }
+  .benefits li { position: relative; padding-left: 1.6em; color: var(--ink-soft); }
+  .benefits li::before { content: ''; position: absolute; left: 0; top: 0.56em; width: 0.42em; height: 0.42em; rotate: 45deg; background: var(--gold-deep); }
+
+  .spa-menu { padding-block: clamp(3rem, 6vw, 5rem) clamp(4rem, 8vw, 7rem); }
+  .spa-menu__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem 2rem; }
+  .spa-item { display: grid; justify-items: center; text-align: center; align-content: start; }
+  .spa-item__disc {
+    width: clamp(150px, 14vw, 190px); height: clamp(150px, 14vw, 190px);
+    border-radius: 50%; overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(51, 23, 3, 0.35), 0 0 0 7px rgba(253, 197, 120, 0.22), 0 18px 40px -18px rgba(51, 23, 3, 0.45);
+  }
+  .spa-item__disc img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-out); }
+  .spa-item:hover .spa-item__disc img { transform: scale(1.07); }
+  .spa-item__no { font-family: var(--font-display); font-style: italic; font-size: 1.05rem; color: var(--gold-deep); margin-top: 1.1rem; line-height: 1; }
+  .spa-item__title { font-size: var(--step-1); color: var(--wine); line-height: 1.18; margin-top: 0.35rem; max-width: 26ch; transition: color var(--dur); }
+  .spa-item:hover .spa-item__title { color: var(--gold-deep); }
+  .spa-item__cta {
+    margin-top: 0.6rem;
+    font-family: var(--font-display); font-style: italic; font-size: 1rem; color: var(--gold-deep);
+    text-transform: lowercase;
+    border-bottom: 1px solid rgba(201, 138, 46, 0.55); padding-bottom: 1px;
+  }
+  .spa-item__cta::first-letter { text-transform: uppercase; }
+
+  @media (max-width: 940px) {
+    .spa-intro__grid, .spa-benefits__grid { grid-template-columns: 1fr; }
+    .plate { justify-self: start; }
+    .spa-menu__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) { .spa-menu__grid { grid-template-columns: 1fr; gap: 2.8rem; } }
+</style>

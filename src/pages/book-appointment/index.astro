@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DawnHero from '../../components/DawnHero.astro';
+import { getJsonLd } from '../../lib/seo';
+
+// DESIGNED route for the WP "Book Appointment Online" page. All text verbatim.
+const entry = (await getCollection('pages')).find((e) => e.data.slug === 'book-appointment')!;
+const d = entry.data;
+---
+<BaseLayout
+  title={d.title} description={d.description} canonical={d.canonical} robots={d.robots}
+  ogTitle={d.ogTitle} ogDescription={d.ogDescription} ogImage={d.ogImage} ogType={d.ogType}
+  jsonLd={getJsonLd('pages', d.slug)}
+>
+  <DawnHero title="Book Appointment Online" crumb={false} />
+
+  <section class="ba">
+    <div class="container--narrow">
+      <p class="lead dropcap" data-reveal>To book appointment(s) with Ayurvedic Wellness Centre online select your Appointment Type, then choose your date range. The list below will show you availability for 7 days, you can then select the suitable time slot for your appointment(s). To be able to manage all your bookings online you will need to register for a Mindbody account.</p>
+
+      <!-- Mindbody (Healcode) appointments widget — same embed as the live site -->
+      <div class="ba-widget" data-reveal>
+        <script src="https://widgets.healcode.com/javascripts/healcode.js" type="text/javascript" is:inline></script>
+        <healcode-widget data-type="appointments" data-widget-partner="mb" data-widget-id="7820881ea90" data-widget-version="0.1"></healcode-widget>
+      </div>
+
+      <div class="ba-info" data-reveal>
+        <h2 class="ba-info__title">Important Booking Information</h2>
+        <ol class="ba-list" role="list">
+          <li><p><strong>To book for more than 1 person</strong> (Couples Massage) you will need to complete two separate bookings (for each person) under a different therapist. Alternatively, you can always give us a call <a href="tel:0293892581">02 9389 2581</a>.</p></li>
+          <li><p>Please note, if it is <strong>less than 24 hours</strong> before your desired booking or if you can’t find the booking of your choice online please call us at <a href="tel:0293892581">02 9389-2581</a> to book with reception.</p></li>
+          <li><p><strong>For bookings on Sundays</strong> please call reception.</p></li>
+        </ol>
+      </div>
+
+      <div class="ba-cta" data-reveal>
+        <a class="ba-btn" href="tel:0293892581">Call 02 9389 2581</a>
+        <a class="ba-btn ba-btn--ghost" href="/contact-us/">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .ba { padding-block: clamp(3rem, 6vw, 5rem) clamp(4rem, 9vw, 8rem); }
+  .lead { font-size: var(--step-1); line-height: 1.6; color: var(--ink); }
+  .dropcap::first-letter { font-family: var(--font-display); font-size: 2.9em; line-height: 0.78; float: left; padding-right: 0.12em; color: var(--wine); }
+
+  /* the Mindbody widget, mounted on a gold-framed plate */
+  .ba-widget {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    position: relative;
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: clamp(1rem, 2.5vw, 1.8rem);
+    min-height: 18rem;
+  }
+  .ba-widget::after {
+    content: ''; position: absolute; inset: 0; translate: 13px 13px;
+    border: 1px solid var(--gold-deep); opacity: 0.5; z-index: -1;
+  }
+
+  .ba-info { margin-top: clamp(2.5rem, 5vw, 4rem); border-top: 1px solid var(--line); padding-top: clamp(1.8rem, 3.5vw, 2.6rem); }
+  .ba-info__title { font-size: var(--step-2); color: var(--wine); }
+  .ba-list { margin-top: 1.4rem; counter-reset: n; padding: 0; display: grid; gap: 1.2rem; }
+  .ba-list li { counter-increment: n; position: relative; padding-left: 3.2em; }
+  .ba-list li::before {
+    content: '0' counter(n);
+    position: absolute; left: 0; top: -0.1em;
+    font-family: var(--font-display); font-style: italic; font-size: 1.6rem; color: var(--gold-deep);
+  }
+  .ba-list p { line-height: var(--leading-body); color: var(--ink-soft); }
+  .ba-list strong { color: var(--ink); }
+  .ba-list a { color: var(--wine); font-weight: 600; text-decoration: underline; text-decoration-color: var(--gold-deep); text-underline-offset: 3px; }
+  .ba-list a:hover { color: var(--gold-deep); }
+
+  .ba-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: clamp(2.2rem, 4.5vw, 3.5rem); }
+  .ba-btn {
+    display: inline-flex; align-items: center;
+    font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 1.05em 2.1em; border-radius: var(--radius-pill);
+    background: var(--gold); color: var(--espresso);
+    transition: background var(--dur-fast);
+  }
+  .ba-btn:hover { background: var(--gold-deep); }
+  .ba-btn--ghost { background: transparent; color: var(--wine); box-shadow: inset 0 0 0 1.5px var(--wine); }
+  .ba-btn--ghost:hover { background: var(--wine); color: var(--paper); }
+</style>

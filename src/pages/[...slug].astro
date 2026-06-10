@@ -6,12 +6,16 @@ import { formatDate, readingTime } from '../lib/content';
 
 export async function getStaticPaths() {
   // Render EVERY post + page at its exact original URL (noindex preserved via robots).
-  // Excluded only: the homepage (path '/', replaced by the designed index) and the
-  // 'shop' page (replaced by the designed /shop/ product index).
+  // Excluded only: pages replaced by designed routes — the homepage ('/'),
+  // the 'shop' product index, and the 'ayurvedic-treatments' A–Z directory.
   const blog = await getCollection('blog');
   const pages = await getCollection('pages');
+  const designed = new Set([
+    'shop', 'ayurvedic-treatments', 'ayurvedic-spa', 'detox-clinic',
+    'about-us', 'contact-us', 'book-appointment',
+  ]);
   return [...blog, ...pages]
-    .filter((e) => !e.data.draft && e.data.path !== '/' && e.data.slug !== 'shop')
+    .filter((e) => !e.data.draft && e.data.path !== '/' && !designed.has(e.data.slug))
     .map((entry) => ({
       // full path (handles nested URLs like /about/rita-sagrani/)
       params: { slug: entry.data.path.replace(/^\/|\/$/g, '') },

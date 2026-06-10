@@ -5,7 +5,7 @@ const { eyebrow, title, intro } = Astro.props;
 ---
 <section class="page-hero">
   <div class="container--narrow text-center">
-    {eyebrow && <p class="eyebrow eyebrow--center page-hero__eyebrow">{eyebrow}</p>}
+    {eyebrow && <p class="kicker page-hero__kicker">{eyebrow}</p>}
     <h1 class="page-hero__title">{title}</h1>
     {intro && <p class="page-hero__intro">{intro}</p>}
     <Ornament variant="divider" class="page-hero__ornament" />
@@ -13,9 +13,16 @@ const { eyebrow, title, intro } = Astro.props;
 </section>
 
 <style>
-  .page-hero { padding-top: clamp(3rem, 6vw, 5.5rem); padding-bottom: 1rem; }
-  .page-hero__eyebrow { color: var(--taupe); margin-bottom: 1rem; }
-  .page-hero__title { font-size: var(--step-5); }
+  /* dawn: every page opens in first light */
+  .page-hero {
+    padding-top: clamp(3.5rem, 7vw, 6rem);
+    padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    background:
+      radial-gradient(70vw 34vh at 50% 100%, rgba(253, 197, 120, 0.28), transparent 70%),
+      linear-gradient(to bottom, var(--paper), #f9f1e2);
+  }
+  .page-hero__kicker { margin-bottom: 0.9rem; }
+  .page-hero__title { font-size: var(--step-5); letter-spacing: -0.01em; }
   .page-hero__intro { margin: 1.3rem auto 0; max-width: 50ch; font-size: var(--step-1); color: var(--taupe); line-height: 1.5; }
   .page-hero__ornament { margin: 2rem auto 0; max-width: 16rem; }
 </style>

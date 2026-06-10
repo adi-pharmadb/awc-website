@@ -1,0 +1,171 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Ornament from '../../components/Ornament.astro';
+import { getJsonLd } from '../../lib/seo';
+
+// DESIGNED route for the WP "Ayurvedic Treats A-Z" page. Every word, link and
+// image comes verbatim from the migrated entry body; only the presentation is
+// ours (letter-grouped directory in the conditions-index language).
+const entry = (await getCollection('pages')).find((e) => e.data.slug === 'ayurvedic-treatments')!;
+const d = entry.data;
+const body = entry.body ?? '';
+
+// the page's own H1 (verbatim)
+const pageH1 = body.match(/^#\s+(.+)$/m)?.[1]?.trim() ?? 'Ayurvedic Treats A-Z';
+// the page's own section heading (verbatim)
+const sectionH2 = body.match(/^##\s+(.+)$/m)?.[1]?.trim() ?? '';
+// the page's one photograph (verbatim src + alt)
+const photo = body.match(/!\[([^\]]*)\]\((\/wp-content[^\s)]+)/);
+// intro paragraphs: everything before the first #### entry, minus headings/images
+const intro = body
+  .split(/\n####\s/)[0]
+  .split('\n')
+  .map((l) => l.trim())
+  .filter((l) => l && !l.startsWith('#') && !l.startsWith('!['))
+  .filter((l) => l !== '[Home](/)');
+// the A–Z entries: verbatim title + verbatim link label + href
+const items = [...body.matchAll(/####\s+(.+?)\s*\n+\[([^\]]+)\]\(([^)]+)\)/g)].map((m) => ({
+  title: m[1].trim(),
+  label: m[2].trim(),
+  href: m[3].trim(),
+}));
+// group by first letter
+const groups: { letter: string; items: typeof items }[] = [];
+for (const it of items) {
+  const letter = it.title[0].toUpperCase();
+  const g = groups.at(-1);
+  if (g && g.letter === letter) g.items.push(it);
+  else groups.push({ letter, items: [it] });
+}
+// inline markdown links inside intro paragraphs -> anchors (text verbatim)
+const linkify = (s: string) =>
+  s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+---
+<BaseLayout
+  title={d.title}
+  description={d.description}
+  canonical={d.canonical}
+  robots={d.robots}
+  ogTitle={d.ogTitle}
+  ogDescription={d.ogDescription}
+  ogImage={d.ogImage}
+  ogType={d.ogType}
+  jsonLd={getJsonLd('pages', d.slug)}
+>
+  <!-- dawn hero -->
+  <header class="atoz-hero">
+    <div class="container--narrow text-center">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a></nav>
+      <h1>{pageH1}</h1>
+      <Ornament variant="divider" class="atoz-hero__ornament" />
+    </div>
+  </header>
+
+  <!-- verbatim introduction, set as an editorial spread -->
+  <section class="atoz-intro">
+    <div class="container atoz-intro__grid">
+      <div data-reveal>
+        <p class="kicker">{sectionH2}</p>
+        {intro.map((p, i) => (
+          <p class:list={['atoz-intro__p', { dropcap: i === 0 }]} set:html={linkify(p)} />
+        ))}
+      </div>
+      {photo && (
+        <figure class="atoz-intro__plate" data-reveal style="--reveal-delay: 120ms">
+          <img src={photo[2]} alt={photo[1]} width="600" height="600" loading="lazy" />
+        </figure>
+      )}
+    </div>
+  </section>
+
+  <!-- the A–Z directory -->
+  <section class="atoz">
+    <div class="container--narrow">
+      {groups.map((g) => (
+        <div class="atoz__group" data-reveal>
+          <span class="atoz__letter" aria-hidden="true">{g.letter.toLowerCase()}</span>
+          <ul role="list">
+            {g.items.map((it) => (
+              <li>
+                <a href={it.href}>
+                  <span class="atoz__name">{it.title}</span>
+                  <span class="atoz__go">{it.label}<i aria-hidden="true">›</i></span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .atoz-hero {
+    padding-top: clamp(3.5rem, 7vw, 6rem);
+    padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    background:
+      radial-gradient(70vw 34vh at 50% 100%, rgba(253, 197, 120, 0.28), transparent 70%),
+      linear-gradient(to bottom, var(--paper), #f9f1e2);
+  }
+  .crumbs { font-size: 0.7rem; text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--mushroom); margin-bottom: 1.4rem; }
+  .crumbs a:hover { color: var(--wine); }
+  .atoz-hero h1 { font-size: var(--step-5); letter-spacing: -0.01em; }
+  .atoz-hero__ornament { margin: 2rem auto 0; max-width: 16rem; }
+
+  .atoz-intro { padding-block: clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem); }
+  .atoz-intro__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(2.5rem, 6vw, 5rem); align-items: start; }
+  .atoz-intro__p { max-width: 58ch; line-height: var(--leading-body); color: var(--ink-soft); }
+  .atoz-intro__p + .atoz-intro__p { margin-top: 1.2rem; }
+  .kicker + .atoz-intro__p { margin-top: 1.4rem; }
+  .atoz-intro__p :global(a) { color: var(--wine); font-weight: 600; text-decoration: underline; text-decoration-color: var(--gold-deep); text-underline-offset: 3px; }
+  .atoz-intro__p :global(a:hover) { color: var(--gold-deep); }
+  .dropcap::first-letter {
+    font-family: var(--font-display); font-size: 3.1em; line-height: 0.78;
+    float: left; padding-right: 0.12em; color: var(--wine);
+  }
+  .atoz-intro__plate { margin: 0; position: relative; max-width: 24rem; justify-self: end; }
+  .atoz-intro__plate::after { content: ''; position: absolute; inset: 0; translate: 12px 12px; border: 1px solid var(--gold-deep); opacity: 0.5; z-index: -1; }
+  .atoz-intro__plate img { width: 100%; border: 1px solid var(--line); display: block; }
+
+  .atoz { padding-bottom: clamp(4rem, 8vw, 7rem); }
+  .atoz__group {
+    display: grid; grid-template-columns: 84px 1fr; gap: clamp(1rem, 3vw, 2.5rem);
+    padding-top: clamp(1.8rem, 3.5vw, 2.6rem);
+  }
+  .atoz__group + .atoz__group { margin-top: clamp(1rem, 2vw, 1.6rem); }
+  .atoz__letter {
+    font-family: var(--font-display); font-style: italic;
+    font-size: clamp(3rem, 5vw, 4.4rem); line-height: 0.9;
+    color: var(--gold-deep); opacity: 0.85;
+  }
+  .atoz__group ul { border-top: 1px solid var(--line); }
+  .atoz__group li { border-bottom: 1px solid var(--line); }
+  .atoz__group a {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 1.2rem;
+    padding: 1.05rem 0.4rem;
+    transition: padding-left var(--dur) var(--ease-out);
+  }
+  .atoz__group a:hover { padding-left: 1.1rem; }
+  .atoz__name { font-family: var(--font-display); font-size: var(--step-1); color: var(--wine); line-height: 1.25; }
+  .atoz__go {
+    flex-shrink: 0;
+    font-family: var(--font-display); font-style: italic; font-size: 0.95rem;
+    color: var(--gold-deep);
+    text-transform: lowercase;
+    display: inline-flex; gap: 0.4em; align-items: baseline;
+    opacity: 0; transform: translateX(-6px);
+    transition: opacity var(--dur), transform var(--dur) var(--ease-out);
+  }
+  .atoz__go::first-letter { text-transform: uppercase; }
+  .atoz__go i { font-style: normal; }
+  .atoz__group a:hover .atoz__go { opacity: 1; transform: none; }
+
+  @media (max-width: 760px) {
+    .atoz-intro__grid { grid-template-columns: 1fr; }
+    .atoz-intro__plate { justify-self: start; }
+    .atoz__group { grid-template-columns: 48px 1fr; }
+    .atoz__go { display: none; }
+  }
+</style>

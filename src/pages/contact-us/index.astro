@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DawnHero from '../../components/DawnHero.astro';
+import { getJsonLd } from '../../lib/seo';
+
+// DESIGNED route for the WP "Contact Us" page. All text verbatim.
+const entry = (await getCollection('pages')).find((e) => e.data.slug === 'contact-us')!;
+const d = entry.data;
+const mapsHref = 'https://www.google.com/maps/place/Ayurvedic+Wellness+Centre/@-33.8914421,151.2513063,17z/data=!3m1!4b1!4m5!3m4!1s0x6b12adf267125b9b:0x6a1b15808299332f!8m2!3d-33.8914421!4d151.253495';
+---
+<BaseLayout
+  title={d.title} description={d.description} canonical={d.canonical} robots={d.robots}
+  ogTitle={d.ogTitle} ogDescription={d.ogDescription} ogImage={d.ogImage} ogType={d.ogType}
+  jsonLd={getJsonLd('pages', d.slug)}
+>
+  <DawnHero title="Contact Us" />
+
+  <section class="cu">
+    <div class="container--narrow">
+      <h2 class="cu__line text-center" data-reveal>Drop Us a Line</h2>
+
+      <div class="cu-plaque" data-reveal>
+        <div class="cu-cell">
+          <h3 class="cu-cell__title">Wellness Centre Sydney</h3>
+          <a class="cu-cell__big" href={mapsHref} target="_blank" rel="noopener">1 Bondi Rd, Bondi Junction NSW 2022, Australia</a>
+        </div>
+        <div class="cu-cell">
+          <h3 class="cu-cell__title">Opening Hours</h3>
+          <p class="cu-cell__big">Monday - Sunday 8am - 8pm</p>
+          <a class="cu-cell__tel" href="tel:0293892581">02 9389 2581</a>
+        </div>
+      </div>
+
+      <p class="cu__note" data-reveal><em>Please note, if it is less than 24 hours before your desired booking or if you can’t find the booking of your choice online please call us to book with reception.</em></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cu { padding-block: clamp(3rem, 6vw, 5rem) clamp(4rem, 9vw, 8rem); }
+  .cu__line { font-size: var(--step-3); color: var(--wine); }
+
+  .cu-plaque {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    border: 1px solid var(--espresso); background: #fffdf8;
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+  .cu-plaque::before, .cu-plaque::after { content: ''; position: absolute; width: 14px; height: 14px; border-color: var(--gold-deep); border-style: solid; }
+  .cu-plaque::before { top: -5px; left: -5px; border-width: 2px 0 0 2px; }
+  .cu-plaque::after { bottom: -5px; right: -5px; border-width: 0 2px 2px 0; }
+  .cu-cell { padding: clamp(1.6rem, 3.5vw, 2.6rem); display: grid; gap: 0.7rem; align-content: start; }
+  .cu-cell + .cu-cell { border-left: 1px solid var(--line); }
+  .cu-cell__title { font-family: var(--font-sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--taupe); }
+  .cu-cell__big { font-family: var(--font-display); font-size: var(--step-1); color: var(--wine); line-height: 1.35; }
+  a.cu-cell__big:hover { color: var(--gold-deep); }
+  .cu-cell__tel { font-family: var(--font-display); font-style: italic; font-size: var(--step-1); color: var(--gold-deep); justify-self: start; border-bottom: 1px solid rgba(201, 138, 46, 0.55); }
+  .cu-cell__tel:hover { color: var(--wine); }
+
+  .cu__note { margin-top: 2rem; text-align: center; font-family: var(--font-display); color: var(--taupe); font-size: var(--step-0); line-height: 1.6; }
+
+  @media (max-width: 700px) {
+    .cu-plaque { grid-template-columns: 1fr; }
+    .cu-cell + .cu-cell { border-left: 0; border-top: 1px solid var(--line); }
+  }
+</style>

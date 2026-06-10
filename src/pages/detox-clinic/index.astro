@@ -1,0 +1,108 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DawnHero from '../../components/DawnHero.astro';
+import { getJsonLd } from '../../lib/seo';
+
+// DESIGNED route for the WP "Detox Clinic" page. All text and images verbatim.
+const entry = (await getCollection('pages')).find((e) => e.data.slug === 'detox-clinic')!;
+const d = entry.data;
+---
+<BaseLayout
+  title={d.title} description={d.description} canonical={d.canonical} robots={d.robots}
+  ogTitle={d.ogTitle} ogDescription={d.ogDescription} ogImage={d.ogImage} ogType={d.ogType}
+  jsonLd={getJsonLd('pages', d.slug)}
+>
+  <DawnHero title="Detox Clinic" />
+  <span class="visually-hidden">Pre Heading</span>
+
+  <section class="dc-intro">
+    <div class="container dc-intro__grid">
+      <div data-reveal>
+        <p class="kicker">Ayurvedic Liver Body Detox Program in Sydney</p>
+        <p class="lead dropcap">In Ayurveda it important to rid the body of toxins using our liver body detox program, so that new cells have the opportunity to be as healthy as possible which assist with an individual being healthy and feeling well. One way to do this is to do in Ayurveda what is called a Panchakarma or a liver body Detox. Panchakarma is a deep and thorough cleansing of the tissues of the body. It requires proper guidance from a highly trained Ayurvedic Doctor from one of our Detox Clinic.</p>
+        <p class="body-p"><strong>Liver Body Detox is an important part of Ayurveda and the Ayurvedic Wellness Centre can get you started.</strong></p>
+        <p class="body-p">In Ayurveda it important to rid the body of toxins using our liver body detox program, so that new cells have the opportunity to be as healthy as possible which assist with an individual being healthy and feeling well. One way to do this is to do in Ayurveda what is called a Panchakarma or a liver body Detox. Panchakarma is a deep and thorough cleansing of the tissues of the body. It requires proper guidance from a highly trained Ayurvedic Doctor from one of our Detox Clinic.</p>
+        <p class="body-p">A specific Panchakarma program is devised with each individual’s constitution, disorders or needs in mind and body and requires close observation and supervision. As a client at our Detox Clinic, you’ll feel that your Indian Ayurvedic therapist is in tune with your body and is intuitive to its needs to deliver your treatment in perfect harmony. Treatment will vary according to each person’s individuality and needs. Results will depend on how the client’s body reacts to particular detoxification processes.</p>
+        <p class="body-p">Pancha means “five” and karma means “actions” as Panchakarma comprises five types of treatment for clearing excess doshas and removing toxins. These practices are extremely helpful in relieving deep seated diseases as well as for maintaining and improving physical and mental health. Our Detox Clinic program helps the body to remove stress and illness-causing toxins and will help to balance life forces or dosha. <em>Panchakarma</em> aims on the prevention of disease, restoration of good health and rejuvenation of the body.</p>
+      </div>
+      <figure class="plate" data-reveal style="--reveal-delay: 120ms">
+        <img src="/wp-content/uploads/elementor/thumbs/specials2-rkuf53d95bdimr74ngry7r9unfjjosgvf69xwd00og.jpg" alt="specials2" width="600" height="400" loading="lazy" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- the two ritual lists, paired -->
+  <section class="dc-lists">
+    <div class="container dc-lists__grid">
+      <div data-reveal>
+        <h2 class="dc-h3">Here are the benefits of this alternative and Ayurvedic remedy for an under-active thyroid:</h2>
+        <ol class="dc-list" role="list">
+          <li>Elimination of harmful toxins.</li>
+          <li>Restore balance, vitality and harmony within one’s environment.</li>
+          <li>Strengthen immune defence to illness and stress.</li>
+          <li>Reverse the harmful effects of oxidation process in the body.</li>
+          <li>Delay ageing process.</li>
+          <li>Enhance strength, vitality, energy and mental capacity.</li>
+          <li>Relaxation techniques.</li>
+          <li>Promote good health and sense of well-being.</li>
+        </ol>
+      </div>
+      <div data-reveal style="--reveal-delay: 120ms">
+        <h2 class="dc-h3"><em>Pre-Treatment consultation, assessments and recommendations with our Ayurvedic Doctors:</em></h2>
+        <ol class="dc-list" role="list">
+          <li>Assessment of Body Type/Doshas.</li>
+          <li>Pulse diagnosis and tongue diagnosis.</li>
+          <li>Treatments are prescribed.</li>
+          <li>Diet advised to suit your body type.</li>
+          <li>Self healing methods. Some herbs to take prior to treatment.</li>
+          <li>Other recommendations.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- closing, verbatim -->
+  <section class="dc-close">
+    <div class="container--narrow text-center" data-reveal>
+      <p class="body-p dc-close__p">Once you experience the beautiful detoxifying treatment of a Panchakarma you will know why it is so important to your physical and mental well being. The changing of the seasons is always a good time to take some time out for yourself and get back on track, restoring balance and harmony by freeing your mind and body of its accumulated toxins. Panchakarma is an excellent way to jump start your weight loss and it is an exceptional way to propel yourself to optimal health.</p>
+      <p class="dc-close__call">Call us to make a booking today <a class="rcall" href="tel:0293892581">(02) 9389 2581.</a></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lead { font-size: var(--step-1); line-height: 1.6; color: var(--ink); max-width: 58ch; }
+  .body-p { margin-top: 1.2rem; line-height: var(--leading-body); color: var(--ink-soft); max-width: 58ch; }
+  .dropcap::first-letter { font-family: var(--font-display); font-size: 2.9em; line-height: 0.78; float: left; padding-right: 0.12em; color: var(--wine); }
+  .kicker + .lead { margin-top: 1.3rem; }
+  .plate { margin: 0; position: relative; max-width: 24rem; justify-self: end; position: sticky; top: 7rem; }
+  .plate::after { content: ''; position: absolute; inset: 0; translate: 12px 12px; border: 1px solid var(--gold-deep); opacity: 0.5; z-index: -1; }
+  .plate img { width: 100%; border: 1px solid var(--line); display: block; }
+
+  .dc-intro { padding-block: clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 3.5rem); }
+  .dc-intro__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(2.5rem, 6vw, 5rem); align-items: start; }
+
+  .dc-lists { background: var(--paper-2); border-block: 1px solid var(--line); padding-block: clamp(2.5rem, 5vw, 4rem); }
+  .dc-lists__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 6vw, 5rem); align-items: start; }
+  .dc-h3 { font-size: var(--step-1); color: var(--wine); line-height: 1.3; max-width: 34ch; }
+  .dc-h3 em { font-style: italic; }
+  .dc-list { margin-top: 1.3rem; counter-reset: n; padding: 0; display: grid; gap: 0.75rem; }
+  .dc-list li { counter-increment: n; position: relative; padding-left: 2.4em; color: var(--ink-soft); }
+  .dc-list li::before {
+    content: '0' counter(n);
+    position: absolute; left: 0; top: 0.05em;
+    font-family: var(--font-display); font-style: italic; color: var(--gold-deep);
+  }
+
+  .dc-close { padding-block: clamp(3rem, 6vw, 5rem) clamp(4rem, 8vw, 6rem); }
+  .dc-close__p { margin-inline: auto; }
+  .dc-close__call { margin-top: 2rem; font-family: var(--font-display); font-size: var(--step-2); color: var(--wine); line-height: 1.3; }
+  .rcall { font-style: italic; color: var(--gold-deep); border-bottom: 1px solid rgba(201, 138, 46, 0.55); }
+  .rcall:hover { color: var(--wine); }
+
+  @media (max-width: 940px) {
+    .dc-intro__grid, .dc-lists__grid { grid-template-columns: 1fr; }
+    .plate { position: static; justify-self: start; }
+  }
+</style>
