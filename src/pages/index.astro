@@ -1,14 +1,67 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getJsonLd } from '../lib/seo';
 
-// PHASE 1 — faithful content port. The homepage renders the REAL front-page
-// content (every word + image, verbatim) in a clean, neutral layout.
-// Design comes in a later pass.
+// PHASE 2 — "Materia Medica": the homepage as the clinic's working treatment
+// register (ticker, register card, ruled tables, numbered sections), with the
+// emotional chapters drenched in dusk (wine -> espresso -> navy). All migrated
+// front-page content renders verbatim; the register furniture around it is
+// sourced from real site facts and links to real pages.
 const entry = (await getCollection('pages')).find((e) => e.data.slug === 'new-home-page')!;
-const { Content } = await render(entry);
 const d = entry.data;
+
+// Written testimonials: verbatim quotes from the migrated collection.
+const testimonialEntries = await getCollection('testimonials');
+const writtenOrder = [
+  'Ashna Basu', 'Yan Ddd', 'Elvia Cacciotti', 'Heidi Gulla', 'Rachna Bhardwaj',
+  'Manju Singh', 'Bhavna Dahiya', 'Gary McKinlay', 'Dr Veronica Ortiz',
+  'Adrienn Gyenes', 'SC, Sydney', 'Achamma Kurlekar',
+];
+const written = writtenOrder.map((name) => {
+  const e = testimonialEntries.find((t) => t.data.title.startsWith(`${name} |`));
+  const body = e?.body ?? '';
+  const label = body.match(/\*\*(.+?)\*\*/)?.[1]?.trim() ?? '';
+  const quoted = [...body.matchAll(/“([^”]+)”/g)].map((m) => m[1].trim());
+  const firstPara =
+    body.split('\n').map((l) => l.trim()).filter((l) => l && !l.startsWith('**') && !l.startsWith('!['))[0] ?? '';
+  let quote = quoted.sort((a, b) => b.length - a.length)[0] ?? '';
+  if (quote.length < 25) quote = firstPara;
+  if (quote.length > 230) {
+    const cut = quote.slice(0, 230);
+    const stop = cut.lastIndexOf('. ');
+    quote = stop > 80 ? cut.slice(0, stop + 1) : `${cut.slice(0, cut.lastIndexOf(' '))}…`;
+  }
+  return { name, label, quote, href: e?.data.path ?? '' };
+});
+
+// Video testimonials — ids, titles and durations exactly as on the live page.
+const videos = [
+  { id: 'TqYTwx-Zt48', title: 'Ayurvedic Wellness Centre - Client Testimonial', dur: '1:37', thumb: '/wp-content/uploads/2023/12/maxresdefault.jpg' },
+  { id: '5SfGs95BicY', title: 'Ayurvedic Wellness Centre - Client Testimonial', dur: '1:09', thumb: 'https://img.youtube.com/vi/5SfGs95BicY/maxresdefault.jpg' },
+  { id: '3bDjSjIpJok', title: 'Ayurvedic Wellness Centre - Client Testimonial', dur: '1:06', thumb: 'https://img.youtube.com/vi/3bDjSjIpJok/maxresdefault.jpg' },
+  { id: 'xQEs6BbSMjE', title: 'Ayurvedic Wellness Centre- Client Testimonial', dur: '1:01', thumb: 'https://img.youtube.com/vi/xQEs6BbSMjE/maxresdefault.jpg' },
+  { id: 'uHmV0C3uIZ0', title: 'Transforming dreams into reality – Client Testimonial 🌟 #ayurvedalifestyle', dur: '0:44', thumb: 'https://img.youtube.com/vi/uHmV0C3uIZ0/maxresdefault.jpg' },
+  { id: 'L-pDqMd9BjM', title: 'Ayurvedic Wellness Centre - Client Testimonial', dur: '0:33', thumb: 'https://img.youtube.com/vi/L-pDqMd9BjM/maxresdefault.jpg' },
+  { id: 'P82hGf7kz_4', title: 'Ayurvedic Wellness Centre - Client Testimonial', dur: '0:32', thumb: 'https://img.youtube.com/vi/P82hGf7kz_4/maxresdefault.jpg' },
+  { id: 'SpZeN08BUQw', title: 'Ayurvedic Wellness Centre - Client Testimonial', dur: '0:59', thumb: 'https://img.youtube.com/vi/SpZeN08BUQw/maxresdefault.jpg' },
+  { id: 'x3BOD2p-tT4', title: 'Ayurvedic Wellness Centre - Client Testimonial #Abhyanga #Basti', dur: '0:37', thumb: 'https://img.youtube.com/vi/x3BOD2p-tT4/maxresdefault.jpg' },
+];
+
+// Ticker: real treatments, real URLs.
+const ticker = [
+  { name: 'Shirodhara', note: 'warm oil · third eye', tag: 'stress ▼', href: '/services/shirodhara-treatment-bondi-sydney/' },
+  { name: 'Panchakarma', note: '5 · 7 · 9 day plans', tag: 'detox', href: '/services/panchakarma-ayurvedic-detox-sydney/' },
+  { name: 'Full Body Massage', note: 'warm herbal oils', tag: 'fatigue ▼', href: '/services/full-body-massage-bondi-junction-sydney/' },
+  { name: 'Champi', note: 'head & shoulder', tag: 'tension ▼', href: '/services/champi-head-shoulder-massage/' },
+  { name: 'Greeva Basti', note: 'neck & upper spine', tag: 'stiffness ▼', href: '/services/greeva-basti/' },
+  { name: 'Nasya', note: 'nasal therapy', tag: 'sinus ▼', href: '/services/ayurveda-nasya-treatment/' },
+  { name: 'Janu Basti', note: 'knee · warm oil', tag: 'joint pain ▼', href: '/services/janu-basti/' },
+  { name: 'Rasayan', note: 'rejuvenation therapy', tag: 'vitality ▲', href: '/services/ayurveda-rasayan-therapy/' },
+  { name: 'Consultations', note: 'pulse diagnosis · daily', tag: 'book →', href: '/book-appointment/' },
+];
+
+const separator = '/wp-content/uploads/2023/05/asset_header_separator.svg';
 ---
 <BaseLayout
   title={d.title}
@@ -19,16 +72,716 @@ const d = entry.data;
   jsonLd={getJsonLd('pages', d.slug)}
   bodyClass="home"
 >
-  <div class="page">
-    <div class="container">
-      <div class="prose">
-        <Content />
-      </div>
+  <!-- ============================================================ ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      {[...ticker, ...ticker].map((t) => (
+        <a href={t.href} tabindex="-1"><b>{t.name}</b><i>{t.note}</i><u>{t.tag}</u><span class="tsep">·</span></a>
+      ))}
     </div>
   </div>
+
+  <!-- ========================================================= jump bar -->
+  <nav class="jumps" aria-label="Sections">
+    <a class="jump" href="#treatments"><span><b>01</b>The Treatments</span><span class="go">Jump ↓</span></a>
+    <a class="jump" href="#ayurveda"><span><b>02</b>What Is Ayurveda</span><span class="go">Jump ↓</span></a>
+    <a class="jump" href="#panchakarma"><span><b>03</b>Panchakarma</span><span class="go">Jump ↓</span></a>
+    <a class="jump" href="#story"><span><b>04</b>Real Life Story</span><span class="go">Jump ↓</span></a>
+    <a class="jump" href="#about"><span><b>05</b>About &amp; Doctors</span><span class="go">Jump ↓</span></a>
+    <a class="jump" href="#testimonials"><span><b>06</b>Testimonials</span><span class="go">Jump ↓</span></a>
+  </nav>
+
+  <!-- ============================================================= hero -->
+  <header class="hero rwrap">
+    <div class="hero__main">
+      <p class="kicker">A touch of ancient healing wisdom</p>
+      <h1>Authentic <em>Ayurveda</em> Experiences In&nbsp;Sydney</h1>
+      <p class="hero__sub">Treating stress &amp; anxiety, digestive issues, skin concerns and so much more.</p>
+      <div class="cta-row">
+        <a class="rbtn" href="/book-appointment/">Find Out More</a>
+        <a class="rbtn rbtn--ghost" href="tel:0293892581">Call Now</a>
+      </div>
+    </div>
+    <aside class="hero__aside" data-reveal>
+      <div class="register">
+        <div class="register__head">
+          <span class="meta dot">The Register</span>
+          <span class="meta loc">Bondi Junction · today</span>
+          <span class="meta tag">Consulting</span>
+        </div>
+        <div class="register__grid">
+          <div class="rcell">
+            <span class="meta">Years in practice</span>
+            <span class="val">14</span>
+            <span class="note">since 2011 · same rooms</span>
+          </div>
+          <div class="rcell">
+            <span class="meta">Ayurvedic doctors</span>
+            <span class="val">2</span>
+            <span class="note">B.A.M.S. · M.D.</span>
+          </div>
+          <div class="rcell">
+            <span class="meta">Treatments, A–Z</span>
+            <span class="val">55</span>
+            <span class="note">consultation-prescribed</span>
+          </div>
+          <div class="rcell">
+            <span class="meta">Panchakarma plans</span>
+            <span class="val">5·7·9</span>
+            <span class="note">days · bespoke</span>
+          </div>
+        </div>
+        <div class="register__src"><b>Sources</b>&ensp;pulse diagnosis · consultation · panchakarma register · AAA</div>
+      </div>
+      <a class="dosha" href="/what-is-your-dosha">
+        <div>
+          <span class="dosha__title">Get A Free Quiz To Discover Your DOSHA!</span>
+          <span class="dosha__note">Sign up to our newsletter text, or something more in-depth to give more context to what’s behind the quiz.</span>
+        </div>
+        <span class="rbtn rbtn--gold">Download Now</span>
+      </a>
+    </aside>
+  </header>
+
+  <!-- ============================================== 01 · the treatments -->
+  <section class="sec" id="treatments">
+    <div class="rwrap">
+      <header class="sec__head" data-reveal>
+        <span class="meta right">Prescribed after consultation · A–Z</span>
+        <span class="meta no">01 · The Treatments</span>
+        <p class="kicker">A touch of ancient healing wisdom</p>
+        <h2>14 Years Offering <em>Authentic Ayurvedic Treatments</em> in Bondi Junction, Sydney</h2>
+        <img class="flourish" src={separator} alt="" width="398" height="36" loading="lazy" />
+        <p class="lede">Ayurveda is something to experience and is not just a normal “massage”. The ancient Indian practice of rejuvenation comes from a place of reverence and the heart. For the first time, you can experience a complete range of authentic Ayurveda massage therapies, right here in Bondi Junction, Sydney. What’s more, you can choose to have a consultation with our qualified Doctors or our Ayurvedic Consultants.</p>
+      </header>
+
+      <div class="ledger" data-reveal>
+        <article class="lrow">
+          <figure class="lplate">
+            <img src="/wp-content/uploads/elementor/thumbs/CONSULTATIONS-rkuf582g3hjy8t0aw0t32835mcwdr9zj3tjdaqt1tc.webp" alt="CONSULTATIONS" width="900" height="600" loading="lazy" />
+          </figure>
+          <div class="lbody">
+            <h3>Ayurvedic Consultations</h3>
+            <p>Meet our doctors- Dr.Deepika Kaushal and Dr.Taruna Yadav.<br />Our experienced and qualified M.D. ayurvedic doctors have expertise in diagnosing and treating all health issues.</p>
+          </div>
+          <div class="lgo"><a href="/ayurvedic-doctor/">More about Our Ayurvedic Doctors ›</a></div>
+        </article>
+        <article class="lrow">
+          <figure class="lplate">
+            <img src="/wp-content/uploads/elementor/thumbs/Ayurveda-treats-A-Z-_Herbs_2-1-rkuf582g3hjy8t0aw0t32835mcwdr9zj3tjdaqt1tc.webp" alt="Ayurveda massage therapies Sydney" width="900" height="600" loading="lazy" />
+          </figure>
+          <div class="lbody">
+            <h3>Ayurveda Treatments A-Z</h3>
+            <p>Ayurveda treats all disorders and goes to the root cause of the problem.</p>
+          </div>
+          <div class="lgo"><a href="/ayurvedic-treatments/">Find Out More ›</a></div>
+        </article>
+        <article class="lrow">
+          <figure class="lplate">
+            <img src="/wp-content/uploads/2023/09/SHIRODHARA-1.webp" alt="Ayurveda massage therapies Sydney" width="1000" height="625" loading="lazy" />
+          </figure>
+          <div class="lbody">
+            <h3>Day Spa Wellness</h3>
+            <p>Indulge, Relax &amp; Rejuvenate in luxury with authentic 5,000-year-old ancient ayurvedic spa treatments.</p>
+          </div>
+          <div class="lgo"><a href="/ayurvedic-spa/">View Our Packages ›</a></div>
+        </article>
+        <footer class="ledger__foot">
+          <span class="meta">Showing 3 of 55 · prescribed after consultation</span>
+          <a class="meta" href="/ayurvedic-treatments/">Full treatments A–Z ›</a>
+        </footer>
+      </div>
+
+      <div class="cta-row" data-reveal>
+        <a class="rbtn" href="/book-appointment/">Book an Appointment</a>
+        <a class="rbtn rbtn--ghost" href="tel:+61293892581">Phone Us Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ 02 · what is ayurveda -->
+  <section class="sec sec--tint" id="ayurveda">
+    <div class="rwrap two-col">
+      <div data-reveal>
+        <span class="meta no">02 · The System</span>
+        <p class="kicker">An Ancient Practice for Modern Living</p>
+        <h2>What Is <em>Ayurveda</em></h2>
+        <p class="dropcap body-text">Ayurveda is the traditional healing system of India and is practised by around 70% of India’s population. Dating back over 5000 years, the roots of Ayurveda are deeply steeped in history and tradition. There are mentions of the healing system in the first of the Hindu texts and the “Chakra Samhita”, the still cited Ayurvedic text on internal medicine appeared around the turn of the first millennium BC.</p>
+        <p class="body-text">It is estimated that there are currently around 650,000 doctors practising this science in India today with 70,000 doctors practising worldwide. Numbers which give a strong indication of the modern day popularity of the health system.</p>
+        <a class="ilink" href="/what-is-ayurveda/">Find Out More ›</a>
+      </div>
+      <figure class="plate" data-reveal style="--reveal-delay: 120ms">
+        <img src="/wp-content/uploads/2023/05/What-Is-Ayurveda.jpg" alt="" width="701" height="845" loading="lazy" />
+        <figcaption>
+          <span class="fig">fig. 1 — the preparation of herbal oils</span>
+          <span class="meta">practised by ~70% of India</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ======================================= 03 · panchakarma (dusk) -->
+  <section class="sec sec--dusk" id="panchakarma">
+    <div class="rwrap">
+      <header class="sec__head" data-reveal>
+        <span class="meta right">5 · 7 · 9 day plans · supervised</span>
+        <span class="meta no">03 · Panchakarma</span>
+        <p class="kicker">Ayurvedic Wellness Centre</p>
+        <h2>14 Years of Authentic Ayurvedic Healing: <em>Panchakarma Detox Therapy</em> in Sydney</h2>
+        <img class="flourish" src={separator} alt="" width="398" height="36" loading="lazy" />
+        <p class="lede">Has your busy schedule left you feeling the need to cleanse and rejuvenate your body and mind? Ancient Ayurvedic Panchakarma Detox therapy helps eliminate toxins, improve digestion, boost energy levels and strengthen the immune system.</p>
+      </header>
+
+      <div class="entry" data-reveal>
+        <span class="entry__no">01</span>
+        <div class="entry__text">
+          <h3>What Is Panchakarma Detox?</h3>
+          <p>Ayurveda believes that the buildup of toxins in the tissues and blockage of channels of circulation are the root cause of many chronic conditions.</p>
+          <p>Panchakarma Detox is a therapeutic system that cleanses toxins that are already in your body and are the underlying cause of health imbalances and diseases.</p>
+          <p>Ayurveda has used these cleansing treatments to rejuvenate the mind and body since ancient times. Book a treatment and discover the difference Panchakarma can make to your wellbeing.</p>
+          <a class="ilink ilink--gold" href="/services/panchakarma-ayurvedic-detox-sydney/">Find Out More ›</a>
+        </div>
+        <figure class="plate plate--dark">
+          <img src="/wp-content/uploads/elementor/thumbs/©CliquePhotographySydney_G4H4474_Edit-rkuf574i9372gylbszubqtan2hqqdz66wrlvg4zp0w.jpg" alt="©CliquePhotographySydney_G4H4474_Edit" width="600" height="600" loading="lazy" />
+          <figcaption><span class="fig">fig. 2 — herbal poultice, in the rooms</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="entry" data-reveal>
+        <span class="entry__no">02</span>
+        <div class="entry__text">
+          <h3>Why Choose Panchakarma Detox?</h3>
+          <p>For 14 years, Ayurvedic Wellness Centre has been helping Sydney clients transform their health with authentic Panchakarma Detox Therapy. This ancient Ayurvedic program combines therapeutic massages, herbal treatments, and gentle cleansing procedures that work synergistically to restore balance and promote overall wellbeing.</p>
+          <p>This ancient Ayurvedic therapy helps to:</p>
+          <ul class="benefits" role="list">
+            <li>Eliminate toxins</li>
+            <li>Improve digestion</li>
+            <li>Boost energy levels</li>
+            <li>Enhance mental clarity</li>
+            <li>Promote weight loss</li>
+            <li>Boost healthy skin and complexion</li>
+            <li>Strengthen the immune system</li>
+          </ul>
+          <p>You can look forward to improved health, vitality and a renewed sense of wellness after your treatment.</p>
+          <a class="rbtn rbtn--gold" href="/book-appointment/">Book Your Appointment</a>
+        </div>
+        <figure class="plate plate--dark">
+          <img src="/wp-content/uploads/elementor/thumbs/MEDITATION-ROOM-1-rkuf574i9372gylbszubqtan2hqqdz66wrlvg4zp0w.webp" alt="Ayurveda Experiences in Bondi Junction, Sydney" width="600" height="600" loading="lazy" />
+          <figcaption><span class="fig">fig. 3 — the meditation room</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="entry" data-reveal>
+        <span class="entry__no">03</span>
+        <div class="entry__text">
+          <h3>Longer Treatments For Deeper, More Holistic Cleansing</h3>
+          <p>Ayurveda says that when Panchakarma treatments are administered daily for several days in a row, cleansing begins to occur at a deeper level.</p>
+          <p>According to Ayurveda, a 7-Day treatment is ideal as it is believed to sequentially cleanse and rejuvenate all 7 major bodily tissues.</p>
+          <p>At the Ayurvedic Wellness Centre, these treatments are offered under the supervision of our highly qualified and experienced Ayurvedic practitioners.</p>
+          <p>Contact us for a bespoke treatment plan, which could be a 5-day, 7-day, 9-day plan based on your current level of wellbeing.</p>
+          <p class="entry__close">Reclaim a sense of balance… book your initial consultation today.</p>
+          <a class="rbtn rbtn--gold" href="/book-appointment/">Book Your Appointment</a>
+        </div>
+        <figure class="plate plate--dark">
+          <img src="/wp-content/uploads/elementor/thumbs/Frame-12-1-rkuf574i9372gylbszubqtan2hqqdz66wrlvg4zp0w.jpg" alt="Frame 12 (1)" width="600" height="600" loading="lazy" />
+          <figcaption><span class="fig">fig. 4 — udvartana, herbal powders</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== gold interlude -->
+  <section class="start">
+    <div class="rwrap start__inner" data-reveal>
+      <div>
+        <h2 class="start__title">Not Sure Where To Start?</h2>
+        <p>We’ll be happy to have a quick chat and suggest you the best way for you to embark on your ayurvedic journey with us!</p>
+      </div>
+      <div class="cta-row">
+        <a class="rbtn" href="/book-appointment/">Book an Appointment</a>
+        <a class="rbtn rbtn--night" href="tel:61293892581">Phone Us Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================== 04 · real life story (night) -->
+  <section class="sec sec--night" id="story">
+    <div class="rwrap">
+      <header class="sec__head sec__head--center" data-reveal>
+        <span class="meta no">04 · On Record</span>
+        <p class="kicker">Manage Your Stress &amp; Anxiety</p>
+        <h2>Real Life Story <em>From Our Client</em></h2>
+        <img class="flourish" src={separator} alt="" width="398" height="36" loading="lazy" />
+        <p class="lede">Vanessa completed her 7-day Ayurvedic detox to help with her stress, and anxiety and to stop smoking. As a busy individual in a fast-paced job, Vanessa found herself to be stressed a lot of the time which exacerbated her anxiety. Along with this, she had been smoking for several years which she wanted to stop to look after herself. Watch this video to listen to her experience of the 7-day detox at the Ayurvedic Wellness Centre.</p>
+      </header>
+
+      <div class="screen" data-reveal>
+        <button class="yt" data-yt="JhVg7XA1ED8" aria-label="Play video: Vanessa’s 7-day detox story">
+          <img src="/wp-content/uploads/2023/05/boxking_about_img_11.jpg" alt="" width="538" height="300" loading="lazy" />
+          <span class="yt__play" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="story__close" data-reveal>
+        <p class="story__lead">Looking For Ways To Live Stress-Free Life?</p>
+        <p>Don’t wait for it – we’re a call away to help you transform your life.</p>
+        <a class="rbtn rbtn--gold" href="/book-appointment/">Book an Appointment</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================== 05 · about & doctors (register) -->
+  <section class="sec" id="about">
+    <div class="rwrap">
+      <header class="sec__head" data-reveal>
+        <span class="meta right">The first true oasis in Sydney · since 2011</span>
+        <span class="meta no">05 · The Centre</span>
+        <p class="kicker">Our Passion Is Your Wellbeing</p>
+        <h2>About Us &amp; <em>Our Wellness Centre</em></h2>
+      </header>
+      <div class="two-col two-col--about">
+        <div data-reveal>
+          <p class="dropcap body-text">The Ayurvedic Wellness Centre was opened in 2011 by Rita Sagrani. It is the first true oasis in Sydney that offers the authentic experience of true Ayurveda. With fully qualified doctors and therapists, the Ayurvedic Wellness Centre is devoted to the client, ensuring correct diagnosis, prescription of genuine, high-quality Ayurvedic herbs and oils and the professional application of healing, holistic therapies. The Ayurvedic Wellness Centre has become the preferred establishment in natural and holistic healing.</p>
+          <p class="body-text">With the warmth, compassion and expertise of our highly trained staff, we offer a truly authentic experience, restoring internal equilibrium, balance and well-being for the mind, body and soul. The Ayurvedic Wellness Centre seeks to educate the wider community about the principles of Ayurveda, as well as progressing with our long term goal of opening Ayurvedic Clinics and Hospitals throughout Australia to bring the power of Ayurvedic healing to everyone.</p>
+        </div>
+        <div class="about__video" data-reveal style="--reveal-delay: 120ms">
+          <button class="yt" data-yt="iy-nAPrSkHU" aria-label="Play video: Inside the Ayurvedic Wellness Centre">
+            <img src="https://img.youtube.com/vi/iy-nAPrSkHU/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" />
+            <span class="yt__play" aria-hidden="true"></span>
+          </button>
+          <p class="meta about__cap">The rooms · Bondi Junction · on film</p>
+        </div>
+      </div>
+
+      <div class="docs">
+        <div class="doc-row" data-reveal>
+          <figure class="doc-plate">
+            <img src="/wp-content/uploads/elementor/thumbs/Dr-Deepika-rkuf574axyiqnb02ntd56rkidu9rizslzy26nk85xc.webp" alt="Dr Deepika Kaushal Ayurvedic Doctor Bondi Junction" width="499" height="400" loading="lazy" />
+          </figure>
+          <h3>Dr. Deepika Kaushal B.A.M.S.<span class="meta">M.D</span></h3>
+          <p>Our Ayurvedic Doctor, Dr. Deepika is a motivated and young medicine professional with extensive experience in herbal medicine and acupuncture therapy. Dr. Deepika’s expertise is to diagnose chronic and complicated illnesses, and follow tailored and holistic treatment plans.</p>
+        </div>
+        <div class="doc-row" data-reveal>
+          <figure class="doc-plate">
+            <img src="/wp-content/uploads/elementor/thumbs/Taruna-Yadav-newest-image-rkuf574axyiqnb02ntd56rkidu9rizslzy26nk85xc.webp" alt="Taruna-Yadav-newest-image" width="540" height="400" loading="lazy" />
+          </figure>
+          <h3>Dr Taruna Yadav B.A.M.S.<span class="meta">AAA registered</span></h3>
+          <p>Our Ayurvedic Doctor, Taruna (Bachelor of Ayurvedic Medicine &amp; Surgery, Maharishi Dayanand University, India) is registered with AAA (Australasian Association of Ayurveda).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== instagram interlude -->
+  <section class="insta">
+    <div class="rwrap insta__inner" data-reveal>
+      <span class="meta">Follow Our Centre In Instagram</span>
+      <a class="insta__handle" href="https://www.instagram.com/ayurvedicwellnesscentre/" rel="noopener" target="_blank">@ayurvedicwellnesscentre</a>
+      <a class="rbtn rbtn--gold" href="https://www.instagram.com/ayurvedicwellnesscentre/" rel="noopener" target="_blank">Follow on Instagram</a>
+    </div>
+  </section>
+
+  <!-- ===================================== 06 · testimonials (night) -->
+  <section class="sec sec--night sec--deep" id="testimonials">
+    <div class="rwrap">
+      <header class="sec__head" data-reveal>
+        <span class="meta right">Twelve written · nine on film · on record</span>
+        <span class="meta no">06 · Testimonies</span>
+        <p class="kicker">TestiMonials</p>
+        <h2>What Our Clients <em>Say</em></h2>
+        <img class="flourish" src={separator} alt="" width="398" height="36" loading="lazy" />
+      </header>
+
+      <div class="strip-head" data-reveal>
+        <h3>Their Testimonies</h3>
+        <span class="meta count">9 Videos</span>
+      </div>
+    </div>
+
+    <div class="strip" data-reveal tabindex="0" role="region" aria-label="Client testimonial videos">
+      {videos.map((v) => (
+        <figure class="reel">
+          <button class="yt" data-yt={v.id} aria-label={`Play video: ${v.title}`}>
+            <img src={v.thumb} alt="" width="1280" height="720" loading="lazy" />
+            <span class="yt__play" aria-hidden="true"></span>
+            <span class="yt__dur">{v.dur}</span>
+          </button>
+          <figcaption>{v.title}</figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <div class="rwrap">
+      <div class="strip-head written-head" data-reveal>
+        <h3>Written Testimonials</h3>
+        <span class="meta count">12 on record</span>
+      </div>
+      <div class="quotes" data-reveal>
+        {written.map((t) => (
+          <figure class="quote">
+            <blockquote><p>“{t.quote}”</p></blockquote>
+            <figcaption>
+              {t.href ? <a href={t.href}>{t.name}</a> : t.name}
+              {t.label && <span>{t.label}</span>}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
+<script>
+  // YouTube facades: swap the poster for a real (autoplaying) embed on demand.
+  document.querySelectorAll<HTMLButtonElement>('[data-yt]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.yt!;
+      const frame = document.createElement('iframe');
+      frame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      frame.title = btn.getAttribute('aria-label') ?? 'Video';
+      frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      frame.allowFullscreen = true;
+      frame.className = 'yt-frame';
+      btn.replaceWith(frame);
+      frame.focus();
+    });
+  });
+</script>
+
 <style>
-  .page { padding-block: clamp(2rem, 5vw, 4rem); }
-  .prose { margin-inline: auto; }
+  /* ==================== Materia Medica — local register tokens ========= */
+  .home-vars, :global(body.home) {
+    --rline: #d9c9ae;
+    --rink: #2a1c0c;
+    --rcard: #fffdf8;
+  }
+  .rwrap { max-width: 84rem; margin-inline: auto; padding-inline: var(--gutter); }
+  .meta {
+    font-family: var(--font-sans);
+    font-size: 0.66rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .kicker { font-family: var(--font-display); font-style: italic; font-size: var(--step-1); color: var(--taupe); }
+
+  /* squared register buttons (homepage only; the global .btn stays pill) */
+  .rbtn {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 1em 2em; background: var(--wine); color: var(--paper);
+    transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+  }
+  .rbtn:hover { background: var(--wine-deep); }
+  .rbtn:active { transform: scale(0.98); }
+  .rbtn--ghost { background: transparent; color: var(--rink); box-shadow: inset 0 0 0 1px var(--rink); }
+  .rbtn--ghost:hover { background: var(--paper-2); }
+  .rbtn--gold { background: var(--gold); color: var(--espresso); }
+  .rbtn--gold:hover { background: var(--gold-deep); }
+  .rbtn--night { background: transparent; color: var(--espresso); box-shadow: inset 0 0 0 1px rgba(51,23,3,.6); }
+  .rbtn--night:hover { background: rgba(51,23,3,.08); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.2rem; }
+  .ilink { font-family: var(--font-display); font-style: italic; font-size: var(--step-0); color: var(--wine); border-bottom: 1px solid var(--gold-deep); display: inline-block; margin-top: 1.4rem; }
+  .ilink--gold { color: var(--gold); border-bottom-color: rgba(253,197,120,.55); }
+  .ilink:hover { border-bottom-width: 2px; }
+
+  /* ============================================================ ticker */
+  .ticker { background: var(--espresso); color: #e2cfb4; overflow: hidden; white-space: nowrap; }
+  .ticker__track { display: inline-block; padding-block: 0.42rem; animation: tick 80s linear infinite; }
+  .ticker:hover .ticker__track { animation-play-state: paused; }
+  @keyframes tick { to { transform: translateX(-50%); } }
+  .ticker a { font-family: var(--font-sans); font-size: 0.64rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+  .ticker b { color: var(--gold); font-weight: 700; margin-right: 0.7em; }
+  .ticker i { font-style: normal; color: var(--mushroom); margin-right: 0.7em; }
+  .ticker u { text-decoration: none; color: #e2cfb4; }
+  .ticker a:hover b { color: #fff; }
+  .tsep { color: #6b4a2a; padding-inline: 1.4em; }
+
+  /* ========================================================== jump bar */
+  .jumps {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    border-bottom: 1px solid var(--rink);
+    background: var(--paper);
+  }
+  .jump {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem;
+    padding: 0.7rem 1.3rem; border-right: 1px solid var(--rline);
+    font-family: var(--font-sans); font-size: 0.66rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--rink);
+    transition: background var(--dur-fast);
+  }
+  .jump:last-child { border-right: 0; }
+  .jump b { color: var(--gold-deep); margin-right: 0.7em; font-weight: 700; }
+  .jump .go { color: var(--mushroom); }
+  .jump:hover { background: var(--paper-2); }
+
+  /* ============================================================== hero */
+  .hero { display: grid; grid-template-columns: 1.2fr 0.9fr; gap: clamp(2.5rem, 5vw, 5rem); padding-block: clamp(3.5rem, 7vw, 6rem); align-items: start; }
+  .hero h1 { font-size: clamp(2.7rem, 4.5vw, 4.3rem); line-height: 1.02; color: var(--rink); margin-top: 0.9rem; letter-spacing: -0.01em; max-width: 13em; }
+  .hero h1 em { color: var(--wine); }
+  .hero__sub { margin-top: 1.6rem; font-size: var(--step-1); line-height: 1.5; color: var(--ink-soft); max-width: 44ch; }
+
+  .register { border: 1px solid var(--rink); background: var(--rcard); position: relative; }
+  .register::before, .register::after { content: ''; position: absolute; width: 14px; height: 14px; border-color: var(--gold-deep); border-style: solid; }
+  .register::before { top: -5px; left: -5px; border-width: 2px 0 0 2px; }
+  .register::after { bottom: -5px; right: -5px; border-width: 0 2px 2px 0; }
+  .register__head { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; padding: 0.7rem 1.1rem; border-bottom: 1px solid var(--rline); }
+  .register__head .dot { color: var(--wine); }
+  .register__head .dot::before { content: '● '; font-size: 0.8em; }
+  .register__head .loc { color: var(--taupe); }
+  .register__head .tag { background: var(--gold); color: var(--espresso); padding: 0.25em 0.7em; }
+  .register__grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .rcell { padding: 1rem 1.1rem 1.1rem; border-bottom: 1px solid var(--rline); display: grid; gap: 0.15rem; }
+  .rcell:nth-child(odd) { border-right: 1px solid var(--rline); }
+  .rcell .meta { color: var(--taupe); }
+  .rcell .val { font-family: var(--font-display); font-size: 2.3rem; line-height: 1.05; color: var(--wine); }
+  .rcell .note { font-family: var(--font-sans); font-size: 0.68rem; color: var(--gold-deep); }
+  .register__src { padding: 0.65rem 1.1rem; font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mushroom); }
+  .register__src b { color: var(--taupe); }
+
+  .dosha {
+    display: flex; align-items: center; justify-content: space-between; gap: 1.2rem;
+    margin-top: 1rem; padding: 1rem 1.1rem;
+    border: 1px solid var(--rline); background: var(--rcard);
+    transition: border-color var(--dur-fast);
+  }
+  .dosha:hover { border-color: var(--gold-deep); }
+  .dosha__title { display: block; font-family: var(--font-display); font-size: 1.05rem; color: var(--wine); line-height: 1.3; }
+  .dosha__note { display: block; font-family: var(--font-sans); font-size: 0.72rem; color: var(--taupe); margin-top: 0.3rem; line-height: 1.5; }
+  .dosha .rbtn { flex-shrink: 0; padding: 0.9em 1.4em; }
+
+  /* ========================================================== sections */
+  .sec { border-top: 1px solid var(--rink); padding-block: clamp(3rem, 6vw, 5.5rem); }
+  .sec--tint { background: var(--paper-2); }
+  .sec__head { position: relative; max-width: 60rem; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+  .sec__head--center { margin-inline: auto; text-align: center; }
+  .sec__head--center .flourish { margin-inline: auto; }
+  .sec__head .no { color: var(--gold-deep); display: block; margin-bottom: 0.9rem; }
+  .sec__head .right { position: absolute; right: 0; top: 0.1rem; color: var(--mushroom); }
+  .sec__head h2 { font-size: clamp(1.9rem, 3.4vw, 3.1rem); line-height: 1.08; color: var(--rink); margin-top: 0.5rem; }
+  .sec__head h2 em { color: var(--wine); }
+  .sec__head .kicker { font-size: var(--step-0); }
+  .flourish { margin-top: 1.2rem; max-width: min(260px, 55%); opacity: 0.9; }
+  .lede { margin-top: 1.2rem; max-width: 64ch; line-height: var(--leading-body); color: var(--ink-soft); }
+  .body-text { max-width: 60ch; line-height: var(--leading-body); color: var(--ink-soft); }
+  .body-text + .body-text { margin-top: 1.2rem; }
+  .dropcap::first-letter {
+    font-family: var(--font-display); font-size: 3.3em; line-height: 0.78;
+    float: left; padding-right: 0.12em; color: var(--wine);
+  }
+
+  /* ============================================================ ledger */
+  .ledger { border: 1px solid var(--rink); background: var(--rcard); }
+  .lrow {
+    display: grid; grid-template-columns: 180px 1fr 270px;
+    gap: clamp(1.2rem, 3vw, 2.4rem); align-items: center;
+    padding: 1.3rem 1.6rem; border-bottom: 1px solid var(--rline);
+    transition: background var(--dur-fast);
+  }
+  .lrow:hover { background: var(--paper-2); }
+  .lplate { margin: 0; }
+  .lplate img { width: 100%; height: 120px; object-fit: cover; border: 1px solid var(--rink); }
+  .lbody h3 { font-size: var(--step-2); color: var(--wine); line-height: 1.15; }
+  .lbody p { margin-top: 0.5rem; font-size: 0.95rem; color: var(--ink-soft); max-width: 62ch; }
+  .lgo { text-align: right; }
+  .lgo a {
+    font-family: var(--font-sans); font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--wine);
+    border-bottom: 1px solid var(--gold-deep); padding-bottom: 2px;
+  }
+  .lgo a:hover { color: var(--gold-deep); }
+  .ledger__foot { display: flex; justify-content: space-between; gap: 1rem; padding: 0.85rem 1.6rem; background: var(--paper-2); }
+  .ledger__foot .meta { color: var(--taupe); }
+  .ledger__foot a:hover { color: var(--wine); }
+
+  /* ============================================================ plates */
+  .two-col { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+  .two-col--about { align-items: start; }
+  .two-col h2 { font-size: clamp(1.9rem, 3.4vw, 3.1rem); margin-top: 0.5rem; color: var(--rink); }
+  .two-col h2 em { color: var(--wine); }
+  .two-col .no { color: var(--gold-deep); display: block; margin-bottom: 0.9rem; }
+  .two-col .kicker { font-size: var(--step-0); }
+  .two-col .body-text:first-of-type { margin-top: 1.4rem; }
+  .plate { margin: 0; max-width: 28rem; justify-self: end; }
+  .plate img { width: 100%; border: 1px solid var(--rink); }
+  .plate figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-top: 0.7rem; }
+  .plate .fig { font-family: var(--font-display); font-style: italic; font-size: 0.95rem; color: var(--gold-deep); }
+  .plate figcaption .meta { color: var(--mushroom); }
+  .plate--dark img { border-color: rgba(253,197,120,.4); }
+
+  /* ====================================================== dusk chapter */
+  .sec--dusk {
+    background:
+      radial-gradient(110% 90% at 50% 0%, rgba(253,197,120,.08), transparent 50%),
+      linear-gradient(175deg, var(--wine-deep) 0%, #4a0a22 34%, #331109 68%, #26110a 100%);
+    border-top-color: #1f0d02;
+    color: var(--on-dark-soft);
+  }
+  .sec--dusk .sec__head h2, .sec--dusk h3 { color: var(--on-dark); }
+  .sec--dusk .sec__head h2 em { color: var(--gold); }
+  .sec--dusk .kicker { color: var(--gold); }
+  .sec--dusk .lede, .sec--dusk p { color: var(--on-dark-soft); }
+  .sec--dusk .sec__head .right { color: rgba(216,196,171,.6); }
+  .sec--dusk .no { color: var(--gold); }
+
+  .entry {
+    display: grid; grid-template-columns: 90px minmax(0, 1fr) minmax(0, 380px);
+    gap: clamp(1.5rem, 4vw, 4rem); align-items: center;
+    padding-block: clamp(2.2rem, 4vw, 3.5rem);
+    border-top: 1px solid rgba(253,197,120,.22);
+  }
+  .entry__no { font-family: var(--font-display); font-style: italic; font-size: 2.6rem; color: var(--gold); opacity: 0.85; align-self: start; line-height: 1; }
+  .entry__text h3 { font-size: var(--step-2); line-height: 1.15; }
+  .entry__text p { margin-top: 0.9rem; max-width: 58ch; }
+  .entry__text .rbtn { margin-top: 1.5rem; }
+  .entry__close { font-family: var(--font-display); font-style: italic; font-size: var(--step-1); color: var(--gold); }
+  .entry .plate { justify-self: center; max-width: 24rem; }
+  .benefits { margin-top: 0.8rem; display: grid; gap: 0.5rem; padding: 0; }
+  .benefits li { position: relative; padding-left: 1.6em; }
+  .benefits li::before {
+    content: ''; position: absolute; left: 0; top: 0.56em;
+    width: 0.42em; height: 0.42em; rotate: 45deg; background: var(--gold);
+  }
+
+  /* ====================================================== night chapter */
+  .sec--night {
+    background:
+      radial-gradient(70% 50% at 50% 32%, rgba(253,197,120,.09), transparent 60%),
+      var(--navy-deep);
+    border-top-color: #021320;
+    color: var(--on-dark-soft);
+  }
+  .sec--deep { background: radial-gradient(70% 45% at 50% 8%, rgba(253,197,120,.06), transparent 55%), #021a2b; }
+  .sec--night .sec__head h2, .sec--night h3 { color: var(--on-dark); }
+  .sec--night .sec__head h2 em { color: var(--gold); }
+  .sec--night .kicker { color: var(--gold); }
+  .sec--night .lede { color: var(--on-dark-soft); }
+  .sec--night .sec__head .right { color: rgba(216,196,171,.6); }
+  .sec--night .no { color: var(--gold); }
+
+  .screen { max-width: 54rem; margin-inline: auto; position: relative; }
+  .screen::after {
+    content: ''; position: absolute; inset: 0; translate: 14px 14px;
+    border: 1px solid var(--gold-deep); opacity: 0.5; z-index: -1;
+  }
+  .story__close { text-align: center; margin-top: clamp(2.5rem, 5vw, 4rem); }
+  .story__lead { font-family: var(--font-display); font-style: italic; font-size: var(--step-2); color: var(--gold); line-height: 1.25; }
+  .story__close p + p { margin-top: 0.6rem; }
+  .story__close .rbtn { margin-top: 1.5rem; }
+
+  /* ======================================================= yt facades */
+  .yt {
+    position: relative; display: block; width: 100%;
+    aspect-ratio: 16 / 9; overflow: hidden; background: #000;
+    cursor: pointer; padding: 0; border: 0;
+  }
+  .yt img { width: 100%; height: 100%; object-fit: cover; opacity: 0.88; transition: opacity var(--dur) var(--ease-out), transform 0.9s var(--ease-out); }
+  .yt:hover img { opacity: 1; transform: scale(1.04); }
+  .yt:active { transform: scale(0.99); }
+  .yt__play {
+    position: absolute; inset: 0; margin: auto;
+    width: clamp(3.2rem, 6vw, 4.2rem); height: clamp(3.2rem, 6vw, 4.2rem);
+    border-radius: 50%;
+    background: rgba(2, 22, 36, 0.55);
+    box-shadow: inset 0 0 0 1px rgba(253, 197, 120, 0.8);
+    backdrop-filter: blur(4px);
+    transition: background var(--dur), box-shadow var(--dur);
+  }
+  .yt__play::after {
+    content: ''; position: absolute; inset: 0; margin: auto;
+    width: 0; height: 0; border-style: solid;
+    border-width: 0.55em 0 0.55em 0.95em;
+    border-color: transparent transparent transparent var(--gold);
+    translate: 2px;
+  }
+  .yt:hover .yt__play { background: rgba(120, 0, 50, 0.75); box-shadow: inset 0 0 0 1px var(--gold); }
+  .yt__dur {
+    position: absolute; right: 0.7rem; bottom: 0.7rem;
+    font-family: var(--font-sans); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.1em;
+    color: var(--on-dark); background: rgba(2, 22, 36, 0.75); padding: 0.2em 0.6em;
+  }
+  :global(.yt-frame) { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; }
+
+  /* ============================================================= start */
+  .start { background: var(--gold); border-top: 1px solid var(--rink); }
+  .start__inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; padding-block: clamp(2.2rem, 4.5vw, 3.4rem); }
+  .start__title { font-size: var(--step-2); color: var(--espresso); }
+  .start__inner p { color: #4a2c10; margin-top: 0.4rem; max-width: 56ch; }
+  .start .cta-row { margin-top: 0; }
+
+  /* ============================================================ about */
+  .about__video .yt { border: 1px solid var(--rline); }
+  .about__cap { margin-top: 0.7rem; color: var(--mushroom); }
+  .docs { margin-top: clamp(2.5rem, 5vw, 4rem); border-top: 1px solid var(--rink); }
+  .doc-row {
+    display: grid; grid-template-columns: 130px 300px 1fr;
+    gap: clamp(1.4rem, 3vw, 2.6rem); align-items: center;
+    padding-block: 1.6rem; border-bottom: 1px solid var(--rline);
+  }
+  .doc-plate { margin: 0; }
+  .doc-plate img { width: 130px; height: 130px; object-fit: cover; border: 1px solid var(--rink); }
+  .doc-row h3 { font-size: var(--step-1); color: var(--wine); line-height: 1.2; }
+  .doc-row h3 .meta { display: block; color: var(--taupe); margin-top: 0.3rem; }
+  .doc-row p { font-size: 0.95rem; color: var(--ink-soft); max-width: 64ch; }
+
+  /* ============================================================ insta */
+  .insta { background: var(--espresso); }
+  .insta__inner { display: flex; align-items: baseline; gap: 1.5rem 2.5rem; flex-wrap: wrap; padding-block: clamp(1.8rem, 4vw, 2.8rem); }
+  .insta__inner > .meta { color: var(--mushroom); }
+  .insta__handle { font-family: var(--font-display); font-style: italic; font-size: var(--step-2); color: var(--gold); margin-right: auto; transition: color var(--dur-fast); }
+  .insta__handle:hover { color: var(--on-dark); }
+  .insta .rbtn { align-self: center; }
+
+  /* ====================================================== testimonials */
+  .strip-head { display: flex; align-items: baseline; gap: 1.2rem; margin-bottom: 1.4rem; }
+  .strip-head h3 { font-size: var(--step-2); }
+  .strip-head .count { color: var(--gold); }
+  .written-head { margin-top: clamp(3rem, 6vw, 4.5rem); padding-top: 1.6rem; border-top: 1px solid rgba(253,197,120,.22); }
+
+  .strip {
+    --strip-pad: max(var(--gutter), calc((100vw - 84rem) / 2 + var(--gutter)));
+    display: grid; grid-auto-flow: column;
+    grid-auto-columns: clamp(16rem, 27vw, 23rem);
+    gap: 1.1rem; overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding-inline: var(--strip-pad);
+    scroll-padding-inline: var(--strip-pad);
+    padding-bottom: 1.2rem;
+    scrollbar-color: rgba(253, 197, 120, 0.5) transparent;
+  }
+  .reel { scroll-snap-align: start; margin: 0; }
+  .reel .yt { border: 1px solid rgba(253,197,120,.25); }
+  .reel figcaption { margin-top: 0.6rem; font-family: var(--font-sans); font-size: 0.74rem; color: var(--on-dark-soft); line-height: 1.5; }
+
+  .quotes { columns: 3; column-gap: clamp(2rem, 4vw, 3.5rem); margin-top: 1.8rem; }
+  .quote { break-inside: avoid; margin: 0 0 clamp(1.8rem, 3.5vw, 2.6rem); padding-top: 1.3rem; border-top: 1px solid rgba(253, 197, 120, 0.22); }
+  .quote blockquote { margin: 0; }
+  .quote blockquote p { font-family: var(--font-display); font-size: var(--step-1); line-height: 1.4; color: var(--on-dark); }
+  .quote figcaption { margin-top: 0.8rem; display: grid; gap: 0.15rem; }
+  .quote figcaption a, .quote figcaption { color: var(--gold); font-family: var(--font-sans); font-weight: 600; font-size: 0.78rem; }
+  .quote figcaption a:hover { color: var(--on-dark); }
+  .quote figcaption span { color: var(--on-dark-soft); font-weight: 400; font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  /* ======================================================== responsive */
+  @media (max-width: 1080px) {
+    .jumps { grid-template-columns: repeat(3, 1fr); }
+    .jump { border-bottom: 1px solid var(--rline); }
+  }
+  @media (max-width: 960px) {
+    .hero, .two-col { grid-template-columns: 1fr; }
+    .plate { justify-self: start; }
+    .lrow { grid-template-columns: 1fr; gap: 0.9rem; }
+    .lplate img { height: 160px; }
+    .lgo { text-align: left; }
+    .entry { grid-template-columns: 1fr; gap: 1.2rem; }
+    .entry .plate { justify-self: start; }
+    .doc-row { grid-template-columns: 100px 1fr; }
+    .doc-row p { grid-column: 1 / -1; }
+    .quotes { columns: 2; }
+    .sec__head .right { display: none; }
+  }
+  @media (max-width: 640px) {
+    .jumps { grid-template-columns: repeat(2, 1fr); }
+    .quotes { columns: 1; }
+    .dosha { flex-direction: column; align-items: flex-start; }
+  }
 </style>

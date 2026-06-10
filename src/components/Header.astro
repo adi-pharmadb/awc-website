@@ -59,8 +59,8 @@ import { primaryNav, bookHref, phone, phoneHref, address } from '../data/nav';
   const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
   const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
 
-  // shrink/solidify header on scroll
-  const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
+  // solidify header on scroll — paint-only (border/shadow), never layout
+  const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 60);
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
@@ -79,7 +79,10 @@ import { primaryNav, bookHref, phone, phoneHref, address } from '../data/nav';
 </script>
 
 <style>
-  .site-header { position: sticky; top: 0; z-index: var(--z-header); }
+  /* The whole header is sticky with a negative offset equal to the topbar
+     height: the topbar slides away naturally on scroll, the main bar stays.
+     No height animation, no layout change on scroll = no flicker. */
+  .site-header { position: sticky; top: -2.4rem; z-index: var(--z-header); }
 
   .topbar {
     background: var(--espresso);
@@ -87,13 +90,16 @@ import { primaryNav, bookHref, phone, phoneHref, address } from '../data/nav';
     font-size: 0.72rem;
     letter-spacing: var(--tracking-caps);
     text-transform: uppercase;
-    transition: height var(--dur) var(--ease-out), padding var(--dur) var(--ease-out), opacity var(--dur);
+    height: 2.4rem;
+    overflow: hidden;
   }
-  .topbar__inner { display: flex; align-items: center; gap: 0.9rem; padding-block: 0.55rem; margin-inline: auto; padding-inline: var(--gutter); }
+  .topbar__inner { display: flex; align-items: center; gap: 0.9rem; height: 2.4rem; white-space: nowrap; margin-inline: auto; padding-inline: var(--gutter); }
   .topbar__sep { opacity: 0.4; }
   .topbar__phone { margin-left: auto; color: var(--gold); font-weight: 600; }
   .topbar__phone:hover { color: #fff; }
-  .is-scrolled .topbar { height: 0; padding-block: 0; opacity: 0; overflow: hidden; }
+  @media (max-width: 720px) {
+    .topbar__tag, .topbar__sep { display: none; }
+  }
 
   .header-main {
     background: color-mix(in srgb, var(--paper) 86%, transparent);
@@ -104,14 +110,11 @@ import { primaryNav, bookHref, phone, phoneHref, address } from '../data/nav';
   .is-scrolled .header-main { border-bottom-color: var(--line); box-shadow: var(--shadow-s); }
   .header-main__inner {
     display: flex; align-items: center; gap: 2rem;
-    padding-block: 1.1rem; margin-inline: auto; padding-inline: var(--gutter);
-    transition: padding var(--dur) var(--ease-out);
+    padding-block: 0.75rem; margin-inline: auto; padding-inline: var(--gutter);
   }
-  .is-scrolled .header-main__inner { padding-block: 0.7rem; }
 
   .brand { flex-shrink: 0; }
-  .brand :global(img) { width: 132px; height: auto; transition: width var(--dur) var(--ease-out); }
-  .is-scrolled .brand :global(img) { width: 108px; }
+  .brand :global(img) { width: 100px; height: auto; }
 
   /* primary nav */
   .primary-nav { margin-left: auto; }

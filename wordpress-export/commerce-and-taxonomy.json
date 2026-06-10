@@ -1,0 +1,2139 @@
+{
+ "products": [
+  {
+   "id": 27422,
+   "name": "Pure Radiance",
+   "slug": "pure-radiance",
+   "price_cents": "19500",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/pure-radiance/",
+   "categories": [
+    "Mother’s Day Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2026/04/ayurvedic-mothers-day-voucher-pure-radiance.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 27419,
+   "name": "Inner Calm",
+   "slug": "inner-calm",
+   "price_cents": "39500",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/inner-calm/",
+   "categories": [
+    "Mother’s Day Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2026/04/ayurvedic-mothers-day-voucher-inner-calm.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 27414,
+   "name": "Mother’s Indulgence",
+   "slug": "mothers-indulgence",
+   "price_cents": "34500",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/mothers-indulgence/",
+   "categories": [
+    "Mother’s Day Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2026/04/Mothers-indulgence-img.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 27402,
+   "name": "Mother’s Embrace",
+   "slug": "mothers-embrace",
+   "price_cents": "35000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/mothers-embrace/",
+   "categories": [
+    "Mother’s Day Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2026/04/ayurvedic-mothers-day-voucher-mothers-embrace.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 1212,
+   "name": "Summer Detox Flow",
+   "slug": "summer-detox-flow",
+   "price_cents": "19500",
+   "currency": "AUD",
+   "sku": "GV0004",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/summer-detox-flow/",
+   "categories": [
+    "2026 Gift Vouchers",
+    "Christmas &amp; New Year Specials",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/11/Summer-Detox-Flow.jpg"
+   ],
+   "short": "<p>Give someone the gift of authentic Ayurveda!</p>"
+  },
+  {
+   "id": 23101,
+   "name": "Seasonal Rest Ritual",
+   "slug": "seasonal-rest-ritual",
+   "price_cents": "39500",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/seasonal-rest-ritual/",
+   "categories": [
+    "2026 Gift Vouchers",
+    "Christmas &amp; New Year Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/11/Seasonal-Rest-Ritual.jpg"
+   ],
+   "short": ""
+  },
+  {
+   "id": 26988,
+   "name": "Radiant Detox Facial",
+   "slug": "radiant-detox-facial",
+   "price_cents": "34500",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/radiant-detox-facial/",
+   "categories": [
+    "2026 Gift Vouchers",
+    "Christmas &amp; New Year Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/11/Radiant-Detox-Facial.jpg"
+   ],
+   "short": ""
+  },
+  {
+   "id": 26991,
+   "name": "Heart Renewal Ritual",
+   "slug": "heart-renewal-ritual",
+   "price_cents": "39500",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/heart-renewal-ritual/",
+   "categories": [
+    "2026 Gift Vouchers",
+    "Christmas &amp; New Year Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/11/Heart-Renewal-Ritual.jpg"
+   ],
+   "short": ""
+  },
+  {
+   "id": 26253,
+   "name": "Strong and Serene Package",
+   "slug": "strong-and-serene-package",
+   "price_cents": "25000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/strong-and-serene-package/",
+   "categories": [
+    "Father’s Day Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/08/Fathers-Day-Strong-and-Serene-Package.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 26249,
+   "name": "Abhyanga Full Body Massage",
+   "slug": "fathers-day-bliss-package-abhyanga-full-body-massage",
+   "price_cents": "17500",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/fathers-day-bliss-package-abhyanga-full-body-massage/",
+   "categories": [
+    "Best Sellers",
+    "Father’s Day Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/08/Fathers-Day-Abhyanga-Full-Body-Massage.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 26245,
+   "name": "Father&#8217;s Deep Relaxation Package",
+   "slug": "fathers-deep-relaxation-package",
+   "price_cents": "34500",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/fathers-deep-relaxation-package/",
+   "categories": [
+    "Father’s Day Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/08/Fathers-Day-Special.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 24738,
+   "name": "Mother&#8217;s Day Special",
+   "slug": "mothers-day-special",
+   "price_cents": "33000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/mothers-day-special/",
+   "categories": [
+    "Mother’s Day Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/05/Mothers-Day-Special.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 1177,
+   "name": "Abhyanga &#8211; Gift Voucher",
+   "slug": "gift-voucher-abhyanga",
+   "price_cents": "17500",
+   "currency": "AUD",
+   "sku": "GV0001",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/gift-voucher-abhyanga/",
+   "categories": [
+    "Mother’s Day Specials",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/05/Abhyanga-Body-Massage.webp"
+   ],
+   "short": "<p>Give someone the gift of authentic Ayurveda!</p>"
+  },
+  {
+   "id": 3396,
+   "name": "Facial Gift Voucher",
+   "slug": "facial-gift-voucher",
+   "price_cents": "17000",
+   "currency": "AUD",
+   "sku": "GV0025",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/facial-gift-voucher/",
+   "categories": [
+    "Mother’s Day Specials",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/05/Facial-Massage-for-Mothers-Day.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 25157,
+   "name": "Blissful Escape Couples Massage",
+   "slug": "blissful-escape-couples-massage",
+   "price_cents": "89500",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/blissful-escape-couples-massage/",
+   "categories": [
+    "Valentines Day Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/01/Valentines-Gift-Voucher-2026-AWC-Blissful-Escape-Couples-Massage.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 25154,
+   "name": "Love &#038; Tranquility Couples Massage",
+   "slug": "love-tranquility-couples-massage",
+   "price_cents": "54900",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/love-tranquility-couples-massage/",
+   "categories": [
+    "Valentines Day Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/01/Valentines-Gift-Voucher-2026-AWC-Love-Tranquility-Couples-Massage.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 25151,
+   "name": "Hearts In Harmony Couples Massage",
+   "slug": "hearts-in-harmony-couples-massage",
+   "price_cents": "69000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/hearts-in-harmony-couples-massage/",
+   "categories": [
+    "Valentines Day Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/01/Valentines-Gift-Voucher-2026-AWC-Hearts-in-Harmony-Couple-Massage.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 25148,
+   "name": "Classic Indulgence Couples Massage",
+   "slug": "classic-indulgence-couples-massage",
+   "price_cents": "34500",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/classic-indulgence-couples-massage/",
+   "categories": [
+    "Valentines Day Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/01/Valentines-Gift-Voucher-2026-AWC-Classic-Indulgence-Couples-Massage.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 25075,
+   "name": "Holiday Spirit",
+   "slug": "holiday-spirit",
+   "price_cents": "17500",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/holiday-spirit/",
+   "categories": [
+    "2025 Gift Vouchers",
+    "Christmas &amp; New Year Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2024/12/HolidaySpirit-GiftCertificate.jpg"
+   ],
+   "short": ""
+  },
+  {
+   "id": 25072,
+   "name": "Tranquility Massage",
+   "slug": "tranquility-massage",
+   "price_cents": "59500",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/tranquility-massage/",
+   "categories": [
+    "2025 Gift Vouchers",
+    "Christmas &amp; New Year Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2024/12/TranquilityMassage-GiftCertificate.jpg"
+   ],
+   "short": ""
+  },
+  {
+   "id": 25063,
+   "name": "Holiday Harmony",
+   "slug": "holiday-harmony",
+   "price_cents": "45000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/holiday-harmony/",
+   "categories": [
+    "2025 Gift Vouchers",
+    "Christmas &amp; New Year Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2024/12/HolidayHarmony-GiftCertificate.jpg"
+   ],
+   "short": ""
+  },
+  {
+   "id": 25037,
+   "name": "Festive Rejuvenation",
+   "slug": "festive-rejuvenation",
+   "price_cents": "35000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/festive-rejuvenation/",
+   "categories": [
+    "2025 Gift Vouchers",
+    "Christmas &amp; New Year Specials"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2024/12/FestiveRejuvenation-GiftCert.jpg"
+   ],
+   "short": ""
+  },
+  {
+   "id": 24193,
+   "name": "Unlock Inner Peace &#038; Balance Package",
+   "slug": "unlock-inner-peace-balance-package",
+   "price_cents": "49500",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/unlock-inner-peace-balance-package/",
+   "categories": [
+    "Restore &amp; Balance Rituals"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2023/11/Unlock-Inner-Peace-Balance-Package.jpg"
+   ],
+   "short": ""
+  },
+  {
+   "id": 24186,
+   "name": "Nourishing and Pampering Package",
+   "slug": "nourishing-and-pampering-package",
+   "price_cents": "35000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/nourishing-and-pampering-package/",
+   "categories": [
+    "Detox &amp; Rejuvenate Rituals"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2023/11/Nourishing-and-Pampering-Package.jpg"
+   ],
+   "short": ""
+  },
+  {
+   "id": 24178,
+   "name": "Chakra Balancing Package",
+   "slug": "chakra-balancing-package",
+   "price_cents": "35000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/chakra-balancing-package/",
+   "categories": [
+    "Restore &amp; Balance Rituals"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2023/11/Chakra-Balancing-Package.jpg"
+   ],
+   "short": ""
+  },
+  {
+   "id": 24168,
+   "name": "Relax &#038; Restore Package",
+   "slug": "relax-restore-package",
+   "price_cents": "25000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/relax-restore-package/",
+   "categories": [
+    "Restore &amp; Balance Rituals"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2023/11/RelaxRestorePackage.jpg"
+   ],
+   "short": ""
+  },
+  {
+   "id": 22657,
+   "name": "Gift Voucher Sample",
+   "slug": "gift-voucher-sample",
+   "price_cents": "100",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/gift-voucher-sample/",
+   "categories": [
+    "test"
+   ],
+   "images": [],
+   "short": ""
+  },
+  {
+   "id": 5249,
+   "name": "Destress, Rejuvenate Body &#038; Mind",
+   "slug": "destress-rejuvenate-body-mind",
+   "price_cents": "55000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/destress-rejuvenate-body-mind/",
+   "categories": [
+    "Restore &amp; Balance Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2021/12/01_DESTRESS-REJUVENATE-BODY-_-MIND.webp"
+   ],
+   "short": "<p>Give someone the gift of Authentic Ayurveda.</p>"
+  },
+  {
+   "id": 5247,
+   "name": "Energising and Balancing",
+   "slug": "energising-and-balancing",
+   "price_cents": "55000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/energising-and-balancing/",
+   "categories": [
+    "Detox &amp; Rejuvenate Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2021/12/02_ENERGISING-_-BALANCING.webp"
+   ],
+   "short": "<p>Give someone the gift of Authentic Ayurveda.</p>"
+  },
+  {
+   "id": 5245,
+   "name": "Calming Body and Relaxing",
+   "slug": "calming-body-and-relaxing",
+   "price_cents": "55000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/calming-body-and-relaxing/",
+   "categories": [
+    "Restore &amp; Balance Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2021/12/03_-CALMING-BODY-_-RELAXING.webp"
+   ],
+   "short": "<p>Give someone the gift of Authentic Ayurveda.</p>"
+  },
+  {
+   "id": 5240,
+   "name": "Rejuvenating Immune System",
+   "slug": "rejuvenating-immune-system",
+   "price_cents": "55000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/rejuvenating-immune-system/",
+   "categories": [
+    "Detox &amp; Rejuvenate Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2021/12/04_REJUVINATING-IMMUNE-SYSTEM.webp"
+   ],
+   "short": "<p>Give someone the gift of Authentic Ayurveda.</p>"
+  },
+  {
+   "id": 4355,
+   "name": "Anti-Ageing Package for Kapha Body Type",
+   "slug": "anti-ageing-package-kapha-body-type",
+   "price_cents": "55000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/anti-ageing-package-kapha-body-type/",
+   "categories": [
+    "Detox &amp; Rejuvenate Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2019/12/05_ANTI-AGING-FOR-KAPHA-BODY-TYPE.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 4354,
+   "name": "Anti-Ageing Package for Pitta Body Type",
+   "slug": "anti-ageing-package-pitta-body-type",
+   "price_cents": "55000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/anti-ageing-package-pitta-body-type/",
+   "categories": [
+    "Detox &amp; Rejuvenate Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2019/12/06_ANTI-AGING-PITTA-BODY-TYPE.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 4353,
+   "name": "Anti-Ageing Package for Vata Body Type",
+   "slug": "anti-ageing-package-vata-body-type",
+   "price_cents": "55000",
+   "currency": "AUD",
+   "sku": "",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/anti-ageing-package-vata-body-type/",
+   "categories": [
+    "Detox &amp; Rejuvenate Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2019/12/07_ANTI-ANGING-FOR-VATA-BODY-TYPE.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 3667,
+   "name": "Relaxing Massage",
+   "slug": "relaxing-massage",
+   "price_cents": "17500",
+   "currency": "AUD",
+   "sku": "GV0021",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/relaxing-massage/",
+   "categories": [
+    "Restore &amp; Balance Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2018/11/08_-RELAXING-MASSAGE.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 3665,
+   "name": "Calming Body &#038; Mind Package – Very popular",
+   "slug": "calming-body-mind-package-popular",
+   "price_cents": "22000",
+   "currency": "AUD",
+   "sku": "GV0022",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/calming-body-mind-package-popular/",
+   "categories": [
+    "Restore &amp; Balance Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2018/11/packages3.png"
+   ],
+   "short": ""
+  },
+  {
+   "id": 3663,
+   "name": "Deep Relaxation Package &#8211; Our No. 1 Best Seller (Abhyanga + Shirodhara + Champi)",
+   "slug": "deep-relaxation-package-no-1-best-seller",
+   "price_cents": "34500",
+   "currency": "AUD",
+   "sku": "GV0023",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/deep-relaxation-package-no-1-best-seller/",
+   "categories": [
+    "Best Sellers",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2018/11/packages5.png"
+   ],
+   "short": ""
+  },
+  {
+   "id": 3661,
+   "name": "Perfect Bliss Package",
+   "slug": "perfect-bliss-package",
+   "price_cents": "34500",
+   "currency": "AUD",
+   "sku": "GV0024",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/perfect-bliss-package/",
+   "categories": [
+    "Restore &amp; Balance Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2018/11/10_PERFECT-BLISS-PACKAGE.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 3241,
+   "name": "Indulge Package",
+   "slug": "indulge-package",
+   "price_cents": "29500",
+   "currency": "AUD",
+   "sku": "GV0026",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/indulge-package/",
+   "categories": [
+    "Detox &amp; Rejuvenate Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2018/04/13_INDULGE-PACKAGE.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 3240,
+   "name": "Top-To-Toe Pampering Package",
+   "slug": "top-toe-pampering-package",
+   "price_cents": "34500",
+   "currency": "AUD",
+   "sku": "GV0027",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/top-toe-pampering-package/",
+   "categories": [
+    "Detox &amp; Rejuvenate Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2018/04/14_TOP-TO-TOE-PAMPERING.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 2709,
+   "name": "Ayurvedic Signature Massage Package",
+   "slug": "signature-massage",
+   "price_cents": "16000",
+   "currency": "AUD",
+   "sku": "GV0028",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/signature-massage/",
+   "categories": [
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2017/12/15_AYURVEDIC-SIGNATURE-MASSAGE-PACKAGE.webp"
+   ],
+   "short": "<p>Give someone the gift of Authentic Ayurveda.</p>"
+  },
+  {
+   "id": 2696,
+   "name": "Vitality Balance Package",
+   "slug": "vitality-balance-package-2017",
+   "price_cents": "37500",
+   "currency": "AUD",
+   "sku": "GV0029",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/vitality-balance-package-2017/",
+   "categories": [
+    "Detox &amp; Rejuvenate Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2017/12/16_VITALITY-BALANCE-PACKAGE.webp"
+   ],
+   "short": "<p>Give someone the gift of Authentic Ayurveda.</p>"
+  },
+  {
+   "id": 2693,
+   "name": "Relax Package",
+   "slug": "relaxpackage",
+   "price_cents": "17500",
+   "currency": "AUD",
+   "sku": "GV0030",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/relaxpackage/",
+   "categories": [
+    "Restore &amp; Balance Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2017/11/17_RELAX-PACKAGE.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 1968,
+   "name": "Pure Bliss Package",
+   "slug": "pure-bliss-package",
+   "price_cents": "52000",
+   "currency": "AUD",
+   "sku": "GV0035",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/pure-bliss-package/",
+   "categories": [
+    "Restore &amp; Balance Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2017/11/18_PURE-BLISS-PACKAGE.webp"
+   ],
+   "short": "<p>Give someone the gift of Authentic Ayurveda.</p>"
+  },
+  {
+   "id": 2590,
+   "name": "Total Relaxation Package &#8211; Gift Voucher",
+   "slug": "total-relaxation-package",
+   "price_cents": "20000",
+   "currency": "AUD",
+   "sku": "GV0031",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/total-relaxation-package/",
+   "categories": [
+    "Restore &amp; Balance Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2017/08/19_TOTAL-RELAXATION-PACKAGE.webp"
+   ],
+   "short": ""
+  },
+  {
+   "id": 2302,
+   "name": "Gift Card",
+   "slug": "gift-card",
+   "price_cents": "10000",
+   "currency": "AUD",
+   "sku": "GV0032",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/gift-card/",
+   "categories": [
+    "Gift Card"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2017/04/20_GIFT-CARD.webp"
+   ],
+   "short": "<p>Give someone the gift of Authentic Ayurveda.</p>"
+  },
+  {
+   "id": 1969,
+   "name": "Revitalise Package &#8211; Gift Voucher",
+   "slug": "revitalise-package-gift-voucher",
+   "price_cents": "29500",
+   "currency": "AUD",
+   "sku": "GV0034",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/revitalise-package-gift-voucher/",
+   "categories": [
+    "Detox &amp; Rejuvenate Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2016/12/21_REVITALISE-PACKAGE-GIFT-VOUCHER.webp"
+   ],
+   "short": "<p>Give someone the gift of Authentic Ayurveda.</p>"
+  },
+  {
+   "id": 1258,
+   "name": "Pizzichil &#8211; Gift Voucher",
+   "slug": "pizzichil-gift-voucher",
+   "price_cents": "30000",
+   "currency": "AUD",
+   "sku": "GV0006",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/pizzichil-gift-voucher/",
+   "categories": [
+    "Detox &amp; Rejuvenate Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2016/03/22_PIZZICHIL-GIFT-VOUCHER.webp"
+   ],
+   "short": "<p>Give someone the gift of authentic Ayurveda!</p>"
+  },
+  {
+   "id": 1240,
+   "name": "Couples Massage (Abhyanga) &#8211; Gift Voucher",
+   "slug": "couples-massage-gift-voucher",
+   "price_cents": "35000",
+   "currency": "AUD",
+   "sku": "GV0007",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/couples-massage-gift-voucher/",
+   "categories": [
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2016/03/23_COUPLES-MASSAGE-ABYHYANGA-GIFT-VOUCHER.webp"
+   ],
+   "short": "<p>Give the gift of Authentic Ayurveda today!</p>"
+  },
+  {
+   "id": 1236,
+   "name": "Shirodhara Destress Package",
+   "slug": "shirodhara-destress-package",
+   "price_cents": "34500",
+   "currency": "AUD",
+   "sku": "GV0005",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/shirodhara-destress-package/",
+   "categories": [
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2016/03/24_DEEP-RELAXATION-PACKAGE.webp"
+   ],
+   "short": "<p>Herbal massage with a bliss inducing, stress reducing difference.</p>"
+  },
+  {
+   "id": 1218,
+   "name": "Champi Head and Shoulders &#8211; 30 mins &#8211; Gift Voucher",
+   "slug": "champi-head-massage-gift-voucher",
+   "price_cents": "14000",
+   "currency": "AUD",
+   "sku": "GV0017",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/champi-head-massage-gift-voucher/",
+   "categories": [
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2015/10/Champi-Head-and-Shoulder-Massage.jpg"
+   ],
+   "short": "<p>Give someone the gift of authentic Ayurveda!</p>"
+  },
+  {
+   "id": 1206,
+   "name": "Udvartana &#8211; Gift Voucher",
+   "slug": "udvartana-gift-voucher",
+   "price_cents": "29500",
+   "currency": "AUD",
+   "sku": "GV0003",
+   "permalink": "https://www.ayurvedicwellnesscentre.com.au/product/udvartana-gift-voucher/",
+   "categories": [
+    "Detox &amp; Rejuvenate Rituals",
+    "Treatment"
+   ],
+   "images": [
+    "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2016/03/26-UDVARTANA-GIFT-VOUCHER.webp"
+   ],
+   "short": "<p>Give someone the gift of authentic Ayurveda!</p>"
+  }
+ ],
+ "taxonomies": {
+  "categories": [
+   {
+    "id": 55,
+    "count": 1,
+    "description": "",
+    "name": "Abhyanga",
+    "slug": "abhyanga",
+    "parent": 53
+   },
+   {
+    "id": 31,
+    "count": 27,
+    "description": "These blogs help you understand a bit more about Ayurveda",
+    "name": "About Ayurveda",
+    "slug": "about-ayurveda",
+    "parent": 0
+   },
+   {
+    "id": 32,
+    "count": 13,
+    "description": "This category contains posts about various ailments and illnesses",
+    "name": "Ailments",
+    "slug": "ailments",
+    "parent": 0
+   },
+   {
+    "id": 46,
+    "count": 7,
+    "description": "",
+    "name": "As Seen In",
+    "slug": "as-seen-in",
+    "parent": 0
+   },
+   {
+    "id": 42,
+    "count": 1,
+    "description": "As the leaves change, it is a good idea to make some changes of your own! Boost your immune system, prepare for winter and other great tips in these articles!",
+    "name": "Autumn",
+    "slug": "autumn",
+    "parent": 39
+   },
+   {
+    "id": 87,
+    "count": 0,
+    "description": "",
+    "name": "Beauty and health",
+    "slug": "beauty-and-health",
+    "parent": 0
+   },
+   {
+    "id": 51,
+    "count": 1,
+    "description": "",
+    "name": "Body Cleanse",
+    "slug": "body-cleanse",
+    "parent": 45
+   },
+   {
+    "id": 47,
+    "count": 2,
+    "description": "",
+    "name": "Cold and flu",
+    "slug": "cold-and-flu",
+    "parent": 32
+   },
+   {
+    "id": 88,
+    "count": 0,
+    "description": "",
+    "name": "Cosmetics",
+    "slug": "cosmetics",
+    "parent": 0
+   },
+   {
+    "id": 45,
+    "count": 4,
+    "description": "All about Ayurvedic Detox! ",
+    "name": "Detox",
+    "slug": "detox",
+    "parent": 0
+   },
+   {
+    "id": 36,
+    "count": 3,
+    "description": "If you have some digestive problems, have a read of these articles",
+    "name": "Digestion",
+    "slug": "digestion",
+    "parent": 32
+   },
+   {
+    "id": 34,
+    "count": 3,
+    "description": "Feeling tired and fatigued? Read some of these",
+    "name": "Fatigue/Tiredness",
+    "slug": "fatiguetiredness",
+    "parent": 32
+   },
+   {
+    "id": 38,
+    "count": 1,
+    "description": "If you have a fuzzy mind, trouble focusing or seem distracted, your body and mind may be unbalanced. Ayurveda can restore the balance and rejuvenate your mind and body! Read these articles to find out more",
+    "name": "Focus",
+    "slug": "focus",
+    "parent": 32
+   },
+   {
+    "id": 50,
+    "count": 1,
+    "description": "",
+    "name": "Gifts",
+    "slug": "gifts",
+    "parent": 0
+   },
+   {
+    "id": 69,
+    "count": 1,
+    "description": "",
+    "name": "Herbs",
+    "slug": "herbs",
+    "parent": 0
+   },
+   {
+    "id": 35,
+    "count": 1,
+    "description": "These posts will help you deal with insomnia",
+    "name": "Insomnia",
+    "slug": "insomnia",
+    "parent": 32
+   },
+   {
+    "id": 89,
+    "count": 0,
+    "description": "",
+    "name": "Massage treatments",
+    "slug": "massage-treatments",
+    "parent": 0
+   },
+   {
+    "id": 90,
+    "count": 0,
+    "description": "",
+    "name": "Medical spa",
+    "slug": "medical-spa",
+    "parent": 0
+   },
+   {
+    "id": 57,
+    "count": 1,
+    "description": "",
+    "name": "Menopause",
+    "slug": "menopause",
+    "parent": 52
+   },
+   {
+    "id": 37,
+    "count": 0,
+    "description": "If you suffer from migraines, Ayurveda can help! Read some of these articles to find out more",
+    "name": "Migraine",
+    "slug": "migraine",
+    "parent": 32
+   },
+   {
+    "id": 49,
+    "count": 1,
+    "description": "",
+    "name": "Packages",
+    "slug": "packages",
+    "parent": 0
+   },
+   {
+    "id": 56,
+    "count": 0,
+    "description": "",
+    "name": "Pizzichil",
+    "slug": "pizzichil",
+    "parent": 53
+   },
+   {
+    "id": 11,
+    "count": 45,
+    "description": "These posts were on our old site, but they are still really useful!",
+    "name": "Previous Content",
+    "slug": "previous-content",
+    "parent": 0
+   },
+   {
+    "id": 12,
+    "count": 16,
+    "description": "Everybody loves food, so why not try some of these Ayurvedic recipes? They will help your mind, body and spirit and they are super delicious too!",
+    "name": "Recipes",
+    "slug": "recipes",
+    "parent": 0
+   },
+   {
+    "id": 48,
+    "count": 5,
+    "description": "",
+    "name": "Rejuvenation",
+    "slug": "rejuvenation",
+    "parent": 0
+   },
+   {
+    "id": 39,
+    "count": 5,
+    "description": "These blogs are more focused on dealing with the seasons",
+    "name": "Seasonal",
+    "slug": "seasonal",
+    "parent": 0
+   },
+   {
+    "id": 54,
+    "count": 1,
+    "description": "",
+    "name": "Shirodhara",
+    "slug": "shirodhara",
+    "parent": 53
+   },
+   {
+    "id": 91,
+    "count": 0,
+    "description": "",
+    "name": "Spa center",
+    "slug": "spa-center",
+    "parent": 0
+   },
+   {
+    "id": 92,
+    "count": 0,
+    "description": "",
+    "name": "Spa therapy",
+    "slug": "spa-therapy",
+    "parent": 0
+   },
+   {
+    "id": 43,
+    "count": 3,
+    "description": "Ready for the new you? Spring into action with some great ideas in these articles!",
+    "name": "Spring",
+    "slug": "spring",
+    "parent": 39
+   },
+   {
+    "id": 33,
+    "count": 1,
+    "description": "Feeling stressed? Check out some of these posts!",
+    "name": "Stress",
+    "slug": "stress",
+    "parent": 32
+   },
+   {
+    "id": 40,
+    "count": 0,
+    "description": "Check out these articles all about improving your summer lifestyle!",
+    "name": "Summer",
+    "slug": "summer",
+    "parent": 39
+   },
+   {
+    "id": 93,
+    "count": 0,
+    "description": "",
+    "name": "Swimming pool",
+    "slug": "swimming-pool",
+    "parent": 0
+   },
+   {
+    "id": 53,
+    "count": 1,
+    "description": "",
+    "name": "Treatments",
+    "slug": "treatments",
+    "parent": 0
+   },
+   {
+    "id": 1,
+    "count": 99,
+    "description": "",
+    "name": "Uncategorised",
+    "slug": "uncategorised",
+    "parent": 0
+   },
+   {
+    "id": 94,
+    "count": 0,
+    "description": "",
+    "name": "Uncategorized",
+    "slug": "uncategorized",
+    "parent": 0
+   },
+   {
+    "id": 95,
+    "count": 0,
+    "description": "",
+    "name": "Wellness",
+    "slug": "wellness",
+    "parent": 0
+   },
+   {
+    "id": 41,
+    "count": 4,
+    "description": "Winter is the time for warm coats and delicious soups! Check out these articles to maximise your winter life",
+    "name": "Winter",
+    "slug": "winter",
+    "parent": 39
+   },
+   {
+    "id": 52,
+    "count": 1,
+    "description": "",
+    "name": "Women",
+    "slug": "women",
+    "parent": 0
+   },
+   {
+    "id": 44,
+    "count": 1,
+    "description": "Ayurveda and Yoga go together like peace and mindfulness! These articles will help maximise the health benefits and improve your overall well-being!",
+    "name": "Yoga",
+    "slug": "yoga",
+    "parent": 0
+   }
+  ],
+  "tags": [
+   {
+    "id": 96,
+    "count": 0,
+    "description": "",
+    "name": "Body",
+    "slug": "body"
+   },
+   {
+    "id": 97,
+    "count": 0,
+    "description": "",
+    "name": "Face",
+    "slug": "face"
+   },
+   {
+    "id": 98,
+    "count": 0,
+    "description": "",
+    "name": "Hair",
+    "slug": "hair"
+   },
+   {
+    "id": 70,
+    "count": 1,
+    "description": "",
+    "name": "herbs",
+    "slug": "herbs"
+   },
+   {
+    "id": 99,
+    "count": 0,
+    "description": "",
+    "name": "Massage",
+    "slug": "massage"
+   },
+   {
+    "id": 100,
+    "count": 0,
+    "description": "",
+    "name": "Oil",
+    "slug": "oil"
+   },
+   {
+    "id": 101,
+    "count": 0,
+    "description": "",
+    "name": "Pool",
+    "slug": "pool"
+   },
+   {
+    "id": 102,
+    "count": 0,
+    "description": "",
+    "name": "Rellax",
+    "slug": "rellax"
+   },
+   {
+    "id": 103,
+    "count": 0,
+    "description": "",
+    "name": "Sauna",
+    "slug": "sauna"
+   },
+   {
+    "id": 104,
+    "count": 0,
+    "description": "",
+    "name": "Spa",
+    "slug": "spa"
+   },
+   {
+    "id": 105,
+    "count": 0,
+    "description": "",
+    "name": "Wellness",
+    "slug": "wellness"
+   }
+  ],
+  "product_cat": [
+   {
+    "id": 246,
+    "count": 4,
+    "description": "",
+    "name": "2025 Gift Vouchers",
+    "slug": "2025-gift-vouchers",
+    "parent": 228
+   },
+   {
+    "id": 247,
+    "count": 4,
+    "description": "",
+    "name": "2026 Gift Vouchers",
+    "slug": "2026-gift-vouchers",
+    "parent": 228
+   },
+   {
+    "id": 106,
+    "count": 0,
+    "description": "",
+    "name": "Bath set",
+    "slug": "bath-set",
+    "parent": 0
+   },
+   {
+    "id": 107,
+    "count": 0,
+    "description": "",
+    "name": "Bath soap",
+    "slug": "bath-soap",
+    "parent": 0
+   },
+   {
+    "id": 108,
+    "count": 0,
+    "description": "",
+    "name": "Beauty",
+    "slug": "beauty",
+    "parent": 0
+   },
+   {
+    "id": 243,
+    "count": 2,
+    "description": "",
+    "name": "Best Sellers",
+    "slug": "best-sellers",
+    "parent": 0
+   },
+   {
+    "id": 228,
+    "count": 8,
+    "description": "",
+    "name": "Christmas &amp; New Year Specials",
+    "slug": "christmas-and-new-year-holiday-packages",
+    "parent": 0
+   },
+   {
+    "id": 110,
+    "count": 0,
+    "description": "",
+    "name": "Cleanisng",
+    "slug": "cleanisng",
+    "parent": 0
+   },
+   {
+    "id": 111,
+    "count": 0,
+    "description": "",
+    "name": "Cosmetics",
+    "slug": "cosmetics",
+    "parent": 0
+   },
+   {
+    "id": 113,
+    "count": 0,
+    "description": "",
+    "name": "Design",
+    "slug": "design",
+    "parent": 0
+   },
+   {
+    "id": 245,
+    "count": 12,
+    "description": "",
+    "name": "Detox &amp; Rejuvenate Rituals",
+    "slug": "detox-rejuvenate-rituals",
+    "parent": 0
+   },
+   {
+    "id": 76,
+    "count": 3,
+    "description": "",
+    "name": "Father’s Day Specials",
+    "slug": "fathersday",
+    "parent": 0
+   },
+   {
+    "id": 59,
+    "count": 1,
+    "description": "",
+    "name": "Gift Card",
+    "slug": "giftcard",
+    "parent": 0
+   },
+   {
+    "id": 72,
+    "count": 41,
+    "description": "Gift Voucher",
+    "name": "Gift Vouchers",
+    "slug": "giftvoucher",
+    "parent": 0
+   },
+   {
+    "id": 119,
+    "count": 0,
+    "description": "",
+    "name": "Moisturizing",
+    "slug": "moisturizing",
+    "parent": 0
+   },
+   {
+    "id": 239,
+    "count": 0,
+    "description": "",
+    "name": "Mother",
+    "slug": "mother",
+    "parent": 0
+   },
+   {
+    "id": 240,
+    "count": 7,
+    "description": "",
+    "name": "Mother’s Day Specials",
+    "slug": "mothers-day",
+    "parent": 0
+   },
+   {
+    "id": 244,
+    "count": 11,
+    "description": "",
+    "name": "Restore &amp; Balance Rituals",
+    "slug": "restore-balance-rituals",
+    "parent": 0
+   },
+   {
+    "id": 75,
+    "count": 0,
+    "description": "",
+    "name": "Tea",
+    "slug": "detoxtea",
+    "parent": 0
+   },
+   {
+    "id": 219,
+    "count": 1,
+    "description": "",
+    "name": "test",
+    "slug": "test",
+    "parent": 0
+   },
+   {
+    "id": 14,
+    "count": 26,
+    "description": "<h1>Treatment</h1>",
+    "name": "Treatment",
+    "slug": "treatment",
+    "parent": 0
+   },
+   {
+    "id": 125,
+    "count": 0,
+    "description": "",
+    "name": "Uncategorized",
+    "slug": "uncategorized",
+    "parent": 0
+   },
+   {
+    "id": 229,
+    "count": 4,
+    "description": "",
+    "name": "Valentines Day Specials",
+    "slug": "valentines-day-gift-vouchers",
+    "parent": 0
+   },
+   {
+    "id": 126,
+    "count": 0,
+    "description": "",
+    "name": "Wellness",
+    "slug": "wellness",
+    "parent": 0
+   }
+  ],
+  "product_brand": [],
+  "service_category": [
+   {
+    "id": 209,
+    "count": 12,
+    "description": "",
+    "name": "Ayurveda Spa Sydney",
+    "slug": "ayurveda-spa-sydney",
+    "parent": 0
+   },
+   {
+    "id": 208,
+    "count": 33,
+    "description": "",
+    "name": "Ayurvedic Treatments",
+    "slug": "ayurvedic-treatments",
+    "parent": 0
+   },
+   {
+    "id": 210,
+    "count": 17,
+    "description": "",
+    "name": "Detox / Therapies",
+    "slug": "detox-therapies",
+    "parent": 0
+   }
+  ],
+  "testimonial_categories": [
+   {
+    "id": 241,
+    "count": 8,
+    "description": "",
+    "name": "Panchakarma Detox",
+    "slug": "panchakarma-detox",
+    "parent": 0
+   }
+  ]
+ },
+ "nav": [
+  {
+   "text": "02 9389 2581",
+   "href": "tel:0293892581"
+  },
+  {
+   "text": "Facebook",
+   "href": "https://www.facebook.com/AyurvedicWellnessCentre"
+  },
+  {
+   "text": "Instagram",
+   "href": "https://instagram.com/ayurvedicwellnesscentre"
+  },
+  {
+   "text": "Twitter",
+   "href": "https://twitter.com/AyurvedicSydney"
+  },
+  {
+   "text": "Youtube",
+   "href": "https://www.youtube.com/user/AyurvedicWellness"
+  },
+  {
+   "text": "Linkedin",
+   "href": "https://au.linkedin.com/company/ayurvedic-wellness-centre?trk=public_profile_topcard_current_company"
+  },
+  {
+   "text": "Ayurveda A to Z Treatments",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/ayurvedic-treatments/"
+  },
+  {
+   "text": "Abhyanga",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/abhyanga/"
+  },
+  {
+   "text": "Allergies",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/allergies/"
+  },
+  {
+   "text": "Anxiety and Stress",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/stress-2/"
+  },
+  {
+   "text": "Asthma",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/asthma-2/"
+  },
+  {
+   "text": "Ayurveda Nasya Treatment",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/ayurveda-nasya-treatment/"
+  },
+  {
+   "text": "Ayurveda Rasayan Therapy",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/ayurveda-rasayan-therapy/"
+  },
+  {
+   "text": "Ayurvedic Detox Cleanse",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/ayurvedic-detox-cleanse/"
+  },
+  {
+   "text": "Ayurvedic Treatment for Constipation in Sydney",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/ayurvedic-treatment-for-constipation-in-sydney/"
+  },
+  {
+   "text": "Ayurvedic Treatment For Skin Diseases, Sydney",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/ayurvedic-treatment-for-skin-diseases-sydney/"
+  },
+  {
+   "text": "Champi",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/champi-head-shoulder-massage/"
+  },
+  {
+   "text": "Chronic Fatigue",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/chronic-fatigue-2/"
+  },
+  {
+   "text": "Chronic Pain",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/chronic-pain/"
+  },
+  {
+   "text": "Crohn’s Disease",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/crohns-disease/"
+  },
+  {
+   "text": "Depression and OCD",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/depression-ocd/"
+  },
+  {
+   "text": "Diabetes",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/diabetes/"
+  },
+  {
+   "text": "Fatty Liver Disease",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/fatty-liver-disease/"
+  },
+  {
+   "text": "Foot Problems",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/foot-problems/"
+  },
+  {
+   "text": "Four Ways to Have Your Healthiest Winter Ever with Ayurvedic Medicine",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/ailments/"
+  },
+  {
+   "text": "Full Body Massage",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/full-body-massage-bondi-junction-sydney/"
+  },
+  {
+   "text": "Gastritis",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/gastritis/"
+  },
+  {
+   "text": "Greeva Basti",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/greeva-basti/"
+  },
+  {
+   "text": "Heart Basti",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/discover-the-magic-of-heart-basti-nurturing-your-heart-and-soul/"
+  },
+  {
+   "text": "High Blood Pressure",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/high-blood-pressure/"
+  },
+  {
+   "text": "Infertility",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/infertility/"
+  },
+  {
+   "text": "Insomnia",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/insomnia/"
+  },
+  {
+   "text": "Irritable Bowel Syndrome",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/irritable-bowel-syndrome/"
+  },
+  {
+   "text": "Janu Basti",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/janu-basti/"
+  },
+  {
+   "text": "Joint Problems",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/joint-problems/"
+  },
+  {
+   "text": "Kati Basti",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/kati-basti/"
+  },
+  {
+   "text": "Kizhi",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/kizhi-herb-pouch-massage/"
+  },
+  {
+   "text": "Menopause",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/menopause-treatment/"
+  },
+  {
+   "text": "Menstruation and PMS Treatment",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/menstruation-pms/"
+  },
+  {
+   "text": "Migraines and Headaches",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/migraine-headaches/"
+  },
+  {
+   "text": "Nasya",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/nasya-treatment-at-ayurvedic-wellness-centre/"
+  },
+  {
+   "text": "Panchakarma – Detox",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/panchakarma-ayurvedic-detox-sydney/"
+  },
+  {
+   "text": "Pinda Sweda",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/pinda-sweda/"
+  },
+  {
+   "text": "Pizzichil",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/pizzichil-treatment/"
+  },
+  {
+   "text": "Shirodhara",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/shirodhara-treatment-bondi-sydney/"
+  },
+  {
+   "text": "Sinusitis",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/sinusitis/"
+  },
+  {
+   "text": "Skin Problems",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/skin-problems/"
+  },
+  {
+   "text": "Takradhara",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/takradhara-treatment/"
+  },
+  {
+   "text": "Udvartana",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/udvartana-massage-for-weight-loss-sydney/"
+  },
+  {
+   "text": "Ulcerative Colitis Treatment in Sydney",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/ulcerative-colitis-treatment-sydney/"
+  },
+  {
+   "text": "Ulcers",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/ulcers/"
+  },
+  {
+   "text": "The Vagus Nerve",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/the-vagus-nerve/"
+  },
+  {
+   "text": "Detox Clinic",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/detox-clinic/"
+  },
+  {
+   "text": "14 Years Offering Panchakarma Detox",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/14-years-offering-panchakarma-detox/"
+  },
+  {
+   "text": "Anti-Aging Treatment",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/anti-aging-spa-package/"
+  },
+  {
+   "text": "Panchakarma Detox Cleanse Therapy",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/panchakarma-ayurvedic-detox-sydney/"
+  },
+  {
+   "text": "Body Energiser – Trigger Point Therapy",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/triggerpoint-body-energiser/"
+  },
+  {
+   "text": "Constipation Treatment",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/ayurvedic-treatment-for-constipation-in-sydney/"
+  },
+  {
+   "text": "Deep Relaxation Therapy",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/deep-relaxation-package/"
+  },
+  {
+   "text": "Muscle Recovery – Ayurvedic Full Body Massage",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/full-body-massage-bondi-junction-sydney/"
+  },
+  {
+   "text": "Nasya Ayurveda Therapy",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/ayurveda-nasya-treatment/"
+  },
+  {
+   "text": "Rasayan Ayurveda Therapy",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/ayurveda-rasayan-therapy/"
+  },
+  {
+   "text": "Pinda Sweda Ayurveda Therapy",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/pinda-sweda/"
+  },
+  {
+   "text": "Pizzichil Ayurveda Therapy",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/pizzichil-treatment/"
+  },
+  {
+   "text": "Takradhara Ayurveda Therapy",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/takradhara-treatment/"
+  },
+  {
+   "text": "Skin Disease Treatment",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/ayurvedic-treatment-for-skin-diseases-sydney/"
+  },
+  {
+   "text": "Stress Reduction Treatment",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/stress-reduction-package/"
+  },
+  {
+   "text": "Weight Loss Treatment",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/udvartana-massage-for-weight-loss-sydney/"
+  },
+  {
+   "text": "Stress",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/stress/"
+  },
+  {
+   "text": "Weight Problems",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/udvartana-massage-for-weight-loss-sydney/"
+  },
+  {
+   "text": "Ayurveda Spa",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/ayurvedic-spa/"
+  },
+  {
+   "text": "Ayurvedic Massage in Bondi Junction",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/ayurvedic-massage-in-bondi-junction/"
+  },
+  {
+   "text": "Muscle Vitality & Strength",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/rejuvenation-package/"
+  },
+  {
+   "text": "Couples Massage",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/couples-massage/"
+  },
+  {
+   "text": "Deep Relaxation Package",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/deep-relaxation-package/"
+  },
+  {
+   "text": "Detox Cleanse Package",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/ayurvedic-detox-cleanse/"
+  },
+  {
+   "text": "Nurture your heart and soul",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/discover-the-magic-of-heart-basti-nurturing-your-heart-and-soul/"
+  },
+  {
+   "text": "Facial Massage",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/skin-rejuvenator-facial-massage/"
+  },
+  {
+   "text": "Herb Pouch Massage",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/kizhi-herb-pouch-massage/"
+  },
+  {
+   "text": "Remedial Massage",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/remedial-massage-bondi-junction-sydney/"
+  },
+  {
+   "text": "Therapeutic Massage",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/therapeutic-massage/"
+  },
+  {
+   "text": "Trigger Point Therapy",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/services/triggerpoint-body-energiser/"
+  },
+  {
+   "text": "Shop",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/shop/"
+  },
+  {
+   "text": "Holiday Picks",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/a-blissful-ayurvedic-christmas-the-gift-of-healing-balance-renewal/"
+  },
+  {
+   "text": "Best Sellers",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/product-category/best-sellers/"
+  },
+  {
+   "text": "Restore & Balance Rituals",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/product-category/restore-balance-rituals/"
+  },
+  {
+   "text": "Detox & Rejuvenate Rituals",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/product-category/detox-rejuvenate-rituals/"
+  },
+  {
+   "text": "Father’s Day Specials",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/product-category/fathersday/"
+  },
+  {
+   "text": "Mother’s Day Specials",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/product-category/mothers-day/"
+  },
+  {
+   "text": "Valentines Day Specials",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/product-category/valentines-day-gift-vouchers/"
+  },
+  {
+   "text": "Christmas & New Year Specials",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/product-category/christmas-and-new-year-holiday-packages/"
+  },
+  {
+   "text": "Contact Us",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/contact-us/"
+  },
+  {
+   "text": "About",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/about-us/"
+  },
+  {
+   "text": "Cart",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/cart/"
+  },
+  {
+   "text": "Home",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/"
+  },
+  {
+   "text": "About",
+   "href": "/about-us/"
+  },
+  {
+   "text": "Meet Our Doctors",
+   "href": "/ayurvedic-doctor/"
+  },
+  {
+   "text": "Testimonials",
+   "href": "/testimonials/"
+  },
+  {
+   "text": "Frequently Asked Questions",
+   "href": "/frequently-asked-questions/"
+  },
+  {
+   "text": "Cancellation Policy",
+   "href": "/cancellation-policy/"
+  },
+  {
+   "text": "Blogs",
+   "href": "/blogs-media/"
+  },
+  {
+   "text": "Four Ways to Have Your Healthiest Winter Ever with Ayurvedic Medicine",
+   "href": "/services/ailments/"
+  },
+  {
+   "text": "Allergies",
+   "href": "/services/allergies/"
+  },
+  {
+   "text": "Anxiety and Stress",
+   "href": "/services/stress-2/"
+  },
+  {
+   "text": "Asthma",
+   "href": "/services/asthma-2/"
+  },
+  {
+   "text": "Chronic Fatigue",
+   "href": "/services/chronic-fatigue-2/"
+  },
+  {
+   "text": "Chronic Pain",
+   "href": "/services/chronic-pain/"
+  },
+  {
+   "text": "Colitis",
+   "href": "/services/colitis/"
+  },
+  {
+   "text": "Constipation",
+   "href": "/services/constipation/"
+  },
+  {
+   "text": "Crohn’s Disease",
+   "href": "/services/crohns-disease/"
+  },
+  {
+   "text": "Depression and OCD",
+   "href": "/services/depression-ocd/"
+  },
+  {
+   "text": "Diabetes",
+   "href": "/services/diabetes/"
+  },
+  {
+   "text": "Fatty Liver Disease",
+   "href": "/services/fatty-liver-disease/"
+  },
+  {
+   "text": "Foot Problems",
+   "href": "/services/foot-problems/"
+  },
+  {
+   "text": "Gastritis",
+   "href": "/services/gastritis/"
+  },
+  {
+   "text": "High Blood Pressure",
+   "href": "/services/high-blood-pressure/"
+  },
+  {
+   "text": "Infertility",
+   "href": "/services/infertility/"
+  },
+  {
+   "text": "Insomnia",
+   "href": "/services/insomnia/"
+  },
+  {
+   "text": "Irritable Bowel Syndrome",
+   "href": "/services/irritable-bowel-syndrome/"
+  },
+  {
+   "text": "Joint Problems",
+   "href": "/services/joint-problems/"
+  },
+  {
+   "text": "Menopause",
+   "href": "/services/menopause-treatment/"
+  },
+  {
+   "text": "Menstruation and PMS Treatment",
+   "href": "/services/menstruation-pms/"
+  },
+  {
+   "text": "Migraines and Headaches",
+   "href": "/services/migraine-headaches/"
+  },
+  {
+   "text": "Sinusitis",
+   "href": "/services/sinusitis/"
+  },
+  {
+   "text": "Skin Problems",
+   "href": "/services/skin-problems/"
+  },
+  {
+   "text": "Ulcers",
+   "href": "/services/ulcers/"
+  },
+  {
+   "text": "Detox Clinic",
+   "href": "/detox-clinic/"
+  },
+  {
+   "text": "Anti-Aging Spa Package",
+   "href": "/services/anti-aging-spa-package/"
+  },
+  {
+   "text": "Build Vitality & Strength for Autumn",
+   "href": "/services/rejuvenation-package/"
+  },
+  {
+   "text": "Champi – Head & Shoulder Massage",
+   "href": "/services/champi-head-shoulder-massage/"
+  },
+  {
+   "text": "Deep Relaxation Package",
+   "href": "/services/deep-relaxation-package/"
+  },
+  {
+   "text": "Full Body Massage",
+   "href": "/services/full-body-massage/"
+  },
+  {
+   "text": "Kati Basti",
+   "href": "/services/kati-basti/"
+  },
+  {
+   "text": "Kizhi – Herb Pouch Massage",
+   "href": "/services/kizhi-herb-pouch-massage/"
+  },
+  {
+   "text": "Panchakarma – Ayurvedic Detox",
+   "href": "/services/panchakarma-ayurvedic-detox-sydney/"
+  },
+  {
+   "text": "Pinda Sweda Treatment",
+   "href": "/services/pinda-sweda/"
+  },
+  {
+   "text": "Pizzichil Treatment",
+   "href": "/services/pizzichil-treatment/"
+  },
+  {
+   "text": "Shirodhara Treatment",
+   "href": "/services/shirodhara-treatment/"
+  },
+  {
+   "text": "Stress Reduction Package",
+   "href": "/services/stress-reduction-package/"
+  },
+  {
+   "text": "Takradhara Treatment",
+   "href": "/services/takradhara-treatment/"
+  },
+  {
+   "text": "Trigger Point Therapy – Body Energiser",
+   "href": "/services/triggerpoint-body-energiser/"
+  },
+  {
+   "text": "Udvartana – Weight Loss",
+   "href": "/services/udvartana-massage-for-weight-loss-sydney/"
+  },
+  {
+   "text": "Ayurveda Spa",
+   "href": "/ayurvedic-spa/"
+  },
+  {
+   "text": "Ayurvedic Massage in Bondi Junction",
+   "href": "/services/ayurvedic-massage-in-bondi-junction/"
+  },
+  {
+   "text": "Couples Massage",
+   "href": "/services/couples-massage/"
+  },
+  {
+   "text": "Facial Massage",
+   "href": "/services/skin-rejuvenator-facial-massage/"
+  },
+  {
+   "text": "Remedial Massage at Bondi Junction,Sydney",
+   "href": "/services/remedial-massage-bondi-junction-sydney/"
+  },
+  {
+   "text": "Therapeutic Massage",
+   "href": "/services/therapeutic-massage/"
+  },
+  {
+   "text": "Contact Us",
+   "href": "/contact-us/"
+  },
+  {
+   "text": "Shop",
+   "href": "/shop/"
+  },
+  {
+   "text": "Book an Appointment",
+   "href": "/book-appointment/"
+  },
+  {
+   "text": "Home",
+   "href": "/"
+  },
+  {
+   "text": "About Us",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/about-us/"
+  },
+  {
+   "text": "Ayurvedic Therapies",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/ayurvedic-therapies/"
+  },
+  {
+   "text": "What Is Ayurveda",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/what-is-ayurveda/"
+  },
+  {
+   "text": "Privacy Policy",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/privacy-policy/"
+  },
+  {
+   "text": "Blogs",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/blogs-media/"
+  },
+  {
+   "text": "Links and Resources",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/links-and-resources/"
+  },
+  {
+   "text": "Events",
+   "href": "https://www.ayurvedicwellnesscentre.com.au/events/"
+  }
+ ],
+ "footerText": "Get A Free Quiz To Discover Your DOSHA! Sign up to our newsletter text, or something more in-depth to give more context to what’s behind the quiz. Menu Home About Us Ayurvedic Therapies What Is Ayurveda Shop Privacy Policy Blogs Links and Resources Events 14 Years Offering Panchakarma Detox Home About Us Ayurvedic Therapies What Is Ayurveda Shop Privacy Policy Blogs Links and Resources Events 14 Years Offering Panchakarma Detox Wellness Centre Address 1 Bondi Rd (corner Oxford street), Bondi Junction NSW 2022, Australia Contact We’re available 7 days a week, 8AM – 8PM 02 9389 2581 Consultations Zoom Consultations Available On Demand Download Now Book an Appointment Facebook Youtube Instagram Linkedin © 2026 AYURVEDIC WELLNESS CENTRE. Website By Sites at Scale"
+}
