@@ -40,6 +40,14 @@ import { primaryNav, bookHref, phone, phoneHref, address } from '../data/nav';
 
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
+    <div class="mobile-menu__top">
+      <a class="brand" href="/" aria-label="Ayurvedic Wellness Centre — home">
+        <Image src={logo} alt="Ayurvedic Wellness Centre" widths={[180, 360]} sizes="100px" loading="eager" />
+      </a>
+      <button class="mobile-menu__close" aria-label="Close menu" data-menu-close>
+        <span></span><span></span>
+      </button>
+    </div>
     <nav class="mobile-menu__nav" aria-label="Mobile">
       <ul role="list">
         {primaryNav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
@@ -73,6 +81,7 @@ import { primaryNav, bookHref, phone, phoneHref, address } from '../data/nav';
     header?.classList.toggle('menu-open', open);
   };
   toggle?.addEventListener('click', () => setMenu(!open));
+  document.querySelector('[data-menu-close]')?.addEventListener('click', () => setMenu(false));
   menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && open) setMenu(false); });
 </script>
@@ -169,19 +178,33 @@ import { primaryNav, bookHref, phone, phoneHref, address } from '../data/nav';
     position: fixed; inset: 0; z-index: 90;
     background-color: var(--paper);
     background-image: radial-gradient(80vw 30vh at 50% 0%, rgba(253, 197, 120, 0.18), transparent 70%);
-    padding: 6rem var(--gutter) 2.5rem;
+    padding: 0 var(--gutter) 2.5rem;
     overflow-y: auto;
     animation: menuIn var(--dur) var(--ease-out);
   }
   @keyframes menuIn { from { opacity: 0; } to { opacity: 1; } }
+  .mobile-menu__top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-block: 0.75rem; margin-bottom: 1.2rem;
+  }
+  .mobile-menu__top .brand :global(img) { width: 100px; height: auto; }
+  .mobile-menu__close {
+    position: relative; width: 44px; height: 44px; flex-shrink: 0;
+  }
+  .mobile-menu__close span {
+    position: absolute; left: 10px; top: 21px;
+    display: block; width: 24px; height: 2px; background: var(--wine);
+  }
+  .mobile-menu__close span:nth-child(1) { transform: rotate(45deg); }
+  .mobile-menu__close span:nth-child(2) { transform: rotate(-45deg); }
   .mobile-menu__nav ul { border-top: 1px solid var(--line); }
   .mobile-menu__nav li { border-bottom: 1px solid var(--line); }
-  .mobile-menu__nav a {
+  .mobile-menu__nav ul a {
     display: flex; align-items: center; justify-content: space-between; gap: 1rem;
     font-family: var(--font-display); font-size: 1.25rem; line-height: 1.25;
     color: var(--wine); padding: 0.85rem 0.1rem;
   }
-  .mobile-menu__nav a::after { content: '›'; font-style: italic; color: var(--gold-deep); }
+  .mobile-menu__nav ul a::after { content: '›'; font-style: italic; color: var(--gold-deep); }
   .mobile-menu__book {
     display: inline-flex; width: auto;
     margin-top: 1.5rem;
