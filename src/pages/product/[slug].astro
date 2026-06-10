@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { getJsonLd } from '../../lib/seo';
+import { routable } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('products', routable);
+  return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const cleanTitle = (d.ogTitle || d.title).replace(/\s*[|]\s*Ayurvedic Wellness.*$/i, '').trim();
+---
+<ContentLayout
+  title={d.title}
+  cleanTitle={cleanTitle}
+  description={d.description}
+  canonical={d.canonical}
+  robots={d.robots}
+  ogTitle={d.ogTitle}
+  ogDescription={d.ogDescription}
+  ogImage={d.ogImage}
+  ogType={d.ogType}
+  jsonLd={getJsonLd('products', d.slug)}
+  eyebrow="Gift Vouchers & Packages"
+  breadcrumbs={[{ label: 'Shop', href: '/shop/' }]}
+  cta={{ label: 'Purchase or enquire', href: '/contact-us/', note: 'Gift vouchers can be purchased in clinic or by phone.' }}
+>
+  <Content />
+</ContentLayout>

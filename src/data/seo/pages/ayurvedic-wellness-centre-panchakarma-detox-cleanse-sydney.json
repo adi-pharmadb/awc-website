@@ -1,0 +1,155 @@
+{
+ "title": "Panchakarma Cleanse Sydney / Panchakarma Detox Sydney",
+ "description": "Ayurvedic Panchakarma cleanse at Ayurvedic wellness Centre Bondi Junction Sydney with our experienced Ayurvedic Doctors.",
+ "robots": {
+  "index": "index",
+  "follow": "follow",
+  "max-snippet": "max-snippet:-1",
+  "max-image-preview": "max-image-preview:large",
+  "max-video-preview": "max-video-preview:-1"
+ },
+ "canonical": "https://www.ayurvedicwellnesscentre.com.au/ayurvedic-wellness-centre-panchakarma-detox-cleanse-sydney/",
+ "og_locale": "en_US",
+ "og_type": "article",
+ "og_title": "Panchakarma Cleanse Sydney",
+ "og_description": "Ayurvedic Panchakarma cleanse at Ayurvedic wellness Centre Bondi Junction Sydney with our experienced Ayurvedic Doctors.",
+ "og_url": "https://www.ayurvedicwellnesscentre.com.au/ayurvedic-wellness-centre-panchakarma-detox-cleanse-sydney/",
+ "og_site_name": "Ayurvedic Wellness Centre Pty Ltd",
+ "article_publisher": "https://www.facebook.com/AyurvedicWellnessCentre",
+ "article_modified_time": "2024-06-14T04:25:34+00:00",
+ "og_image": [
+  {
+   "url": "http://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/elementor/thumbs/ABHYANGA-q86lk9rm4nvj7m16rr78pqxzlb4qg10xa4m5wmbzjs.webp",
+   "type": "",
+   "width": "",
+   "height": ""
+  }
+ ],
+ "twitter_card": "summary_large_image",
+ "twitter_site": "@AyurvedicSydney",
+ "twitter_misc": {
+  "Est. reading time": "4 minutes"
+ },
+ "schema": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebPage",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/ayurvedic-wellness-centre-panchakarma-detox-cleanse-sydney/",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/ayurvedic-wellness-centre-panchakarma-detox-cleanse-sydney/",
+    "name": "Panchakarma Cleanse Sydney / Panchakarma Detox Sydney",
+    "isPartOf": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#website"
+    },
+    "primaryImageOfPage": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/ayurvedic-wellness-centre-panchakarma-detox-cleanse-sydney/#primaryimage"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/ayurvedic-wellness-centre-panchakarma-detox-cleanse-sydney/#primaryimage"
+    },
+    "thumbnailUrl": "http://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/elementor/thumbs/ABHYANGA-q86lk9rm4nvj7m16rr78pqxzlb4qg10xa4m5wmbzjs.webp",
+    "datePublished": "2023-10-31T05:55:36+00:00",
+    "dateModified": "2024-06-14T04:25:34+00:00",
+    "description": "Ayurvedic Panchakarma cleanse at Ayurvedic wellness Centre Bondi Junction Sydney with our experienced Ayurvedic Doctors.",
+    "breadcrumb": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/ayurvedic-wellness-centre-panchakarma-detox-cleanse-sydney/#breadcrumb"
+    },
+    "inLanguage": "en-AU",
+    "potentialAction": [
+     {
+      "@type": "ReadAction",
+      "target": [
+       "https://www.ayurvedicwellnesscentre.com.au/ayurvedic-wellness-centre-panchakarma-detox-cleanse-sydney/"
+      ]
+     }
+    ]
+   },
+   {
+    "@type": "ImageObject",
+    "inLanguage": "en-AU",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/ayurvedic-wellness-centre-panchakarma-detox-cleanse-sydney/#primaryimage",
+    "url": "http://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/elementor/thumbs/ABHYANGA-q86lk9rm4nvj7m16rr78pqxzlb4qg10xa4m5wmbzjs.webp",
+    "contentUrl": "http://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/elementor/thumbs/ABHYANGA-q86lk9rm4nvj7m16rr78pqxzlb4qg10xa4m5wmbzjs.webp"
+   },
+   {
+    "@type": "BreadcrumbList",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/ayurvedic-wellness-centre-panchakarma-detox-cleanse-sydney/#breadcrumb",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.ayurvedicwellnesscentre.com.au/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Panchakarma Cleanse Sydney"
+     }
+    ]
+   },
+   {
+    "@type": "WebSite",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#website",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "name": "Ayurvedic Wellness Centre",
+    "description": "Authentic Ayurveda Experiences In Sydney",
+    "publisher": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization"
+    },
+    "alternateName": "AWC",
+    "potentialAction": [
+     {
+      "@type": "SearchAction",
+      "target": {
+       "@type": "EntryPoint",
+       "urlTemplate": "https://www.ayurvedicwellnesscentre.com.au/?s={search_term_string}"
+      },
+      "query-input": {
+       "@type": "PropertyValueSpecification",
+       "valueRequired": true,
+       "valueName": "search_term_string"
+      }
+     }
+    ],
+    "inLanguage": "en-AU"
+   },
+   {
+    "@type": "Organization",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization",
+    "name": "Ayurvedic Wellness Centre Pty Ltd",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "logo": {
+     "@type": "ImageObject",
+     "inLanguage": "en-AU",
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/",
+     "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "width": 300,
+     "height": 196,
+     "caption": "Ayurvedic Wellness Centre Pty Ltd"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/"
+    },
+    "sameAs": [
+     "https://www.facebook.com/AyurvedicWellnessCentre",
+     "https://x.com/AyurvedicSydney",
+     "https://www.youtube.com/@AyurvedicWellness/featured",
+     "https://www.instagram.com/ayurvedicwellnesscentre/",
+     "https://www.linkedin.com/company/ayurvedic-wellness-centre/posts/?feedView=all"
+    ],
+    "description": "Ayurveda is something to experience and is not just a normal “massage”. The ancient Indian practice of rejuvenation comes from a place of reverence and the heart. For the first time, you can experience a complete range of authentic Ayurveda massage therapies, right here in Bondi Junction, Sydney. What’s more, you can choose to have a consultation with our qualified Doctors or our Ayurvedic Consultants.",
+    "email": "info@ayurvedicwellnesscentre.com.au",
+    "telephone": "0293892581",
+    "legalName": "Ayurvedic Wellness Centre Pty Ltd",
+    "foundingDate": "2011-01-01",
+    "numberOfEmployees": {
+     "@type": "QuantitativeValue",
+     "minValue": "1",
+     "maxValue": "10"
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { getJsonLd } from '../../lib/seo';
+import { routable } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('doctors', routable);
+  return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const cleanTitle = (d.ogTitle || d.title).replace(/\s*[|]\s*Ayurvedic Wellness.*$/i, '').trim();
+---
+<ContentLayout
+  title={d.title}
+  cleanTitle={cleanTitle}
+  description={d.description}
+  canonical={d.canonical}
+  robots={d.robots}
+  ogTitle={d.ogTitle}
+  ogDescription={d.ogDescription}
+  ogImage={d.ogImage}
+  ogType={d.ogType}
+  jsonLd={getJsonLd('doctors', d.slug)}
+  eyebrow="Our Practitioners"
+  breadcrumbs={[{ label: 'Practitioners', href: '/team/' }]}
+  cta={{ label: 'Consult this doctor', href: '/book-appointment/', note: 'Book a one-on-one Ayurvedic consultation.' }}
+>
+  <Content />
+</ContentLayout>

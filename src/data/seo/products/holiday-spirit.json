@@ -1,0 +1,161 @@
+{
+ "title": "Holiday Spirit | Ayurvedic Wellness Centre Pty Ltd",
+ "robots": {
+  "index": "index",
+  "follow": "follow",
+  "max-snippet": "max-snippet:-1",
+  "max-image-preview": "max-image-preview:large",
+  "max-video-preview": "max-video-preview:-1"
+ },
+ "canonical": "https://www.ayurvedicwellnesscentre.com.au/product/holiday-spirit/",
+ "og_locale": "en_US",
+ "og_type": "article",
+ "og_title": "Holiday Spirit",
+ "og_description": "Holiday Spirit &#8211; $175 Treatments &#8211; 45 min Abhyanga full body Massage – with 150mls of hot herbal oils– For Fatigue, Stress, Anxiety and Tension. Deeply relaxing and meditative with long lasting benefits. This is a gentle but firm Ayurvedic massage from head to toe, assisting circulation and relaxation 15 mins Champi Head &amp; Shoulder [&hellip;]",
+ "og_url": "https://www.ayurvedicwellnesscentre.com.au/product/holiday-spirit/",
+ "og_site_name": "Ayurvedic Wellness Centre Pty Ltd",
+ "article_publisher": "https://www.facebook.com/AyurvedicWellnessCentre",
+ "article_modified_time": "2025-12-23T11:16:08+00:00",
+ "og_image": [
+  {
+   "width": 1200,
+   "height": 852,
+   "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2024/12/HolidaySpirit-GiftCertificate.jpg",
+   "type": "image/jpeg"
+  }
+ ],
+ "twitter_card": "summary_large_image",
+ "twitter_site": "@AyurvedicSydney",
+ "twitter_misc": {
+  "Est. reading time": "1 minute"
+ },
+ "schema": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebPage",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/product/holiday-spirit/",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/product/holiday-spirit/",
+    "name": "Holiday Spirit | Ayurvedic Wellness Centre Pty Ltd",
+    "isPartOf": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#website"
+    },
+    "primaryImageOfPage": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/product/holiday-spirit/#primaryimage"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/product/holiday-spirit/#primaryimage"
+    },
+    "thumbnailUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2024/12/HolidaySpirit-GiftCertificate.jpg",
+    "datePublished": "2024-12-04T14:17:06+00:00",
+    "dateModified": "2025-12-23T11:16:08+00:00",
+    "breadcrumb": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/product/holiday-spirit/#breadcrumb"
+    },
+    "inLanguage": "en-AU",
+    "potentialAction": [
+     {
+      "@type": "ReadAction",
+      "target": [
+       "https://www.ayurvedicwellnesscentre.com.au/product/holiday-spirit/"
+      ]
+     }
+    ]
+   },
+   {
+    "@type": "ImageObject",
+    "inLanguage": "en-AU",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/product/holiday-spirit/#primaryimage",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2024/12/HolidaySpirit-GiftCertificate.jpg",
+    "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2024/12/HolidaySpirit-GiftCertificate.jpg",
+    "width": 1200,
+    "height": 852
+   },
+   {
+    "@type": "BreadcrumbList",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/product/holiday-spirit/#breadcrumb",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.ayurvedicwellnesscentre.com.au/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Shop",
+      "item": "https://www.ayurvedicwellnesscentre.com.au/shop/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Holiday Spirit"
+     }
+    ]
+   },
+   {
+    "@type": "WebSite",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#website",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "name": "Ayurvedic Wellness Centre",
+    "description": "Authentic Ayurveda Experiences In Sydney",
+    "publisher": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization"
+    },
+    "alternateName": "AWC",
+    "potentialAction": [
+     {
+      "@type": "SearchAction",
+      "target": {
+       "@type": "EntryPoint",
+       "urlTemplate": "https://www.ayurvedicwellnesscentre.com.au/?s={search_term_string}"
+      },
+      "query-input": {
+       "@type": "PropertyValueSpecification",
+       "valueRequired": true,
+       "valueName": "search_term_string"
+      }
+     }
+    ],
+    "inLanguage": "en-AU"
+   },
+   {
+    "@type": "Organization",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization",
+    "name": "Ayurvedic Wellness Centre Pty Ltd",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "logo": {
+     "@type": "ImageObject",
+     "inLanguage": "en-AU",
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/",
+     "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "width": 300,
+     "height": 196,
+     "caption": "Ayurvedic Wellness Centre Pty Ltd"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/"
+    },
+    "sameAs": [
+     "https://www.facebook.com/AyurvedicWellnessCentre",
+     "https://x.com/AyurvedicSydney",
+     "https://www.youtube.com/@AyurvedicWellness/featured",
+     "https://www.instagram.com/ayurvedicwellnesscentre/",
+     "https://www.linkedin.com/company/ayurvedic-wellness-centre/posts/?feedView=all"
+    ],
+    "description": "Ayurveda is something to experience and is not just a normal “massage”. The ancient Indian practice of rejuvenation comes from a place of reverence and the heart. For the first time, you can experience a complete range of authentic Ayurveda massage therapies, right here in Bondi Junction, Sydney. What’s more, you can choose to have a consultation with our qualified Doctors or our Ayurvedic Consultants.",
+    "email": "info@ayurvedicwellnesscentre.com.au",
+    "telephone": "0293892581",
+    "legalName": "Ayurvedic Wellness Centre Pty Ltd",
+    "foundingDate": "2011-01-01",
+    "numberOfEmployees": {
+     "@type": "QuantitativeValue",
+     "minValue": "1",
+     "maxValue": "10"
+    }
+   }
+  ]
+ }
+}

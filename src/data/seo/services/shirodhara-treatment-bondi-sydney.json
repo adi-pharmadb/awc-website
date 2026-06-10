@@ -1,0 +1,158 @@
+{
+ "title": "Shirodhara Ayurvedic Treatment at Bondi Junction, Sydney",
+ "description": "Best Shirodhara Treatment in Sydney at Ayurvedic Wellness Centre helps to overcome stress, anxiety and chronic headaches.",
+ "robots": {
+  "index": "index",
+  "follow": "follow",
+  "max-snippet": "max-snippet:-1",
+  "max-image-preview": "max-image-preview:large",
+  "max-video-preview": "max-video-preview:-1"
+ },
+ "canonical": "https://www.ayurvedicwellnesscentre.com.au/services/shirodhara-treatment-bondi-sydney/",
+ "og_locale": "en_US",
+ "og_type": "article",
+ "og_title": "Shirodhara Sydney",
+ "og_description": "Best Shirodhara Treatment in Sydney at Ayurvedic Wellness Centre helps to overcome stress, anxiety and chronic headaches.",
+ "og_url": "https://www.ayurvedicwellnesscentre.com.au/services/shirodhara-treatment-bondi-sydney/",
+ "og_site_name": "Ayurvedic Wellness Centre Pty Ltd",
+ "article_publisher": "https://www.facebook.com/AyurvedicWellnessCentre",
+ "article_modified_time": "2024-06-03T04:30:15+00:00",
+ "og_image": [
+  {
+   "width": 441,
+   "height": 292,
+   "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2015/10/shirodhara-for-website-1.png",
+   "type": "image/png"
+  }
+ ],
+ "twitter_card": "summary_large_image",
+ "twitter_site": "@AyurvedicSydney",
+ "twitter_misc": {
+  "Est. reading time": "3 minutes"
+ },
+ "schema": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebPage",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/services/shirodhara-treatment-bondi-sydney/",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/services/shirodhara-treatment-bondi-sydney/",
+    "name": "Shirodhara Ayurvedic Treatment at Bondi Junction, Sydney",
+    "isPartOf": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#website"
+    },
+    "primaryImageOfPage": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/services/shirodhara-treatment-bondi-sydney/#primaryimage"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/services/shirodhara-treatment-bondi-sydney/#primaryimage"
+    },
+    "thumbnailUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2015/10/shirodhara-for-website-1.png",
+    "datePublished": "2015-11-02T04:39:38+00:00",
+    "dateModified": "2024-06-03T04:30:15+00:00",
+    "description": "Best Shirodhara Treatment in Sydney at Ayurvedic Wellness Centre helps to overcome stress, anxiety and chronic headaches.",
+    "breadcrumb": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/services/shirodhara-treatment-bondi-sydney/#breadcrumb"
+    },
+    "inLanguage": "en-AU",
+    "potentialAction": [
+     {
+      "@type": "ReadAction",
+      "target": [
+       "https://www.ayurvedicwellnesscentre.com.au/services/shirodhara-treatment-bondi-sydney/"
+      ]
+     }
+    ]
+   },
+   {
+    "@type": "ImageObject",
+    "inLanguage": "en-AU",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/services/shirodhara-treatment-bondi-sydney/#primaryimage",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2015/10/shirodhara-for-website-1.png",
+    "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2015/10/shirodhara-for-website-1.png",
+    "width": 441,
+    "height": 292,
+    "caption": "Shirodhara treatment at ayurvedicwellnesscentre Bondi Sydney"
+   },
+   {
+    "@type": "BreadcrumbList",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/services/shirodhara-treatment-bondi-sydney/#breadcrumb",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.ayurvedicwellnesscentre.com.au/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Shirodhara Sydney"
+     }
+    ]
+   },
+   {
+    "@type": "WebSite",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#website",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "name": "Ayurvedic Wellness Centre",
+    "description": "Authentic Ayurveda Experiences In Sydney",
+    "publisher": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization"
+    },
+    "alternateName": "AWC",
+    "potentialAction": [
+     {
+      "@type": "SearchAction",
+      "target": {
+       "@type": "EntryPoint",
+       "urlTemplate": "https://www.ayurvedicwellnesscentre.com.au/?s={search_term_string}"
+      },
+      "query-input": {
+       "@type": "PropertyValueSpecification",
+       "valueRequired": true,
+       "valueName": "search_term_string"
+      }
+     }
+    ],
+    "inLanguage": "en-AU"
+   },
+   {
+    "@type": "Organization",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization",
+    "name": "Ayurvedic Wellness Centre Pty Ltd",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "logo": {
+     "@type": "ImageObject",
+     "inLanguage": "en-AU",
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/",
+     "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "width": 300,
+     "height": 196,
+     "caption": "Ayurvedic Wellness Centre Pty Ltd"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/"
+    },
+    "sameAs": [
+     "https://www.facebook.com/AyurvedicWellnessCentre",
+     "https://x.com/AyurvedicSydney",
+     "https://www.youtube.com/@AyurvedicWellness/featured",
+     "https://www.instagram.com/ayurvedicwellnesscentre/",
+     "https://www.linkedin.com/company/ayurvedic-wellness-centre/posts/?feedView=all"
+    ],
+    "description": "Ayurveda is something to experience and is not just a normal “massage”. The ancient Indian practice of rejuvenation comes from a place of reverence and the heart. For the first time, you can experience a complete range of authentic Ayurveda massage therapies, right here in Bondi Junction, Sydney. What’s more, you can choose to have a consultation with our qualified Doctors or our Ayurvedic Consultants.",
+    "email": "info@ayurvedicwellnesscentre.com.au",
+    "telephone": "0293892581",
+    "legalName": "Ayurvedic Wellness Centre Pty Ltd",
+    "foundingDate": "2011-01-01",
+    "numberOfEmployees": {
+     "@type": "QuantitativeValue",
+     "minValue": "1",
+     "maxValue": "10"
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { routable, serviceKind, clean } from '../../lib/content';
+
+const conditions = (await getCollection('services', routable))
+  .filter((s) => serviceKind(s.data.slug) === 'condition')
+  .sort((a, b) => clean(a.data.title).localeCompare(clean(b.data.title)));
+---
+<BaseLayout
+  title="Conditions We Treat — Ayurvedic Wellness Centre, Sydney"
+  description="Ayurveda treats the root cause, not just the symptom. Discover how we help with stress, insomnia, digestion, menopause, skin and joint concerns."
+  canonical="https://www.ayurvedicwellnesscentre.com.au/conditions/"
+>
+  <PageHero
+    eyebrow="Healing, By Concern"
+    title="Conditions We Treat"
+    intro="Ayurveda looks beyond the symptom to restore balance at the root. Explore the concerns our doctors and therapies address."
+  />
+  <section class="section">
+    <div class="container--narrow">
+      <ul class="condition-list" role="list">
+        {conditions.map((c, i) => (
+          <li data-reveal style={`--reveal-delay:${(i % 6) * 60}ms`}>
+            <a href={c.data.path}>
+              <span class="condition-list__name">{clean(c.data.title)}</span>
+              <span class="condition-list__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .condition-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .condition-list li { border-bottom: 1px solid var(--line); }
+  .condition-list a { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.2rem 0.5rem; transition: padding var(--dur) var(--ease-out), color var(--dur); }
+  .condition-list__name { font-family: var(--font-display); font-size: var(--step-2); color: var(--wine); text-transform: capitalize; }
+  .condition-list__arrow { color: var(--gold-deep); opacity: 0; transform: translateX(-8px); transition: opacity var(--dur), transform var(--dur) var(--ease-out); }
+  .condition-list a:hover { padding-left: 1.2rem; }
+  .condition-list a:hover .condition-list__arrow { opacity: 1; transform: translateX(0); }
+</style>

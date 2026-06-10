@@ -1,0 +1,158 @@
+{
+ "title": "Ayurveda Sydney - Ayurvedic Doctors, Massages and Panchakarma",
+ "description": "Experience authentic Ayurveda treatments and massage therapies, right here in Bondi Junction, Sydney with our best Ayurvedic Practitioners.",
+ "robots": {
+  "index": "index",
+  "follow": "follow",
+  "max-snippet": "max-snippet:-1",
+  "max-image-preview": "max-image-preview:large",
+  "max-video-preview": "max-video-preview:-1"
+ },
+ "canonical": "https://www.ayurvedicwellnesscentre.com.au/",
+ "og_locale": "en_US",
+ "og_type": "article",
+ "og_title": "Ayurvedic Doctors in Sydney - Ayurvedic Medicine, Panchakarma and Ayurveda Massage Treatments",
+ "og_description": "Experience authentic Ayurveda treatments and massage therapies, right here in Bondi Junction, Sydney with our best Ayurvedic Practitioners.",
+ "og_url": "https://www.ayurvedicwellnesscentre.com.au/",
+ "og_site_name": "Ayurvedic Wellness Centre Pty Ltd",
+ "article_publisher": "https://www.facebook.com/AyurvedicWellnessCentre",
+ "article_modified_time": "2026-03-03T09:03:47+00:00",
+ "og_image": [
+  {
+   "width": 900,
+   "height": 600,
+   "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2023/01/featured_image.jpg",
+   "type": "image/jpeg"
+  }
+ ],
+ "twitter_card": "summary_large_image",
+ "twitter_site": "@AyurvedicSydney",
+ "twitter_misc": {
+  "Est. reading time": "32 minutes"
+ },
+ "schema": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebPage",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "name": "Ayurveda Sydney - Ayurvedic Doctors, Massages and Panchakarma",
+    "isPartOf": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#website"
+    },
+    "primaryImageOfPage": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#primaryimage"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#primaryimage"
+    },
+    "thumbnailUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2023/01/featured_image.jpg",
+    "datePublished": "2023-05-01T07:38:24+00:00",
+    "dateModified": "2026-03-03T09:03:47+00:00",
+    "description": "Experience authentic Ayurveda treatments and massage therapies, right here in Bondi Junction, Sydney with our best Ayurvedic Practitioners.",
+    "breadcrumb": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#breadcrumb"
+    },
+    "inLanguage": "en-AU",
+    "potentialAction": [
+     {
+      "@type": "ReadAction",
+      "target": [
+       "https://www.ayurvedicwellnesscentre.com.au/"
+      ]
+     }
+    ]
+   },
+   {
+    "@type": "ImageObject",
+    "inLanguage": "en-AU",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#primaryimage",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2023/01/featured_image.jpg",
+    "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2023/01/featured_image.jpg",
+    "width": 900,
+    "height": 600,
+    "caption": "Sinusitis Ayurvedic Treatment"
+   },
+   {
+    "@type": "BreadcrumbList",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#breadcrumb",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.ayurvedicwellnesscentre.com.au/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Ayurvedic Doctors in Sydney &#8211; Ayurvedic Medicine, Panchakarma and Ayurveda Massage Treatments"
+     }
+    ]
+   },
+   {
+    "@type": "WebSite",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#website",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "name": "Ayurvedic Wellness Centre",
+    "description": "Authentic Ayurveda Experiences In Sydney",
+    "publisher": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization"
+    },
+    "alternateName": "AWC",
+    "potentialAction": [
+     {
+      "@type": "SearchAction",
+      "target": {
+       "@type": "EntryPoint",
+       "urlTemplate": "https://www.ayurvedicwellnesscentre.com.au/?s={search_term_string}"
+      },
+      "query-input": {
+       "@type": "PropertyValueSpecification",
+       "valueRequired": true,
+       "valueName": "search_term_string"
+      }
+     }
+    ],
+    "inLanguage": "en-AU"
+   },
+   {
+    "@type": "Organization",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization",
+    "name": "Ayurvedic Wellness Centre Pty Ltd",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "logo": {
+     "@type": "ImageObject",
+     "inLanguage": "en-AU",
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/",
+     "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "width": 300,
+     "height": 196,
+     "caption": "Ayurvedic Wellness Centre Pty Ltd"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/"
+    },
+    "sameAs": [
+     "https://www.facebook.com/AyurvedicWellnessCentre",
+     "https://x.com/AyurvedicSydney",
+     "https://www.youtube.com/@AyurvedicWellness/featured",
+     "https://www.instagram.com/ayurvedicwellnesscentre/",
+     "https://www.linkedin.com/company/ayurvedic-wellness-centre/posts/?feedView=all"
+    ],
+    "description": "Ayurveda is something to experience and is not just a normal “massage”. The ancient Indian practice of rejuvenation comes from a place of reverence and the heart. For the first time, you can experience a complete range of authentic Ayurveda massage therapies, right here in Bondi Junction, Sydney. What’s more, you can choose to have a consultation with our qualified Doctors or our Ayurvedic Consultants.",
+    "email": "info@ayurvedicwellnesscentre.com.au",
+    "telephone": "0293892581",
+    "legalName": "Ayurvedic Wellness Centre Pty Ltd",
+    "foundingDate": "2011-01-01",
+    "numberOfEmployees": {
+     "@type": "QuantitativeValue",
+     "minValue": "1",
+     "maxValue": "10"
+    }
+   }
+  ]
+ }
+}

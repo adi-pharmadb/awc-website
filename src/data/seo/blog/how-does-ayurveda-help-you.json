@@ -1,0 +1,200 @@
+{
+ "title": "How Does Ayurveda Work and Help You | Ayurvedic Wellness Centre",
+ "description": "Ayurveda is India's ancient science of life and longevity and is the therapeutic branch of Yoga. For 5000 years, this has been India's healing science",
+ "robots": {
+  "index": "index",
+  "follow": "follow",
+  "max-snippet": "max-snippet:-1",
+  "max-image-preview": "max-image-preview:large",
+  "max-video-preview": "max-video-preview:-1"
+ },
+ "canonical": "https://www.ayurvedicwellnesscentre.com.au/how-does-ayurveda-help-you/",
+ "og_locale": "en_US",
+ "og_type": "article",
+ "og_title": "How Does Ayurveda Help You",
+ "og_description": "Ayurveda is India's ancient science of life and longevity and is the therapeutic branch of Yoga. For 5000 years, this has been India's healing science",
+ "og_url": "https://www.ayurvedicwellnesscentre.com.au/how-does-ayurveda-help-you/",
+ "og_site_name": "Ayurvedic Wellness Centre Pty Ltd",
+ "article_publisher": "https://www.facebook.com/AyurvedicWellnessCentre",
+ "article_published_time": "2015-10-29T05:40:27+00:00",
+ "article_modified_time": "2025-05-13T03:06:07+00:00",
+ "og_image": [
+  {
+   "width": 1600,
+   "height": 1005,
+   "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/05/how-does-ayurveda-help-you-1.jpg",
+   "type": "image/jpeg"
+  }
+ ],
+ "author": "editor",
+ "twitter_card": "summary_large_image",
+ "twitter_creator": "@AyurvedicSydney",
+ "twitter_site": "@AyurvedicSydney",
+ "twitter_misc": {
+  "Written by": "editor",
+  "Est. reading time": "4 minutes"
+ },
+ "schema": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "Article",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/how-does-ayurveda-help-you/#article",
+    "isPartOf": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/how-does-ayurveda-help-you/"
+    },
+    "author": {
+     "name": "editor",
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/person/17c385f9f7d6d1884d7ace5e65d1a6ad"
+    },
+    "headline": "How Does Ayurveda Help You",
+    "datePublished": "2015-10-29T05:40:27+00:00",
+    "dateModified": "2025-05-13T03:06:07+00:00",
+    "mainEntityOfPage": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/how-does-ayurveda-help-you/"
+    },
+    "wordCount": 689,
+    "publisher": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/how-does-ayurveda-help-you/#primaryimage"
+    },
+    "thumbnailUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/05/how-does-ayurveda-help-you-1.jpg",
+    "inLanguage": "en-AU"
+   },
+   {
+    "@type": "WebPage",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/how-does-ayurveda-help-you/",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/how-does-ayurveda-help-you/",
+    "name": "How Does Ayurveda Work and Help You | Ayurvedic Wellness Centre",
+    "isPartOf": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#website"
+    },
+    "primaryImageOfPage": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/how-does-ayurveda-help-you/#primaryimage"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/how-does-ayurveda-help-you/#primaryimage"
+    },
+    "thumbnailUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/05/how-does-ayurveda-help-you-1.jpg",
+    "datePublished": "2015-10-29T05:40:27+00:00",
+    "dateModified": "2025-05-13T03:06:07+00:00",
+    "description": "Ayurveda is India's ancient science of life and longevity and is the therapeutic branch of Yoga. For 5000 years, this has been India's healing science",
+    "breadcrumb": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/how-does-ayurveda-help-you/#breadcrumb"
+    },
+    "inLanguage": "en-AU",
+    "potentialAction": [
+     {
+      "@type": "ReadAction",
+      "target": [
+       "https://www.ayurvedicwellnesscentre.com.au/how-does-ayurveda-help-you/"
+      ]
+     }
+    ]
+   },
+   {
+    "@type": "ImageObject",
+    "inLanguage": "en-AU",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/how-does-ayurveda-help-you/#primaryimage",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/05/how-does-ayurveda-help-you-1.jpg",
+    "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/05/how-does-ayurveda-help-you-1.jpg",
+    "width": 1600,
+    "height": 1005
+   },
+   {
+    "@type": "BreadcrumbList",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/how-does-ayurveda-help-you/#breadcrumb",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.ayurvedicwellnesscentre.com.au/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "How Does Ayurveda Help You"
+     }
+    ]
+   },
+   {
+    "@type": "WebSite",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#website",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "name": "Ayurvedic Wellness Centre",
+    "description": "Authentic Ayurveda Experiences In Sydney",
+    "publisher": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization"
+    },
+    "alternateName": "AWC",
+    "potentialAction": [
+     {
+      "@type": "SearchAction",
+      "target": {
+       "@type": "EntryPoint",
+       "urlTemplate": "https://www.ayurvedicwellnesscentre.com.au/?s={search_term_string}"
+      },
+      "query-input": {
+       "@type": "PropertyValueSpecification",
+       "valueRequired": true,
+       "valueName": "search_term_string"
+      }
+     }
+    ],
+    "inLanguage": "en-AU"
+   },
+   {
+    "@type": "Organization",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization",
+    "name": "Ayurvedic Wellness Centre Pty Ltd",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "logo": {
+     "@type": "ImageObject",
+     "inLanguage": "en-AU",
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/",
+     "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "width": 300,
+     "height": 196,
+     "caption": "Ayurvedic Wellness Centre Pty Ltd"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/"
+    },
+    "sameAs": [
+     "https://www.facebook.com/AyurvedicWellnessCentre",
+     "https://x.com/AyurvedicSydney",
+     "https://www.youtube.com/@AyurvedicWellness/featured",
+     "https://www.instagram.com/ayurvedicwellnesscentre/",
+     "https://www.linkedin.com/company/ayurvedic-wellness-centre/posts/?feedView=all"
+    ],
+    "description": "Ayurveda is something to experience and is not just a normal “massage”. The ancient Indian practice of rejuvenation comes from a place of reverence and the heart. For the first time, you can experience a complete range of authentic Ayurveda massage therapies, right here in Bondi Junction, Sydney. What’s more, you can choose to have a consultation with our qualified Doctors or our Ayurvedic Consultants.",
+    "email": "info@ayurvedicwellnesscentre.com.au",
+    "telephone": "0293892581",
+    "legalName": "Ayurvedic Wellness Centre Pty Ltd",
+    "foundingDate": "2011-01-01",
+    "numberOfEmployees": {
+     "@type": "QuantitativeValue",
+     "minValue": "1",
+     "maxValue": "10"
+    }
+   },
+   {
+    "@type": "Person",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/person/17c385f9f7d6d1884d7ace5e65d1a6ad",
+    "name": "editor",
+    "image": {
+     "@type": "ImageObject",
+     "inLanguage": "en-AU",
+     "@id": "https://secure.gravatar.com/avatar/0ba76c39b8efe86775262911acfbe02f743de51086ffe1ebf67b0911c5ca40d6?s=96&d=mm&r=g",
+     "url": "https://secure.gravatar.com/avatar/0ba76c39b8efe86775262911acfbe02f743de51086ffe1ebf67b0911c5ca40d6?s=96&d=mm&r=g",
+     "contentUrl": "https://secure.gravatar.com/avatar/0ba76c39b8efe86775262911acfbe02f743de51086ffe1ebf67b0911c5ca40d6?s=96&d=mm&r=g",
+     "caption": "editor"
+    }
+   }
+  ]
+ }
+}

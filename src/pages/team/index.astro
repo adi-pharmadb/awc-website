@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { cardImage, routable, clean } from '../../lib/content';
+
+const doctors = await getCollection('doctors', routable);
+---
+<BaseLayout
+  title="Our Ayurvedic Doctors & Practitioners — Ayurvedic Wellness Centre"
+  description="Meet the qualified Ayurvedic doctors and practitioners behind the Ayurvedic Wellness Centre in Bondi Junction, Sydney."
+  canonical="https://www.ayurvedicwellnesscentre.com.au/team/"
+>
+  <PageHero
+    eyebrow="In Trusted Hands"
+    title="Our Practitioners"
+    intro="Care guided by qualified Ayurvedic doctors — each trained in the classical tradition and devoted to your wellbeing."
+  />
+  <section class="section">
+    <div class="container">
+      <div class="team-grid">
+        {doctors.map((doc, i) => (
+          <a class="team-member" href={doc.data.path} data-reveal style={`--reveal-delay:${i * 110}ms`}>
+            <div class="team-member__media">
+              {cardImage(doc) ? <img src={cardImage(doc)} alt={clean(doc.data.title)} loading="lazy" /> : <div class="team-member__ph"></div>}
+            </div>
+            <div class="team-member__body">
+              <h2 class="team-member__name">{clean(doc.data.title)}</h2>
+              <p class="team-member__role">Ayurvedic Doctor</p>
+              <p class="team-member__bio">{doc.data.description}</p>
+              <span class="team-member__cta">View full profile →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; max-width: 60rem; margin-inline: auto; }
+  .team-member { display: grid; gap: 1.4rem; }
+  .team-member__media { aspect-ratio: 4 / 5; border-radius: var(--radius-l); overflow: hidden; box-shadow: var(--shadow-m); background: var(--paper-3); }
+  .team-member__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-out); }
+  .team-member:hover .team-member__media img { transform: scale(1.05); }
+  .team-member__ph { width: 100%; height: 100%; background: radial-gradient(circle at 30% 30%, var(--paper-2), var(--paper-3)); }
+  .team-member__name { font-size: var(--step-3); color: var(--wine); }
+  .team-member__role { font-size: 0.74rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--taupe); margin-top: 0.3rem; }
+  .team-member__bio { margin-top: 0.9rem; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .team-member__cta { display: inline-block; margin-top: 0.9rem; font-size: 0.78rem; color: var(--gold-deep); font-weight: 600; }
+  @media (max-width: 700px) { .team-grid { grid-template-columns: 1fr; max-width: 26rem; } }
+</style>

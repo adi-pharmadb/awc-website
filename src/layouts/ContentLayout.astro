@@ -1,0 +1,124 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Ornament from '../components/Ornament.astro';
+import { bookHref, phone, phoneHref } from '../data/nav';
+
+export interface Props {
+  title: string;
+  cleanTitle?: string;
+  description?: string;
+  canonical: string;
+  robots?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  ogType?: string;
+  jsonLd?: unknown | null;
+  eyebrow?: string;
+  breadcrumbs?: { label: string; href: string }[];
+  heroImage?: string;
+  meta?: string[];
+  cta?: { label: string; href: string; note?: string };
+  width?: 'narrow' | 'default';
+}
+const {
+  title, cleanTitle, description, canonical, robots, ogTitle, ogDescription, ogImage, ogType,
+  jsonLd, eyebrow, breadcrumbs = [], heroImage, meta = [], cta, width = 'narrow',
+} = Astro.props;
+const displayTitle = cleanTitle ?? title;
+---
+<BaseLayout
+  title={title} description={description} canonical={canonical} robots={robots}
+  ogTitle={ogTitle} ogDescription={ogDescription} ogImage={ogImage} ogType={ogType} jsonLd={jsonLd}
+>
+  <article class="article">
+    <header class="article__header">
+      <div class="container--narrow">
+        {breadcrumbs.length > 0 && (
+          <nav class="crumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            {breadcrumbs.map((c) => (<><span aria-hidden="true">/</span><a href={c.href}>{c.label}</a></>))}
+          </nav>
+        )}
+        {eyebrow && <p class="eyebrow eyebrow--center article__eyebrow">{eyebrow}</p>}
+        <h1 class="article__title">{displayTitle}</h1>
+        {meta.length > 0 && (
+          <p class="article__meta">{meta.map((m, i) => (<>{i > 0 && <span aria-hidden="true">·</span>}<span>{m}</span></>))}</p>
+        )}
+        <Ornament variant="divider" class="article__ornament" />
+      </div>
+    </header>
+
+    {heroImage && (
+      <div class="article__hero" data-reveal>
+        <img src={heroImage} alt={displayTitle} loading="eager" decoding="async" />
+      </div>
+    )}
+
+    <div class:list={['article__body', { 'has-aside': cta }]}>
+      <div class="container">
+        <div class:list={['article__layout', { 'is-narrow': width === 'narrow' && !cta }]}>
+          <div class="prose article__prose">
+            <slot />
+          </div>
+          {cta && (
+            <aside class="article__aside">
+              <div class="booking-card">
+                <Ornament variant="mark" size={22} class="booking-card__mark" />
+                <p class="booking-card__title">{cta.label}</p>
+                {cta.note && <p class="booking-card__note">{cta.note}</p>}
+                <a class="btn btn--gold booking-card__btn" href={cta.href}>Book Now</a>
+                <a class="booking-card__phone" href={phoneHref}>or call {phone}</a>
+              </div>
+            </aside>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <div class="article__cta-band">
+      <div class="container text-center">
+        <p class="eyebrow eyebrow--center">Begin Your Journey</p>
+        <h2 class="article__cta-title">Ready to Restore Your Balance?</h2>
+        <a class="btn btn--gold" href={bookHref}>Book an Appointment</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article__header { padding-top: clamp(2.5rem, 5vw, 4.5rem); padding-bottom: 1.5rem; text-align: center; }
+  .crumbs { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; font-size: 0.72rem; text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--mushroom); margin-bottom: 1.6rem; }
+  .crumbs a:hover { color: var(--wine); }
+  .crumbs span { opacity: 0.5; }
+  .article__eyebrow { color: var(--taupe); margin-bottom: 1rem; }
+  .article__title { font-size: var(--step-4); }
+  .article__meta { margin-top: 1rem; display: flex; gap: 0.6rem; justify-content: center; font-size: 0.78rem; text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--taupe); }
+  .article__ornament { margin-top: 1.8rem; max-width: 16rem; margin-inline: auto; }
+
+  .article__hero { max-width: var(--container); margin: 1rem auto 0; padding-inline: var(--gutter); }
+  .article__hero img { width: 100%; aspect-ratio: 16 / 8; object-fit: cover; border-radius: var(--radius-l); box-shadow: var(--shadow-l); }
+
+  .article__body { padding-block: clamp(2.5rem, 5vw, 4rem); }
+  .article__layout { display: grid; gap: 3rem; }
+  .article__layout.is-narrow { max-width: 46rem; margin-inline: auto; }
+  .article__body.has-aside .article__layout { grid-template-columns: minmax(0, 1fr) 18rem; align-items: start; }
+  .article__prose { margin-inline: auto; }
+
+  .article__aside { position: sticky; top: 7rem; }
+  .booking-card { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius-l); padding: 1.8rem; text-align: center; }
+  .booking-card__mark { color: var(--gold-deep); margin: 0 auto 0.8rem; }
+  .booking-card__title { font-family: var(--font-display); font-size: 1.3rem; color: var(--wine); line-height: 1.2; }
+  .booking-card__note { font-size: 0.82rem; color: var(--ink-soft); margin-top: 0.6rem; line-height: 1.5; }
+  .booking-card__btn { width: 100%; justify-content: center; margin-top: 1.2rem; }
+  .booking-card__phone { display: block; margin-top: 0.9rem; font-size: 0.78rem; color: var(--taupe); }
+  .booking-card__phone:hover { color: var(--wine); }
+
+  .article__cta-band { margin-top: var(--space-2xl); padding-block: var(--space-2xl); background: var(--paper-2); border-top: 1px solid var(--line); }
+  .article__cta-title { font-size: var(--step-3); margin-top: 0.6rem; margin-bottom: 2rem; }
+
+  @media (max-width: 900px) {
+    .article__body.has-aside .article__layout { grid-template-columns: 1fr; }
+    .article__aside { position: static; max-width: 24rem; margin-inline: auto; }
+  }
+</style>

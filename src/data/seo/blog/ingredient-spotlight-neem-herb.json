@@ -1,0 +1,211 @@
+{
+ "title": "Neem :: Ayurvedic Wellness Centre, Bondi Junction",
+ "description": "Neem is an extremely bitter Ayurvedic herb traditionally used for skin inflammations. Because of its bitter nature, neem is highly effective in removing pit ...",
+ "robots": {
+  "index": "index",
+  "follow": "follow",
+  "max-snippet": "max-snippet:-1",
+  "max-image-preview": "max-image-preview:large",
+  "max-video-preview": "max-video-preview:-1"
+ },
+ "canonical": "https://www.ayurvedicwellnesscentre.com.au/ingredient-spotlight-neem-herb/",
+ "og_locale": "en_US",
+ "og_type": "article",
+ "og_title": "Ingredient Spotlight: Neem (Herb)",
+ "og_description": "Neem is an extremely bitter Ayurvedic herb traditionally used for skin inflammations. Because of its bitter nature, neem is highly effective in removing pit ...",
+ "og_url": "https://www.ayurvedicwellnesscentre.com.au/ingredient-spotlight-neem-herb/",
+ "og_site_name": "Ayurvedic Wellness Centre Pty Ltd",
+ "article_publisher": "https://www.facebook.com/AyurvedicWellnessCentre",
+ "article_published_time": "2016-01-08T03:12:14+00:00",
+ "article_modified_time": "2025-05-16T09:38:51+00:00",
+ "og_image": [
+  {
+   "width": 403,
+   "height": 403,
+   "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2016/01/neem.jpg",
+   "type": "image/jpeg"
+  }
+ ],
+ "author": "Rita Sagrani",
+ "twitter_card": "summary_large_image",
+ "twitter_creator": "@AyurvedicSydney",
+ "twitter_site": "@AyurvedicSydney",
+ "twitter_misc": {
+  "Written by": "Rita Sagrani",
+  "Est. reading time": "1 minute"
+ },
+ "schema": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "Article",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/ingredient-spotlight-neem-herb/#article",
+    "isPartOf": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/ingredient-spotlight-neem-herb/"
+    },
+    "author": {
+     "name": "Rita Sagrani",
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/person/2538529937eb31c831afd65956b5dda7"
+    },
+    "headline": "Ingredient Spotlight: Neem (Herb)",
+    "datePublished": "2016-01-08T03:12:14+00:00",
+    "dateModified": "2025-05-16T09:38:51+00:00",
+    "mainEntityOfPage": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/ingredient-spotlight-neem-herb/"
+    },
+    "wordCount": 79,
+    "publisher": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/ingredient-spotlight-neem-herb/#primaryimage"
+    },
+    "thumbnailUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2016/01/neem.jpg",
+    "inLanguage": "en-AU"
+   },
+   {
+    "@type": "WebPage",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/ingredient-spotlight-neem-herb/",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/ingredient-spotlight-neem-herb/",
+    "name": "Neem :: Ayurvedic Wellness Centre, Bondi Junction",
+    "isPartOf": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#website"
+    },
+    "primaryImageOfPage": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/ingredient-spotlight-neem-herb/#primaryimage"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/ingredient-spotlight-neem-herb/#primaryimage"
+    },
+    "thumbnailUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2016/01/neem.jpg",
+    "datePublished": "2016-01-08T03:12:14+00:00",
+    "dateModified": "2025-05-16T09:38:51+00:00",
+    "description": "Neem is an extremely bitter Ayurvedic herb traditionally used for skin inflammations. Because of its bitter nature, neem is highly effective in removing pit ...",
+    "breadcrumb": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/ingredient-spotlight-neem-herb/#breadcrumb"
+    },
+    "inLanguage": "en-AU",
+    "potentialAction": [
+     {
+      "@type": "ReadAction",
+      "target": [
+       "https://www.ayurvedicwellnesscentre.com.au/ingredient-spotlight-neem-herb/"
+      ]
+     }
+    ]
+   },
+   {
+    "@type": "ImageObject",
+    "inLanguage": "en-AU",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/ingredient-spotlight-neem-herb/#primaryimage",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2016/01/neem.jpg",
+    "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2016/01/neem.jpg",
+    "width": 403,
+    "height": 403,
+    "caption": "health benefits of neem"
+   },
+   {
+    "@type": "BreadcrumbList",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/ingredient-spotlight-neem-herb/#breadcrumb",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.ayurvedicwellnesscentre.com.au/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Ingredient Spotlight: Neem (Herb)"
+     }
+    ]
+   },
+   {
+    "@type": "WebSite",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#website",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "name": "Ayurvedic Wellness Centre",
+    "description": "Authentic Ayurveda Experiences In Sydney",
+    "publisher": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization"
+    },
+    "alternateName": "AWC",
+    "potentialAction": [
+     {
+      "@type": "SearchAction",
+      "target": {
+       "@type": "EntryPoint",
+       "urlTemplate": "https://www.ayurvedicwellnesscentre.com.au/?s={search_term_string}"
+      },
+      "query-input": {
+       "@type": "PropertyValueSpecification",
+       "valueRequired": true,
+       "valueName": "search_term_string"
+      }
+     }
+    ],
+    "inLanguage": "en-AU"
+   },
+   {
+    "@type": "Organization",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization",
+    "name": "Ayurvedic Wellness Centre Pty Ltd",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "logo": {
+     "@type": "ImageObject",
+     "inLanguage": "en-AU",
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/",
+     "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "width": 300,
+     "height": 196,
+     "caption": "Ayurvedic Wellness Centre Pty Ltd"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/"
+    },
+    "sameAs": [
+     "https://www.facebook.com/AyurvedicWellnessCentre",
+     "https://x.com/AyurvedicSydney",
+     "https://www.youtube.com/@AyurvedicWellness/featured",
+     "https://www.instagram.com/ayurvedicwellnesscentre/",
+     "https://www.linkedin.com/company/ayurvedic-wellness-centre/posts/?feedView=all"
+    ],
+    "description": "Ayurveda is something to experience and is not just a normal “massage”. The ancient Indian practice of rejuvenation comes from a place of reverence and the heart. For the first time, you can experience a complete range of authentic Ayurveda massage therapies, right here in Bondi Junction, Sydney. What’s more, you can choose to have a consultation with our qualified Doctors or our Ayurvedic Consultants.",
+    "email": "info@ayurvedicwellnesscentre.com.au",
+    "telephone": "0293892581",
+    "legalName": "Ayurvedic Wellness Centre Pty Ltd",
+    "foundingDate": "2011-01-01",
+    "numberOfEmployees": {
+     "@type": "QuantitativeValue",
+     "minValue": "1",
+     "maxValue": "10"
+    }
+   },
+   {
+    "@type": "Person",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/person/2538529937eb31c831afd65956b5dda7",
+    "name": "Rita Sagrani",
+    "image": {
+     "@type": "ImageObject",
+     "inLanguage": "en-AU",
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2016/05/Rita-Sagrani_avatar_1462755418-96x96.png",
+     "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2016/05/Rita-Sagrani_avatar_1462755418-96x96.png",
+     "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2016/05/Rita-Sagrani_avatar_1462755418-96x96.png",
+     "caption": "Rita Sagrani"
+    },
+    "description": "Rita began her journey into Ayurveda two decades ago when she was diagnosed with Crohn’s disease. Despite consulting with many specialists and doctors, Western medicine failed to yield a proper cure, and the disease took a debilitating toll on Rita’s career in the fashion industry, as well as her day to day life. After years studying health care, the drug industry and studying Ayurveda with Deepak Chopra, Rita opened the Ayurvedic Wellness Centre in Bondi Junction in 2011. The Ayurvedic Wellness Centre has become the preferred establishment in natural and holistic healing. With the warmth, compassion and expertise of our highly trained staff, we offer a truly authentic experience, restoring internal equilibrium, balance and well-being for the mind, body and soul.",
+    "gender": "female",
+    "knowsAbout": [
+     "Ayurveda"
+    ],
+    "knowsLanguage": [
+     "English",
+     "Hindi"
+    ],
+    "jobTitle": "Ayurvedic Doctor"
+   }
+  ]
+ }
+}

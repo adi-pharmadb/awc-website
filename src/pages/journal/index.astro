@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PostCard from '../../components/PostCard.astro';
+import { cardImage, routable, clean } from '../../lib/content';
+
+const posts = (await getCollection('blog', routable))
+  .sort((a, b) => (b.data.pubDate ?? '').localeCompare(a.data.pubDate ?? ''));
+const [lead, ...rest] = posts;
+---
+<BaseLayout
+  title="The Journal — Ayurvedic Wisdom & Wellbeing | Ayurvedic Wellness Centre"
+  description="Recipes, rituals and ancient wisdom for modern living — articles on Ayurveda, the doshas, seasonal living, detox and holistic health."
+  canonical="https://www.ayurvedicwellnesscentre.com.au/journal/"
+>
+  <PageHero
+    eyebrow="From the Journal"
+    title="Ayurvedic Wisdom"
+    intro="Recipes, rituals and ancient wisdom for modern living — from our doctors and practitioners."
+  />
+  <section class="section listing">
+    <div class="container">
+      {lead && (
+        <div class="journal-lead">
+          <PostCard href={lead.data.path} title={clean(lead.data.title)} image={cardImage(lead)} excerpt={lead.data.description} date={lead.data.pubDate} body={lead.body} featured={true} />
+        </div>
+      )}
+      <div class="journal-grid">
+        {rest.map((p, i) => (
+          <PostCard href={p.data.path} title={clean(p.data.title)} image={cardImage(p)} excerpt={p.data.description} date={p.data.pubDate} body={p.body} index={i} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .listing { padding-top: 2.5rem; }
+  .journal-lead { padding-bottom: 3.5rem; margin-bottom: 3.5rem; border-bottom: 1px solid var(--line); }
+  .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem 2rem; }
+  @media (max-width: 940px) { .journal-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .journal-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,139 @@
+---
+import { Image } from 'astro:assets';
+import logoWhite from '../assets/brand/logo-white.png';
+import Ornament from './Ornament.astro';
+import { bookHref, phone, phoneHref, email, address } from '../data/nav';
+
+const year = 2026;
+const columns = [
+  {
+    title: 'Treatments',
+    links: [
+      { label: 'All Treatments', href: '/treatments/' },
+      { label: 'Shirodhara', href: '/services/shirodhara-treatment-bondi-sydney/' },
+      { label: 'Abhyanga Massage', href: '/services/ayurvedic-massage-in-bondi-junction/' },
+      { label: 'Panchakarma Detox', href: '/detox-clinic/' },
+      { label: 'The Spa', href: '/ayurvedic-spa/' },
+    ],
+  },
+  {
+    title: 'Explore',
+    links: [
+      { label: 'What is Ayurveda', href: '/what-is-ayurveda/' },
+      { label: 'Conditions We Treat', href: '/conditions/' },
+      { label: 'Our Practitioners', href: '/team/' },
+      { label: 'Journal', href: '/journal/' },
+      { label: 'Shop & Gift Vouchers', href: '/shop/' },
+    ],
+  },
+  {
+    title: 'Visit',
+    links: [
+      { label: 'About Us', href: '/about-us/' },
+      { label: 'Contact', href: '/contact-us/' },
+      { label: 'Book an Appointment', href: '/book-appointment/' },
+      { label: 'FAQs', href: '/frequently-asked-questions/' },
+    ],
+  },
+];
+const socials = [
+  { label: 'Instagram', href: 'https://www.instagram.com/ayurvedicwellnesscentre/' },
+  { label: 'Facebook', href: 'https://www.facebook.com/AyurvedicWellnessCentre' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@AyurvedicWellness' },
+];
+---
+<footer class="site-footer">
+  <div class="footer-cta">
+    <div class="container">
+      <Ornament variant="mark" size={26} class="footer-cta__mark" />
+      <p class="eyebrow eyebrow--center">Begin Your Journey</p>
+      <h2 class="footer-cta__title">Discover Your Dosha</h2>
+      <p class="footer-cta__copy">
+        Every body is governed by a unique balance of Vata, Pitta and Kapha. Take the first step
+        toward equilibrium — book a consultation with our Ayurvedic doctors.
+      </p>
+      <div class="footer-cta__actions">
+        <a class="btn btn--gold" href={bookHref}>Book a Consultation</a>
+        <a class="btn btn--ghost btn--on-dark-ghost" href="/what-is-your-dosha/">Take the Dosha Quiz</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-main container--wide">
+    <div class="footer-brand">
+      <Image src={logoWhite} alt="Ayurvedic Wellness Centre" widths={[200, 400]} sizes="200px" />
+      <p class="footer-brand__tag">Authentic Ayurveda experiences in Bondi Junction, Sydney — restoring
+      balance to mind, body and soul since 2011.</p>
+      <div class="footer-contact">
+        <a href={phoneHref}>{phone}</a>
+        <a href={`mailto:${email}`}>{email}</a>
+        <span>{address}</span>
+      </div>
+    </div>
+
+    {columns.map((col) => (
+      <nav class="footer-col" aria-label={col.title}>
+        <p class="footer-col__title">{col.title}</p>
+        <ul role="list">
+          {col.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        </ul>
+      </nav>
+    ))}
+  </div>
+
+  <div class="footer-bottom container--wide">
+    <p>© {year} Ayurvedic Wellness Centre Pty Ltd</p>
+    <ul class="footer-social" role="list">
+      {socials.map((s) => <li><a href={s.href} target="_blank" rel="noopener">{s.label}</a></li>)}
+    </ul>
+    <p class="footer-bottom__legal"><a href="/privacy-policy/">Privacy</a> · <a href="/cancellation-policy/">Cancellation</a></p>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: var(--espresso); color: var(--on-dark-soft); margin-top: var(--space-2xl); }
+
+  .footer-cta {
+    text-align: center; padding-block: var(--space-2xl);
+    background:
+      radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--wine) 30%, transparent), transparent 60%),
+      var(--navy-deep);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-cta__mark { color: var(--gold); margin: 0 auto 1.2rem; }
+  .footer-cta .eyebrow { color: var(--gold); justify-content: center; }
+  .footer-cta__title { color: var(--on-dark); font-size: var(--step-4); margin-top: 0.6rem; }
+  .footer-cta__copy { max-width: 44ch; margin: 1.2rem auto 0; color: var(--on-dark-soft); }
+  .footer-cta__actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+  .btn--on-dark-ghost { box-shadow: inset 0 0 0 1px rgba(246,237,224,0.4); color: var(--on-dark); background: transparent; }
+  .btn--on-dark-ghost:hover { background: var(--on-dark); color: var(--espresso); box-shadow: none; }
+
+  .footer-main {
+    display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 2.5rem;
+    padding-block: var(--space-2xl) var(--space-xl); margin-inline: auto; padding-inline: var(--gutter);
+  }
+  .footer-brand :global(img) { width: 170px; height: auto; }
+  .footer-brand__tag { margin-top: 1.2rem; font-size: 0.88rem; line-height: 1.7; max-width: 34ch; }
+  .footer-contact { display: grid; gap: 0.35rem; margin-top: 1.4rem; font-size: 0.88rem; }
+  .footer-contact a:hover { color: var(--gold); }
+
+  .footer-col__title { font-family: var(--font-sans); font-size: 0.72rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--gold); margin-bottom: 1.1rem; }
+  .footer-col ul { display: grid; gap: 0.6rem; }
+  .footer-col a { font-size: 0.9rem; color: var(--on-dark-soft); transition: color var(--dur), padding-left var(--dur); }
+  .footer-col a:hover { color: var(--on-dark); padding-left: 0.3rem; }
+
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    padding-block: 1.6rem; margin-inline: auto; padding-inline: var(--gutter);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.78rem; color: var(--mushroom);
+  }
+  .footer-social { display: flex; gap: 1.2rem; }
+  .footer-social a:hover, .footer-bottom__legal a:hover { color: var(--gold); }
+
+  @media (max-width: 880px) {
+    .footer-main { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-bottom { justify-content: center; text-align: center; }
+  }
+</style>

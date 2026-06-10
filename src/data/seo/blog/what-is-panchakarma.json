@@ -1,0 +1,200 @@
+{
+ "title": "What is Panchakarma | Ayurvedic Wellness Centre Pty Ltd",
+ "description": "Panchakarma Detox is a therapeutic system that cleanses toxins that are already in your body and which are the underlying root of health imbalances and disease.",
+ "robots": {
+  "index": "index",
+  "follow": "follow",
+  "max-snippet": "max-snippet:-1",
+  "max-image-preview": "max-image-preview:large",
+  "max-video-preview": "max-video-preview:-1"
+ },
+ "canonical": "https://www.ayurvedicwellnesscentre.com.au/what-is-panchakarma/",
+ "og_locale": "en_US",
+ "og_type": "article",
+ "og_title": "What is Panchakarma",
+ "og_description": "Panchakarma Detox is a therapeutic system that cleanses toxins that are already in your body and which are the underlying root of health imbalances and disease.",
+ "og_url": "https://www.ayurvedicwellnesscentre.com.au/what-is-panchakarma/",
+ "og_site_name": "Ayurvedic Wellness Centre Pty Ltd",
+ "article_publisher": "https://www.facebook.com/AyurvedicWellnessCentre",
+ "article_published_time": "2023-10-31T04:43:59+00:00",
+ "article_modified_time": "2025-05-15T16:43:12+00:00",
+ "og_image": [
+  {
+   "width": 1600,
+   "height": 1073,
+   "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/05/rasayana-therapy.jpg",
+   "type": "image/jpeg"
+  }
+ ],
+ "author": "Sites at Scale",
+ "twitter_card": "summary_large_image",
+ "twitter_creator": "@AyurvedicSydney",
+ "twitter_site": "@AyurvedicSydney",
+ "twitter_misc": {
+  "Written by": "Sites at Scale",
+  "Est. reading time": "5 minutes"
+ },
+ "schema": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "Article",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/what-is-panchakarma/#article",
+    "isPartOf": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/what-is-panchakarma/"
+    },
+    "author": {
+     "name": "Sites at Scale",
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/person/40f4902fb113f67fc4389cd0d9105099"
+    },
+    "headline": "What is Panchakarma",
+    "datePublished": "2023-10-31T04:43:59+00:00",
+    "dateModified": "2025-05-15T16:43:12+00:00",
+    "mainEntityOfPage": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/what-is-panchakarma/"
+    },
+    "wordCount": 1125,
+    "publisher": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/what-is-panchakarma/#primaryimage"
+    },
+    "thumbnailUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/05/rasayana-therapy.jpg",
+    "inLanguage": "en-AU"
+   },
+   {
+    "@type": "WebPage",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/what-is-panchakarma/",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/what-is-panchakarma/",
+    "name": "What is Panchakarma | Ayurvedic Wellness Centre Pty Ltd",
+    "isPartOf": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#website"
+    },
+    "primaryImageOfPage": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/what-is-panchakarma/#primaryimage"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/what-is-panchakarma/#primaryimage"
+    },
+    "thumbnailUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/05/rasayana-therapy.jpg",
+    "datePublished": "2023-10-31T04:43:59+00:00",
+    "dateModified": "2025-05-15T16:43:12+00:00",
+    "description": "Panchakarma Detox is a therapeutic system that cleanses toxins that are already in your body and which are the underlying root of health imbalances and disease.",
+    "breadcrumb": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/what-is-panchakarma/#breadcrumb"
+    },
+    "inLanguage": "en-AU",
+    "potentialAction": [
+     {
+      "@type": "ReadAction",
+      "target": [
+       "https://www.ayurvedicwellnesscentre.com.au/what-is-panchakarma/"
+      ]
+     }
+    ]
+   },
+   {
+    "@type": "ImageObject",
+    "inLanguage": "en-AU",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/what-is-panchakarma/#primaryimage",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/05/rasayana-therapy.jpg",
+    "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/05/rasayana-therapy.jpg",
+    "width": 1600,
+    "height": 1073
+   },
+   {
+    "@type": "BreadcrumbList",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/what-is-panchakarma/#breadcrumb",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.ayurvedicwellnesscentre.com.au/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "What is Panchakarma"
+     }
+    ]
+   },
+   {
+    "@type": "WebSite",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#website",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "name": "Ayurvedic Wellness Centre",
+    "description": "Authentic Ayurveda Experiences In Sydney",
+    "publisher": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization"
+    },
+    "alternateName": "AWC",
+    "potentialAction": [
+     {
+      "@type": "SearchAction",
+      "target": {
+       "@type": "EntryPoint",
+       "urlTemplate": "https://www.ayurvedicwellnesscentre.com.au/?s={search_term_string}"
+      },
+      "query-input": {
+       "@type": "PropertyValueSpecification",
+       "valueRequired": true,
+       "valueName": "search_term_string"
+      }
+     }
+    ],
+    "inLanguage": "en-AU"
+   },
+   {
+    "@type": "Organization",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization",
+    "name": "Ayurvedic Wellness Centre Pty Ltd",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "logo": {
+     "@type": "ImageObject",
+     "inLanguage": "en-AU",
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/",
+     "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "width": 300,
+     "height": 196,
+     "caption": "Ayurvedic Wellness Centre Pty Ltd"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/"
+    },
+    "sameAs": [
+     "https://www.facebook.com/AyurvedicWellnessCentre",
+     "https://x.com/AyurvedicSydney",
+     "https://www.youtube.com/@AyurvedicWellness/featured",
+     "https://www.instagram.com/ayurvedicwellnesscentre/",
+     "https://www.linkedin.com/company/ayurvedic-wellness-centre/posts/?feedView=all"
+    ],
+    "description": "Ayurveda is something to experience and is not just a normal “massage”. The ancient Indian practice of rejuvenation comes from a place of reverence and the heart. For the first time, you can experience a complete range of authentic Ayurveda massage therapies, right here in Bondi Junction, Sydney. What’s more, you can choose to have a consultation with our qualified Doctors or our Ayurvedic Consultants.",
+    "email": "info@ayurvedicwellnesscentre.com.au",
+    "telephone": "0293892581",
+    "legalName": "Ayurvedic Wellness Centre Pty Ltd",
+    "foundingDate": "2011-01-01",
+    "numberOfEmployees": {
+     "@type": "QuantitativeValue",
+     "minValue": "1",
+     "maxValue": "10"
+    }
+   },
+   {
+    "@type": "Person",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/person/40f4902fb113f67fc4389cd0d9105099",
+    "name": "Sites at Scale",
+    "image": {
+     "@type": "ImageObject",
+     "inLanguage": "en-AU",
+     "@id": "https://secure.gravatar.com/avatar/bcdc8108341ab9648c22a6de93ea4232a4a6a43a2f8498fc467d9f7da41262d9?s=96&d=mm&r=g",
+     "url": "https://secure.gravatar.com/avatar/bcdc8108341ab9648c22a6de93ea4232a4a6a43a2f8498fc467d9f7da41262d9?s=96&d=mm&r=g",
+     "contentUrl": "https://secure.gravatar.com/avatar/bcdc8108341ab9648c22a6de93ea4232a4a6a43a2f8498fc467d9f7da41262d9?s=96&d=mm&r=g",
+     "caption": "Sites at Scale"
+    }
+   }
+  ]
+ }
+}

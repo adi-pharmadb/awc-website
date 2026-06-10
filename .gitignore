@@ -1,0 +1,17 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# logs / runtime
+*.log
+.DS_Store
+
+# editor
+.vscode/
+.idea/
+
+# python
+__pycache__/

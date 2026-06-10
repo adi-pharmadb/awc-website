@@ -1,0 +1,205 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo-main.png';
+import { primaryNav, bookHref, phone, phoneHref, address } from '../data/nav';
+import Ornament from './Ornament.astro';
+---
+<header class="site-header" data-header>
+  <div class="topbar">
+    <div class="container--wide topbar__inner">
+      <span class="topbar__item">Bondi Junction · Sydney</span>
+      <span class="topbar__sep" aria-hidden="true">—</span>
+      <span class="topbar__item topbar__tag">Authentic Ayurveda since 2011</span>
+      <a class="topbar__item topbar__phone" href={phoneHref}>{phone}</a>
+    </div>
+  </div>
+
+  <div class="header-main">
+    <div class="container--wide header-main__inner">
+      <a class="brand" href="/" aria-label="Ayurvedic Wellness Centre — home">
+        <Image src={logo} alt="Ayurvedic Wellness Centre" widths={[180, 360]} sizes="184px" loading="eager" />
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="primary-nav__list" role="list">
+          {primaryNav.map((item) => (
+            <li class:list={['nav-item', { 'has-panel': item.feature }]}>
+              <a class="nav-link" href={item.href}>
+                {item.label}
+                {item.feature && <span class="nav-caret" aria-hidden="true"></span>}
+              </a>
+              {item.feature && (
+                <div class="mega">
+                  <div class="mega__inner">
+                    <div class="mega__intro">
+                      <Ornament variant="mark" size={22} class="mega__mark" />
+                      <p class="mega__heading">{item.feature.heading}</p>
+                      <p class="mega__blurb">{item.feature.blurb}</p>
+                      <a class="link mega__all" href={item.href}>View all →</a>
+                    </div>
+                    <ul class="mega__items" role="list">
+                      {item.feature.items.map((sub) => (
+                        <li><a href={sub.href}>{sub.label}</a></li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn--gold header-book" href={bookHref}>Book an Appointment</a>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
+    <nav class="mobile-menu__nav" aria-label="Mobile">
+      <ul role="list">
+        {primaryNav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        <li><a href="/contact-us/">Contact</a></li>
+      </ul>
+      <a class="btn btn--gold mobile-menu__book" href={bookHref}>Book an Appointment</a>
+      <div class="mobile-menu__meta">
+        <a href={phoneHref}>{phone}</a>
+        <span>{address}</span>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
+
+  // shrink/solidify header on scroll
+  const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // mobile menu
+  let open = false;
+  const setMenu = (state: boolean) => {
+    open = state;
+    toggle?.setAttribute('aria-expanded', String(open));
+    if (menu) { menu.hidden = !open; }
+    document.body.style.overflow = open ? 'hidden' : '';
+    header?.classList.toggle('menu-open', open);
+  };
+  toggle?.addEventListener('click', () => setMenu(!open));
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && open) setMenu(false); });
+</script>
+
+<style>
+  .site-header { position: sticky; top: 0; z-index: var(--z-header); }
+
+  .topbar {
+    background: var(--espresso);
+    color: var(--on-dark-soft);
+    font-size: 0.72rem;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    transition: height var(--dur) var(--ease-out), padding var(--dur) var(--ease-out), opacity var(--dur);
+  }
+  .topbar__inner { display: flex; align-items: center; gap: 0.9rem; padding-block: 0.55rem; margin-inline: auto; padding-inline: var(--gutter); }
+  .topbar__sep { opacity: 0.4; }
+  .topbar__phone { margin-left: auto; color: var(--gold); font-weight: 600; }
+  .topbar__phone:hover { color: #fff; }
+  .is-scrolled .topbar { height: 0; padding-block: 0; opacity: 0; overflow: hidden; }
+
+  .header-main {
+    background: color-mix(in srgb, var(--paper) 86%, transparent);
+    backdrop-filter: blur(12px) saturate(1.1);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--dur), box-shadow var(--dur), background var(--dur);
+  }
+  .is-scrolled .header-main { border-bottom-color: var(--line); box-shadow: var(--shadow-s); }
+  .header-main__inner {
+    display: flex; align-items: center; gap: 2rem;
+    padding-block: 1.1rem; margin-inline: auto; padding-inline: var(--gutter);
+    transition: padding var(--dur) var(--ease-out);
+  }
+  .is-scrolled .header-main__inner { padding-block: 0.7rem; }
+
+  .brand { flex-shrink: 0; }
+  .brand :global(img) { width: 132px; height: auto; transition: width var(--dur) var(--ease-out); }
+  .is-scrolled .brand :global(img) { width: 108px; }
+
+  /* primary nav */
+  .primary-nav { margin-left: auto; }
+  .primary-nav__list { display: flex; align-items: center; gap: 0.4rem; }
+  .nav-link {
+    display: inline-flex; align-items: center; gap: 0.4em;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.03em;
+    color: var(--ink-soft);
+    border-radius: var(--radius-s);
+    transition: color var(--dur);
+  }
+  .nav-link:hover { color: var(--wine); }
+  .nav-caret { width: 5px; height: 5px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); opacity: 0.6; transition: transform var(--dur); }
+  .nav-item.has-panel:hover .nav-caret, .nav-item.has-panel:focus-within .nav-caret { transform: translateY(0) rotate(225deg); }
+
+  /* mega panel */
+  .nav-item { position: relative; }
+  .mega {
+    position: absolute; top: calc(100% + 0.4rem); left: 50%; translate: -50% 0;
+    width: min(34rem, 80vw);
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-l);
+    box-shadow: var(--shadow-l);
+    padding: 1.6rem; opacity: 0; visibility: hidden; transform: translateY(8px);
+    transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), visibility var(--dur);
+  }
+  .mega::before { content: ''; position: absolute; top: -0.4rem; left: 0; right: 0; height: 0.6rem; }
+  .nav-item.has-panel:hover .mega, .nav-item.has-panel:focus-within .mega { opacity: 1; visibility: visible; transform: translateY(0); }
+  .mega__inner { display: grid; grid-template-columns: 0.85fr 1fr; gap: 1.4rem; }
+  .mega__mark { color: var(--gold-deep); margin-bottom: 0.6rem; }
+  .mega__heading { font-family: var(--font-display); font-size: 1.3rem; color: var(--wine); line-height: 1.1; }
+  .mega__blurb { font-size: 0.8rem; color: var(--taupe); margin-top: 0.5rem; line-height: 1.5; }
+  .mega__all { font-size: 0.78rem; display: inline-block; margin-top: 0.9rem; }
+  .mega__items { display: grid; gap: 0.1rem; align-content: start; }
+  .mega__items a {
+    display: block; padding: 0.6rem 0.8rem; border-radius: var(--radius-s);
+    font-size: 0.86rem; color: var(--ink-soft);
+    transition: background var(--dur), color var(--dur), padding-left var(--dur);
+  }
+  .mega__items a:hover { background: var(--paper-2); color: var(--wine); padding-left: 1.1rem; }
+
+  .header-actions { display: flex; align-items: center; gap: 1rem; }
+  .header-book { padding: 0.85em 1.4em; font-size: 0.74rem; }
+
+  /* mobile */
+  .menu-toggle { display: none; width: 44px; height: 44px; flex-direction: column; gap: 5px; align-items: center; justify-content: center; }
+  .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--wine); transition: transform var(--dur) var(--ease-out), opacity var(--dur); }
+  .menu-open .menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+  .menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 90;
+    background: var(--paper); padding: 7rem var(--gutter) 3rem;
+    display: grid; align-content: start; overflow-y: auto;
+    animation: menuIn var(--dur) var(--ease-out);
+  }
+  @keyframes menuIn { from { opacity: 0; } to { opacity: 1; } }
+  .mobile-menu__nav ul { display: grid; gap: 0.2rem; border-bottom: 1px solid var(--line); padding-bottom: 1.5rem; }
+  .mobile-menu__nav a { display: block; font-family: var(--font-display); font-size: 1.7rem; color: var(--wine); padding: 0.5rem 0; }
+  .mobile-menu__book { margin-top: 1.6rem; justify-content: center; }
+  .mobile-menu__meta { margin-top: 1.6rem; display: grid; gap: 0.4rem; font-size: 0.85rem; color: var(--taupe); }
+  .mobile-menu__meta a { color: var(--wine); font-weight: 600; }
+
+  @media (max-width: 1080px) {
+    .primary-nav, .header-book { display: none; }
+    .menu-toggle { display: flex; }
+    .header-main__inner { justify-content: space-between; }
+  }
+</style>

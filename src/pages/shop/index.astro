@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import { cardImage, routable, clean } from '../../lib/content';
+
+const products = (await getCollection('products', routable))
+  .sort((a, b) => clean(a.data.title).localeCompare(clean(b.data.title)));
+---
+<BaseLayout
+  title="Gift Vouchers & Wellness Packages — Ayurvedic Wellness Centre"
+  description="Give the gift of balance. Browse our Ayurvedic gift vouchers, massage packages and seasonal rituals — available in clinic or by phone."
+  canonical="https://www.ayurvedicwellnesscentre.com.au/shop/"
+>
+  <PageHero
+    eyebrow="Gift Vouchers & Packages"
+    title="The Gift of Balance"
+    intro="Treat someone you love to authentic Ayurveda — curated packages and gift vouchers for every season."
+  />
+  <section class="section listing">
+    <div class="container">
+      <div class="listing__grid">
+        {products.map((p, i) => (
+          <ServiceCard href={p.data.path} title={clean(p.data.title)} image={cardImage(p)} excerpt={p.data.description} kicker="Gift Voucher" index={i} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .listing { padding-top: 2.5rem; }
+  .listing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  @media (max-width: 940px) { .listing__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .listing__grid { grid-template-columns: 1fr; } }
+</style>

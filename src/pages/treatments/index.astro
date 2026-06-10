@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import { cardImage, routable, serviceKind, clean } from '../../lib/content';
+
+const services = (await getCollection('services', routable))
+  .filter((s) => serviceKind(s.data.slug) === 'therapy')
+  .sort((a, b) => clean(a.data.title).localeCompare(clean(b.data.title)));
+---
+<BaseLayout
+  title="Ayurvedic Treatments & Therapies in Sydney — Ayurvedic Wellness Centre"
+  description="Explore our full range of authentic Ayurvedic treatments and massage therapies in Bondi Junction, Sydney — Shirodhara, Abhyanga, Panchakarma and more."
+  canonical="https://www.ayurvedicwellnesscentre.com.au/treatments/"
+>
+  <PageHero
+    eyebrow="Ayurveda A–Z"
+    title="Our Treatments"
+    intro="A complete range of authentic Ayurvedic therapies, each performed with warm medicated oils and time-honoured technique by our trained therapists."
+  />
+  <section class="section listing">
+    <div class="container">
+      <div class="listing__grid">
+        {services.map((s, i) => (
+          <ServiceCard href={s.data.path} title={clean(s.data.title)} image={cardImage(s)} excerpt={s.data.description} kicker="Therapy" index={i} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .listing { padding-top: 2.5rem; }
+  .listing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  @media (max-width: 940px) { .listing__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .listing__grid { grid-template-columns: 1fr; } }
+</style>

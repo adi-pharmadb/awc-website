@@ -1,0 +1,93 @@
+---
+import '@fontsource/sorts-mill-goudy/400.css';
+import '@fontsource/sorts-mill-goudy/400-italic.css';
+import '@fontsource-variable/montserrat';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  canonical: string;
+  robots?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  ogType?: string;
+  jsonLd?: unknown | null;
+  bodyClass?: string;
+}
+const {
+  title,
+  description = '',
+  canonical,
+  robots = 'index, follow',
+  ogTitle,
+  ogDescription,
+  ogImage,
+  ogType = 'website',
+  jsonLd = null,
+  bodyClass = '',
+} = Astro.props;
+const ogImageAbs = new URL(ogImage || '/wp-content/uploads/2023/01/featured_image.jpg', Astro.site).href;
+---
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={robots} />
+
+    <meta property="og:site_name" content="Ayurvedic Wellness Centre" />
+    <meta property="og:title" content={ogTitle ?? title} />
+    <meta property="og:description" content={ogDescription ?? description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#780032" />
+
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Scroll-reveal: progressively enhance [data-reveal] elements.
+      const els = document.querySelectorAll('[data-reveal]');
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries, obs) => {
+            for (const e of entries) {
+              if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+            }
+          },
+          { rootMargin: '0px 0px -10% 0px', threshold: 0.1 },
+        );
+        els.forEach((el) => io.observe(el));
+      } else {
+        els.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+
+    <style>
+      .skip-link {
+        position: fixed; top: 0; left: 50%; translate: -50% -120%;
+        z-index: 1000; background: var(--wine); color: var(--paper);
+        padding: 0.7rem 1.2rem; border-radius: 0 0 var(--radius-m) var(--radius-m);
+        font-size: 0.85rem; transition: translate var(--dur) var(--ease-out);
+      }
+      .skip-link:focus { translate: -50% 0; }
+    </style>
+  </body>
+</html>

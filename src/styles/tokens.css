@@ -1,0 +1,92 @@
+/* ============================================================================
+   AYURVEDIC WELLNESS CENTRE — Design Tokens
+   "Sacred Modern Editorial" — a luxury wellness brand-book on warm paper.
+   Brand fundamentals (colours + type) are LOCKED to the live site; everything
+   here composes within them.
+   ============================================================================ */
+
+:root {
+  /* --- Brand palette (exact, from Elementor globals + logo) ------------------ */
+  --wine: #780032;          /* primary — headings, signature                    */
+  --wine-deep: #5c0026;     /* darker wine for hovers/depth                     */
+  --navy: #00324e;          /* logo ink — deep accents, dark sections           */
+  --navy-deep: #04263b;
+  --gold: #fdc578;          /* accent — used like gold leaf, sparingly          */
+  --gold-deep: #e7a94f;     /* gold for text-on-light (AA), borders             */
+  --espresso: #331703;      /* secondary — body ink, grounding                  */
+  --taupe: #74623c;         /* warm secondary text, eyebrows, meta              */
+  --mushroom: #b19b87;      /* muted neutral — rules, captions                  */
+
+  /* --- Warm paper neutrals (derived, in-palette) ---------------------------- */
+  --paper: #fbf6ee;         /* page base — warm ivory, not stark white          */
+  --paper-2: #f4ecdf;       /* recessed surface                                  */
+  --paper-3: #efe4d3;       /* cards / panels                                    */
+  --line: #e4d8c5;          /* hairline rules on paper                          */
+  --ink: #2a1c0c;           /* darkest warm ink (body on paper, AA+)            */
+  --ink-soft: #4a3a26;      /* softer body ink                                   */
+
+  /* On dark (espresso/navy) surfaces */
+  --on-dark: #f6ede0;
+  --on-dark-soft: #d8c4ab;
+
+  /* --- Typography ----------------------------------------------------------- */
+  --font-display: 'Sorts Mill Goudy', 'Goudy Old Style', Georgia, serif;
+  --font-sans: 'Montserrat Variable', 'Montserrat', system-ui, sans-serif;
+
+  /* Fluid type scale (1.250 major-third-ish, tuned per step) */
+  --step--1: clamp(0.78rem, 0.75rem + 0.15vw, 0.86rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.12rem + 0.4vw, 1.5rem);
+  --step-2: clamp(1.5rem, 1.35rem + 0.75vw, 2.1rem);
+  --step-3: clamp(1.95rem, 1.7rem + 1.25vw, 3rem);
+  --step-4: clamp(2.45rem, 2rem + 2.2vw, 4.2rem);
+  --step-5: clamp(3rem, 2.2rem + 4vw, 6rem);
+  --step-6: clamp(3.6rem, 2.2rem + 6.5vw, 8rem);
+
+  --leading-tight: 1.04;
+  --leading-snug: 1.18;
+  --leading-body: 1.72;
+  --tracking-eyebrow: 0.28em;
+  --tracking-caps: 0.12em;
+  --tracking-wide: 0.04em;
+
+  /* --- Spatial system ------------------------------------------------------- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 9rem;
+  --section-y: clamp(4.5rem, 3rem + 7vw, 9rem);
+
+  --measure: 68ch;          /* prose line length                                */
+  --container: 78rem;       /* 1248px max                                        */
+  --container-wide: 88rem;
+  --gutter: clamp(1.25rem, 0.5rem + 3.5vw, 4rem);
+
+  /* --- Radii, borders, shadow (warm-tinted) --------------------------------- */
+  --radius-s: 4px;
+  --radius-m: 10px;
+  --radius-l: 20px;
+  --radius-pill: 999px;
+  --shadow-s: 0 1px 2px rgba(51, 23, 3, 0.06), 0 2px 8px rgba(51, 23, 3, 0.05);
+  --shadow-m: 0 10px 30px -12px rgba(51, 23, 3, 0.22), 0 2px 8px rgba(51, 23, 3, 0.06);
+  --shadow-l: 0 30px 70px -28px rgba(51, 23, 3, 0.38);
+  --shadow-gold: 0 14px 36px -14px rgba(231, 169, 79, 0.55);
+
+  /* --- Motion --------------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0.05, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 180ms;
+  --dur: 360ms;
+  --dur-slow: 720ms;
+
+  /* --- Layering ------------------------------------------------------------- */
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+}

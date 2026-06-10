@@ -1,0 +1,162 @@
+{
+ "title": "Hearts In Harmony Couples Massage | Ayurvedic Wellness Centre Pty Ltd",
+ "robots": {
+  "index": "index",
+  "follow": "follow",
+  "max-snippet": "max-snippet:-1",
+  "max-image-preview": "max-image-preview:large",
+  "max-video-preview": "max-video-preview:-1"
+ },
+ "canonical": "https://www.ayurvedicwellnesscentre.com.au/product/hearts-in-harmony-couples-massage/",
+ "og_locale": "en_US",
+ "og_type": "article",
+ "og_title": "Hearts In Harmony Couples Massage",
+ "og_description": "Hearts In Harmony Couples Massage &#8211; $690 Treatments &#8211; 30 min Abhyanga full body Massage – with 150mls of hot herbal oils– For Fatigue, Stress, Anxiety and Tension. Deeply relaxing and meditative with long lasting benefits. This is a gentle but firm Ayurvedic massage from head to toe, assisting circulation and relaxation 15 mins Champi [&hellip;]",
+ "og_url": "https://www.ayurvedicwellnesscentre.com.au/product/hearts-in-harmony-couples-massage/",
+ "og_site_name": "Ayurvedic Wellness Centre Pty Ltd",
+ "article_publisher": "https://www.facebook.com/AyurvedicWellnessCentre",
+ "article_modified_time": "2026-02-04T02:12:55+00:00",
+ "og_image": [
+  {
+   "width": 874,
+   "height": 621,
+   "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/01/Valentines-Gift-Voucher-2026-AWC-Hearts-in-Harmony-Couple-Massage.webp",
+   "type": "image/webp"
+  }
+ ],
+ "twitter_card": "summary_large_image",
+ "twitter_site": "@AyurvedicSydney",
+ "twitter_misc": {
+  "Est. reading time": "1 minute"
+ },
+ "schema": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebPage",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/product/hearts-in-harmony-couples-massage/",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/product/hearts-in-harmony-couples-massage/",
+    "name": "Hearts In Harmony Couples Massage | Ayurvedic Wellness Centre Pty Ltd",
+    "isPartOf": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#website"
+    },
+    "primaryImageOfPage": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/product/hearts-in-harmony-couples-massage/#primaryimage"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/product/hearts-in-harmony-couples-massage/#primaryimage"
+    },
+    "thumbnailUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/01/Valentines-Gift-Voucher-2026-AWC-Hearts-in-Harmony-Couple-Massage.webp",
+    "datePublished": "2025-01-23T01:36:33+00:00",
+    "dateModified": "2026-02-04T02:12:55+00:00",
+    "breadcrumb": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/product/hearts-in-harmony-couples-massage/#breadcrumb"
+    },
+    "inLanguage": "en-AU",
+    "potentialAction": [
+     {
+      "@type": "ReadAction",
+      "target": [
+       "https://www.ayurvedicwellnesscentre.com.au/product/hearts-in-harmony-couples-massage/"
+      ]
+     }
+    ]
+   },
+   {
+    "@type": "ImageObject",
+    "inLanguage": "en-AU",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/product/hearts-in-harmony-couples-massage/#primaryimage",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/01/Valentines-Gift-Voucher-2026-AWC-Hearts-in-Harmony-Couple-Massage.webp",
+    "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2025/01/Valentines-Gift-Voucher-2026-AWC-Hearts-in-Harmony-Couple-Massage.webp",
+    "width": 874,
+    "height": 621,
+    "caption": "Valentines Gift Voucher 2026 AWC - Hearts in Harmony Couple Massage"
+   },
+   {
+    "@type": "BreadcrumbList",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/product/hearts-in-harmony-couples-massage/#breadcrumb",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.ayurvedicwellnesscentre.com.au/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Shop",
+      "item": "https://www.ayurvedicwellnesscentre.com.au/shop/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Hearts In Harmony Couples Massage"
+     }
+    ]
+   },
+   {
+    "@type": "WebSite",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#website",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "name": "Ayurvedic Wellness Centre",
+    "description": "Authentic Ayurveda Experiences In Sydney",
+    "publisher": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization"
+    },
+    "alternateName": "AWC",
+    "potentialAction": [
+     {
+      "@type": "SearchAction",
+      "target": {
+       "@type": "EntryPoint",
+       "urlTemplate": "https://www.ayurvedicwellnesscentre.com.au/?s={search_term_string}"
+      },
+      "query-input": {
+       "@type": "PropertyValueSpecification",
+       "valueRequired": true,
+       "valueName": "search_term_string"
+      }
+     }
+    ],
+    "inLanguage": "en-AU"
+   },
+   {
+    "@type": "Organization",
+    "@id": "https://www.ayurvedicwellnesscentre.com.au/#organization",
+    "name": "Ayurvedic Wellness Centre Pty Ltd",
+    "url": "https://www.ayurvedicwellnesscentre.com.au/",
+    "logo": {
+     "@type": "ImageObject",
+     "inLanguage": "en-AU",
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/",
+     "url": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "contentUrl": "https://www.ayurvedicwellnesscentre.com.au/wp-content/uploads/2022/08/AWC-logo-black.png",
+     "width": 300,
+     "height": 196,
+     "caption": "Ayurvedic Wellness Centre Pty Ltd"
+    },
+    "image": {
+     "@id": "https://www.ayurvedicwellnesscentre.com.au/#/schema/logo/image/"
+    },
+    "sameAs": [
+     "https://www.facebook.com/AyurvedicWellnessCentre",
+     "https://x.com/AyurvedicSydney",
+     "https://www.youtube.com/@AyurvedicWellness/featured",
+     "https://www.instagram.com/ayurvedicwellnesscentre/",
+     "https://www.linkedin.com/company/ayurvedic-wellness-centre/posts/?feedView=all"
+    ],
+    "description": "Ayurveda is something to experience and is not just a normal “massage”. The ancient Indian practice of rejuvenation comes from a place of reverence and the heart. For the first time, you can experience a complete range of authentic Ayurveda massage therapies, right here in Bondi Junction, Sydney. What’s more, you can choose to have a consultation with our qualified Doctors or our Ayurvedic Consultants.",
+    "email": "info@ayurvedicwellnesscentre.com.au",
+    "telephone": "0293892581",
+    "legalName": "Ayurvedic Wellness Centre Pty Ltd",
+    "foundingDate": "2011-01-01",
+    "numberOfEmployees": {
+     "@type": "QuantitativeValue",
+     "minValue": "1",
+     "maxValue": "10"
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,21 @@
+---
+import Ornament from './Ornament.astro';
+interface Props { eyebrow?: string; title: string; intro?: string }
+const { eyebrow, title, intro } = Astro.props;
+---
+<section class="page-hero">
+  <div class="container--narrow text-center">
+    {eyebrow && <p class="eyebrow eyebrow--center page-hero__eyebrow">{eyebrow}</p>}
+    <h1 class="page-hero__title">{title}</h1>
+    {intro && <p class="page-hero__intro">{intro}</p>}
+    <Ornament variant="divider" class="page-hero__ornament" />
+  </div>
+</section>
+
+<style>
+  .page-hero { padding-top: clamp(3rem, 6vw, 5.5rem); padding-bottom: 1rem; }
+  .page-hero__eyebrow { color: var(--taupe); margin-bottom: 1rem; }
+  .page-hero__title { font-size: var(--step-5); }
+  .page-hero__intro { margin: 1.3rem auto 0; max-width: 50ch; font-size: var(--step-1); color: var(--taupe); line-height: 1.5; }
+  .page-hero__ornament { margin: 2rem auto 0; max-width: 16rem; }
+</style>

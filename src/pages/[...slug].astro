@@ -1,0 +1,42 @@
+---
+import { getCollection, render } from 'astro:content';
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { getJsonLd } from '../lib/seo';
+import { routable, formatDate, readingTime } from '../lib/content';
+
+export async function getStaticPaths() {
+  // Slugs that have dedicated designed routes (must not also build here).
+  const OVERRIDE = new Set(['shop', 'home']);
+  const blog = await getCollection('blog', routable);
+  const pages = await getCollection('pages', routable);
+  return [...blog, ...pages]
+    .filter((e) => !OVERRIDE.has(e.data.slug) && e.data.path !== '/')
+    .map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const isBlog = entry.collection === 'blog';
+const cleanTitle = (d.ogTitle || d.title).replace(/\s*[|]\s*Ayurvedic Wellness.*$/i, '').trim();
+const meta = isBlog ? [formatDate(d.pubDate), `${readingTime(entry.body)} min read`].filter(Boolean) : [];
+const breadcrumbs = isBlog ? [{ label: 'Journal', href: '/journal/' }] : [];
+---
+<ContentLayout
+  title={d.title}
+  cleanTitle={cleanTitle}
+  description={d.description}
+  canonical={d.canonical}
+  robots={d.robots}
+  ogTitle={d.ogTitle}
+  ogDescription={d.ogDescription}
+  ogImage={d.ogImage}
+  ogType={d.ogType}
+  jsonLd={getJsonLd(entry.collection, d.slug)}
+  eyebrow={isBlog ? 'From the Journal' : 'Ayurvedic Wellness Centre'}
+  breadcrumbs={breadcrumbs}
+  meta={meta}
+  width="narrow"
+>
+  <Content />
+</ContentLayout>
