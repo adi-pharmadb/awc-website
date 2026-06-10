@@ -40,7 +40,6 @@ const displayTitle = cleanTitle ?? title;
             {breadcrumbs.map((c) => (<><span aria-hidden="true">/</span><a href={c.href}>{c.label}</a></>))}
           </nav>
         )}
-        {eyebrow && <p class="eyebrow eyebrow--center article__eyebrow">{eyebrow}</p>}
         <h1 class="article__title">{displayTitle}</h1>
         {meta.length > 0 && (
           <p class="article__meta">{meta.map((m, i) => (<>{i > 0 && <span aria-hidden="true">·</span>}<span>{m}</span></>))}</p>
@@ -55,32 +54,13 @@ const displayTitle = cleanTitle ?? title;
       </div>
     )}
 
-    <div class:list={['article__body', { 'has-aside': cta }]}>
+    <div class="article__body">
       <div class="container">
-        <div class:list={['article__layout', { 'is-narrow': width === 'narrow' && !cta }]}>
+        <div class="article__layout">
           <div class="prose article__prose">
             <slot />
           </div>
-          {cta && (
-            <aside class="article__aside">
-              <div class="booking-card">
-                <Ornament variant="mark" size={22} class="booking-card__mark" />
-                <p class="booking-card__title">{cta.label}</p>
-                {cta.note && <p class="booking-card__note">{cta.note}</p>}
-                <a class="btn btn--gold booking-card__btn" href={cta.href}>Book Now</a>
-                <a class="booking-card__phone" href={phoneHref}>or call {phone}</a>
-              </div>
-            </aside>
-          )}
         </div>
-      </div>
-    </div>
-
-    <div class="article__cta-band">
-      <div class="container text-center">
-        <p class="eyebrow eyebrow--center">Begin Your Journey</p>
-        <h2 class="article__cta-title">Ready to Restore Your Balance?</h2>
-        <a class="btn btn--gold" href={bookHref}>Book an Appointment</a>
       </div>
     </div>
   </article>
@@ -100,9 +80,7 @@ const displayTitle = cleanTitle ?? title;
   .article__hero img { width: 100%; aspect-ratio: 16 / 8; object-fit: cover; border-radius: var(--radius-l); box-shadow: var(--shadow-l); }
 
   .article__body { padding-block: clamp(2.5rem, 5vw, 4rem); }
-  .article__layout { display: grid; gap: 3rem; }
-  .article__layout.is-narrow { max-width: 46rem; margin-inline: auto; }
-  .article__body.has-aside .article__layout { grid-template-columns: minmax(0, 1fr) 18rem; align-items: start; }
+  .article__layout { max-width: 46rem; margin-inline: auto; }
   .article__prose { margin-inline: auto; }
 
   .article__aside { position: sticky; top: 7rem; }
